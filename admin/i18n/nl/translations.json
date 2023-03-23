@@ -1,5 +1,22 @@
 {
-    "pid adapter settings": "Adapterinstellingen voor pid",
-    "option1": "Optie 1",
-    "option2": "Optie 2"
+    "lblConfig": "Configuratie",
+    "lblCtrlAct": "Ingeschakeld",
+    "lblCtrlAutoStart": "Automatische start",
+    "lblCtrlCycle": "cyclustijd (ms)",
+    "lblCtrlD": "D-waarde",
+    "lblCtrlI": "Ik waardeer",
+    "lblCtrlId": "Controller-ID",
+    "lblCtrlInstances": "PID-controllerinstanties",
+    "lblCtrlMax": "Max uit",
+    "lblCtrlMin": "Min uit",
+    "lblCtrlP": "P-waarde",
+    "ttCtrlAct": "regelaar inschakelen",
+    "ttCtrlAutoStart": "start de controller bij het begin van de instantie",
+    "ttCtrlCycle": "berekeningscyclustijd in milliseconden of 0 voor handmatige activering",
+    "ttCtrlD": "differentiële (D) factor",
+    "ttCtrlI": "integrale (I) factor",
+    "ttCtrlId": "unieke identificatie van controller",
+    "ttCtrlMax": "maximale uitgangswaarde",
+    "ttCtrlMin": "minimale uitgangswaarde",
+    "ttCtrlP": "proportionele (P) factor"
 }

@@ -13,7 +13,8 @@
                 "it": "Versione iniziale",
                 "es": "Versión inicial",
                 "pl": "Pierwsze wydanie",
-                "zh-cn": "首次出版"
+                "zh-cn": "首次出版",
+                "uk": "початковий випуск"
             }
         },
         "title": "PID controller",
@@ -27,7 +28,8 @@
             "it": "Controllore PID",
             "es": "controlador PID",
             "pl": "regulator PID",
-            "zh-cn": "PID控制器"
+            "zh-cn": "PID控制器",
+            "uk": "ПІД контролер"
         },
         "desc": {
             "en": "Configurable PID Controller",
@@ -39,10 +41,17 @@
             "it": "Regolatore PID configurabile",
             "es": "Controlador PID configurable",
             "pl": "Konfigurowalny kontroler PID",
-            "zh-cn": "可配置的 PID 控制器"
+            "zh-cn": "可配置的 PID 控制器",
+            "uk": "Настроюваний ПІД-регулятор"
         },
-        "authors": ["mcm1957 <mcm57@gmx.at>"],
-        "keywords": ["pid", "controller", "pid-controller"],
+        "authors": [
+            "mcm1957 <mcm57@gmx.at>"
+        ],
+        "keywords": [
+            "pid",
+            "controller",
+            "pid-controller"
+        ],
         "license": "MIT",
         "platform": "Javascript/Node.js",
         "main": "main.js",

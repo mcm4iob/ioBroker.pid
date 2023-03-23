@@ -1,5 +1,22 @@
 {
-    "pid adapter settings": "Impostazioni dell'adattatore per pid",
-    "option1": "opzione 1",
-    "option2": "opzione 2"
+    "lblConfig": "Configurazione",
+    "lblCtrlAct": "Abilitato",
+    "lblCtrlAutoStart": "Avvio automatico",
+    "lblCtrlCycle": "tempo di ciclo (ms)",
+    "lblCtrlD": "Valore D",
+    "lblCtrlI": "Valuto",
+    "lblCtrlId": "ID del controllore",
+    "lblCtrlInstances": "Istanze del controller PID",
+    "lblCtrlMax": "Massimizzare",
+    "lblCtrlMin": "Min fuori",
+    "lblCtrlP": "Valore P",
+    "ttCtrlAct": "abilitare il controllore",
+    "ttCtrlAutoStart": "avviare il controller all'avvio dell'istanza",
+    "ttCtrlCycle": "tempo di ciclo di calcolo in millisecondi o 0 per il trigger manuale",
+    "ttCtrlD": "fattore differenziale (D).",
+    "ttCtrlI": "fattore integrale (I).",
+    "ttCtrlId": "identificazione univoca del titolare del trattamento",
+    "ttCtrlMax": "valore massimo di uscita",
+    "ttCtrlMin": "valore di uscita minimo",
+    "ttCtrlP": "fattore proporzionale (P)."
 }

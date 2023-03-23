@@ -1,5 +1,22 @@
 {
-    "pid adapter settings": "Adaptereinstellungen für pid",
-    "option1": "Option 1",
-    "option2": "Option 2"
+    "lblConfig": "Aufbau",
+    "lblCtrlAct": "Ermöglicht",
+    "lblCtrlAutoStart": "Auto-Start",
+    "lblCtrlCycle": "Zykluszeit (ms)",
+    "lblCtrlD": "D-Wert",
+    "lblCtrlI": "Ich schätze",
+    "lblCtrlId": "Controller-ID",
+    "lblCtrlInstances": "PID-Controller-Instanzen",
+    "lblCtrlMax": "Maximal aus",
+    "lblCtrlMin": "Min aus",
+    "lblCtrlP": "P-Wert",
+    "ttCtrlAct": "Steuerung aktivieren",
+    "ttCtrlAutoStart": "Controller beim Start der Instanz starten",
+    "ttCtrlCycle": "Rechenzykluszeit in Millisekunden oder 0 bei manueller Triggerung",
+    "ttCtrlD": "Differentialfaktor (D).",
+    "ttCtrlI": "integraler (I) Faktor",
+    "ttCtrlId": "eindeutige Identifikation des Controllers",
+    "ttCtrlMax": "maximaler Ausgangswert",
+    "ttCtrlMin": "minimaler Ausgangswert",
+    "ttCtrlP": "Proportionalfaktor (P)."
 }

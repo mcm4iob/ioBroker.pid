@@ -1,5 +1,22 @@
 {
-    "pid adapter settings": "pid的适配器设置",
-    "option1": "选项1",
-    "option2": "选项2"
+    "lblConfig": "配置",
+    "lblCtrlAct": "启用",
+    "lblCtrlAutoStart": "自动启动",
+    "lblCtrlCycle": "周期时间（毫秒）",
+    "lblCtrlD": "D值",
+    "lblCtrlI": "我值",
+    "lblCtrlId": "控制器编号",
+    "lblCtrlInstances": "PID 控制器实例",
+    "lblCtrlMax": "最大输出",
+    "lblCtrlMin": "最小输出",
+    "lblCtrlP": "P值",
+    "ttCtrlAct": "启用控制器",
+    "ttCtrlAutoStart": "在实例开始时启动控制器",
+    "ttCtrlCycle": "以毫秒为单位的计算周期时间或手动触发为 0",
+    "ttCtrlD": "微分 (D) 因子",
+    "ttCtrlI": "积分 (I) 因子",
+    "ttCtrlId": "控制器的唯一标识",
+    "ttCtrlMax": "最大输出值",
+    "ttCtrlMin": "最小输出值",
+    "ttCtrlP": "比例 (P) 因子"
 }

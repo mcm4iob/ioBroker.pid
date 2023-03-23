@@ -30,7 +30,17 @@ For more details and for information how to disable the error reporting see [Sen
 
 This adapter provides a configurable PID Controller.
 
-Currengt state is WORK IN PROGRESS.
+Current state is WORK IN PROGRESS.
+
+## Credits
+
+Providing this adapter would not have been possible without the great work of @Philmod (https://github.com/Philmod) who developed node-pid-controller (https://github.com/Philmod/node-pid-controller).
+
+## How to report issues and feature requests
+
+Please use GitHub issues for this.
+
+Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column Log level). Then please get the logfile from disk (subdirectory "log" in ioBroker installation directory and not from Admin because Admin cuts the lines). If you do not like providing it in GitHub issue you can also send it to me via email (mcm57@gmx.at). Please add a reference to the relevant GitHub issue AND also describe what I see in the log at which time.
 
 ## Changelog
 

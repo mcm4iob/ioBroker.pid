@@ -1,16 +1,116 @@
 {
     "i18n": true,
-    "type": "panel",
+    "type": "tabs",
     "items": {
-        "option1": {
-            "type": "checkbox",
-            "label": "option1",
-            "newLine": true
-        },
-        "option2": {
-            "type": "text",
-            "label": "option2",
-            "newLine": true
+        "devices": {
+            "type": "panel",
+            "label": "lblConfig",
+            "items": {
+                "devs": {
+                    "type": "table",
+                    "newLine": true,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "label": "lblCtrlInstances",
+                    "showSecondAddAt": 5,
+                    "items": [
+                        {
+                            "type": "checkbox",
+                            "attr": "ctrlAct",
+                            "width": "5% ",
+                            "title": "lblCtrlAct",
+                            "tooltip": "ttCtrlAct",
+                            "filter": false,
+                            "sort": false,
+                            "default": true
+                        },
+                        {
+                            "type": "checkbox",
+                            "attr": "ctrlAutoStart",
+                            "width": "5% ",
+                            "title": "lblCtrlAutoStart",
+                            "tooltip": "ttCtrlAutoStart",
+                            "filter": false,
+                            "sort": false,
+                            "default": true
+                        },
+                        {
+                            "type": "text",
+                            "attr": "ctrlId",
+                            "width": "15% ",
+                            "title": "lblCtrlId",
+                            "tooltip": "ttCtrlId",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "number",
+                            "attr": "ctrlP",
+                            "width": "10% ",
+                            "title": "lblCtrlP",
+                            "tooltip": "ttCtrlP",
+                            "filter": false,
+                            "sort": false,
+                            "default": 0
+                        },
+                        {
+                            "type": "number",
+                            "attr": "ctrlI",
+                            "width": "10% ",
+                            "title": "lblCtrlI",
+                            "tooltip": "ttCtrlI",
+                            "filter": false,
+                            "sort": false,
+                            "default": 0
+                        },
+                        {
+                            "type": "number",
+                            "attr": "ctrlD",
+                            "width": "10% ",
+                            "title": "lblCtrlD",
+                            "tooltip": "ttCtrlD",
+                            "filter": false,
+                            "sort": false,
+                            "default": 0
+                        },
+                        {
+                            "type": "number",
+                            "attr": "ctrlMin",
+                            "width": "15% ",
+                            "title": "lblCtrlMin",
+                            "tooltip": "ttCtrlMin",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "number",
+                            "attr": "ctrlMax",
+                            "width": "15% ",
+                            "title": "lblCtrlMax",
+                            "tooltip": "ttCtrlMax",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "number",
+                            "attr": "ctrlCycle",
+                            "width": "10% ",
+                            "title": "lblCtrlCycle",
+                            "tooltip": "ttCtrlCycle",
+                            "filter": false,
+                            "sort": false,
+                            "min": 100,
+                            "max": 3600000,
+                            "step": 1,
+                            "default": 1000
+                        }
+                    ]
+                }
+            }
         }
     }
 }
