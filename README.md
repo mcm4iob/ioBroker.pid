@@ -30,7 +30,7 @@ For more details and for information how to disable the error reporting see [Sen
 
 This adapter provides a configurable PID Controller.
 
-Current state is WORK IN PROGRESS.
+# __Current state is WORK IN PROGRESS. Adapter is NOT FUNCTIONAL__
 
 ## Credits
 
