@@ -6,7 +6,7 @@
             "type": "panel",
             "label": "lblConfig",
             "items": {
-                "devs": {
+                "controllers": {
                     "type": "table",
                     "newLine": true,
                     "sm": 12,
