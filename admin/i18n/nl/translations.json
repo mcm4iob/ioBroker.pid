@@ -25,6 +25,7 @@
     "lblCtrlInstances": "PID-controllerinstanties",
     "lblCtrlMax": "Max uit",
     "lblCtrlMin": "Min uit",
+    "lblCtrlMinMax": "gebruik min/max limieten",
     "lblCtrlP": "P-waarde",
     "ttCtrlAct": "regelaar inschakelen",
     "ttCtrlAutoStart": "start de controller bij het begin van de instantie",
@@ -34,5 +35,6 @@
     "ttCtrlId": "unieke identificatie van controller",
     "ttCtrlMax": "maximale uitgangswaarde",
     "ttCtrlMin": "minimale uitgangswaarde",
+    "ttCtrlMinMax": "activeren om minimum- en maximumlimieten weer te geven en te gebruiken",
     "ttCtrlP": "proportionele (P) factor"
 }

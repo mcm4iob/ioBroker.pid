@@ -25,6 +25,7 @@
     "lblCtrlInstances": "PID Controller Instances",
     "lblCtrlMax": "Max Out",
     "lblCtrlMin": "Min Out",
+    "lblCtrlMinMax": "use min/max limits",
     "lblCtrlP": "P Gain",
     "ttCtrlAct": "enable controller",
     "ttCtrlAutoStart": "start controller at start of instance",
@@ -34,5 +35,6 @@
     "ttCtrlId": "unique identification of controller",
     "ttCtrlMax": "maximum output value",
     "ttCtrlMin": "minimum output value",
+    "ttCtrlMinMax": "activate to show and use minimum and maximum limits",
     "ttCtrlP": "proportional (P) gain"
 }

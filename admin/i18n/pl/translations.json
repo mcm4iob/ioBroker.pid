@@ -25,6 +25,7 @@
     "lblCtrlInstances": "Instancje kontrolera PID",
     "lblCtrlMax": "Maksymalna wydajność",
     "lblCtrlMin": "Min Out",
+    "lblCtrlMinMax": "użyj limitów min/max",
     "lblCtrlP": "Wartość P",
     "ttCtrlAct": "włączyć kontroler",
     "ttCtrlAutoStart": "uruchom kontroler na początku instancji",
@@ -34,5 +35,6 @@
     "ttCtrlId": "unikalny identyfikator kontrolera",
     "ttCtrlMax": "maksymalna wartość wyjściowa",
     "ttCtrlMin": "minimalna wartość wyjściowa",
+    "ttCtrlMinMax": "aktywuj, aby wyświetlać i używać minimalnych i maksymalnych limitów",
     "ttCtrlP": "współczynnik proporcjonalności (P)."
 }

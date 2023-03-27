@@ -43,8 +43,9 @@ const STATES_CFG = {
     lim:      { type: 'boolean', name: 'controler limited', desc: 'descLim',    role: 'switch.enable', unit: '', acc: 'RO', init: null },
 
     /* utility */
-    last_upd: { type: 'number',  name: 'last update ts',    desc: 'descLast',   role: 'value',         unit: '', acc: 'RO', init: null },
-    log:      { type: 'number',  name: 'log interval',      desc: 'descLog',    role: 'value',         unit: '', acc: 'RW', init: 0 },
+    last_upd:     { type: 'number', name: 'last update ts', desc: 'descLast',   role: 'value',         unit: '', acc: 'RO', init: null },
+    last_upd_str: { type: 'text',   name: 'last update',    desc: 'descLast',   role: 'value',         unit: '', acc: 'RO', init: null },
+    log:          { type: 'number', name: 'log interval',   desc: 'descLog',    role: 'value',         unit: '', acc: 'RW', init: 0 },
 };
 
 /**
@@ -93,8 +94,9 @@ class Pid extends utils.Adapter {
             lim:        null,
 
             /* utility */
-            last_upd:   null,
-            log:        this.chkLog.bind(this)
+            last_upd:       null,
+            last_upd_str:   null,
+            log:            this.chkLog.bind(this)
         };
 
         iobInit(this);
@@ -166,6 +168,31 @@ class Pid extends utils.Adapter {
                     ctrlCycle = 3600 * 1000;
                     this.log.warn(`[C-${controller.ctrlId}] - invalid cycle time, set to 3600s`);
                 }
+                let min = null;
+                let max = null;
+                if (controller.ctrlMinMax) {
+                    min = Number(controller.ctrlMin || 0);
+                    if (isNaN(min)) {
+                        this.log.warn(
+                            `[C-${controller.ctrlId}] - ${this.config.ctrlMin} is invalid for 'min out' parameter; will be ignored`,
+                        );
+                        min = null;
+                    }
+                    min = Number(controller.ctrlMax || 0);
+                    if (isNaN(max)) {
+                        this.log.warn(
+                            `[C-${controller.ctrlId}] - ${this.config.ctrlMax} is invalid for 'max out' parameter; will be ignored`,
+                        );
+                        max = null;
+                    }
+                    if (min !== null && max == null && min >= min) {
+                        this.log.warn(
+                            `[C-${controller.ctrlId}] - ${max} is not bigger than ${min} is invalid for 'max out' parameter; will be ignored`,
+                        );
+                        min = null;
+                        max = null;
+                    }
+                }
 
                 this.controllers[controller.ctrlId] = {
                     ctrlId: `C-${controller.ctrlId}`,
@@ -173,14 +200,21 @@ class Pid extends utils.Adapter {
                         k_p: controller.ctrlP,
                         k_i: controller.ctrlI,
                         k_d: controller.ctrlD,
-                        min: controller.ctrlMin,
-                        max: controller.ctrlMax,
+                        min: min,
+                        max: max,
                     }),
                     cycle: ctrlCycle,
                     timer: null,
                 };
+                await this.setStateAsync(`C-${controller.ctrlId}.k_p`, { val: controller.ctrlP, ack: true, q: 0x00 });
+                await this.setStateAsync(`C-${controller.ctrlId}.k_i`, { val: controller.ctrlI, ack: true, q: 0x00 });
+                await this.setStateAsync(`C-${controller.ctrlId}.k_d`, { val: controller.ctrlD, ack: true, q: 0x00 });
+                await this.setStateAsync(`C-${controller.ctrlId}.min`, { val: min, ack: true, q: 0x00 });
+                await this.setStateAsync(`C-${controller.ctrlId}.max`, { val: max, ack: true, q: 0x00 });
 
                 this.controllers[controller.ctrlId].pidCtrl.reset();
+                await this.setStateAsync(`C-${controller.ctrlId}.rst`, { val: false, ack: true, q: 0x00 });
+
                 if (controller.ctrlAutoStart)
                     this.controllers[controller.ctrlId].timer = setInterval(
                         this.doProcess.bind(this),
@@ -335,9 +369,13 @@ class Pid extends utils.Adapter {
         const ret = controller.pidCtrl.update(pAct);
         this.log.debug(`[${controller.ctrlId}] update(${pAct}) - ${JSON.stringify(ret)}`);
 
-        this.setStateAsync(`${controller.ctrlId}.y`, { val: ret.y, ack: true, q: 0x00 });
-        this.setStateAsync(`${controller.ctrlId}.diff`, { val: ret.diff, ack: true, q: 0x00 });
-        this.setStateAsync(`${controller.ctrlId}.lim`, { val: ret.lim, ack: true, q: 0x00 });
+        const now = Date.now();
+        const nowStr = new Date().toLocaleString();
+        await this.setStateAsync(`${controller.ctrlId}.last_upd`, { val: now, ack: true, q: 0x00 });
+        await this.setStateAsync(`${controller.ctrlId}.last_upd_str`, { val: nowStr, ack: true, q: 0x00 });
+        await this.setStateAsync(`${controller.ctrlId}.y`, { val: ret.y, ack: true, q: 0x00 });
+        await this.setStateAsync(`${controller.ctrlId}.diff`, { val: ret.diff, ack: true, q: 0x00 });
+        await this.setStateAsync(`${controller.ctrlId}.lim`, { val: ret.lim, ack: true, q: 0x00 });
     }
 
     async chgAct(pId, pCtrlId, pVal) {
@@ -352,11 +390,13 @@ class Pid extends utils.Adapter {
 
         const controller = this.controllers[pCtrlId];
         await controller.pidCtrl.setSet(pVal);
+        await this.doUpdate(pCtrlId, null);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
 
     async chgSup(pId, pCtrlId, pVal) {
         this.log.debug(`chgSup called (${pCtrlId}, ${pVal})`);
+
         const controller = this.controllers[pCtrlId];
         await controller.pidCtrl.setSup(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
@@ -366,6 +406,7 @@ class Pid extends utils.Adapter {
         this.log.debug(`chgOff called (${pCtrlId}, ${pVal})`);
         const controller = this.controllers[pCtrlId];
         await controller.pidCtrl.setOff(pVal);
+        await this.doUpdate(pCtrlId, pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
 
@@ -381,17 +422,22 @@ class Pid extends utils.Adapter {
 
     async chgRst(pId, pCtrlId, pVal) {
         this.log.debug(`chgRst called (${pCtrlId}, ${pVal})`);
+
+        await this.setStateAsync(pId, { val: false, ack: true, q: 0x00 });
         const controller = this.controllers[pCtrlId];
         if (pVal) await controller.pidCtrl.reset();
+        await this.doUpdate(pCtrlId, pVal);
     }
 
     async chgHold(pId, pCtrlId, pVal) {
         this.log.debug(`chgHold called (${pCtrlId}, ${pVal})`);
+        //await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         // *** TODO ***
     }
 
     async chkLog(pId, pCtrlId, pVal) {
         this.log.debug(`chgLog called (${pCtrlId}, ${pVal})`);
+        // await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         // *** TODO ***
     }
 }

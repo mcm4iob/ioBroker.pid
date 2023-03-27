@@ -25,6 +25,7 @@
     "lblCtrlInstances": "Instances de contrôleur PID",
     "lblCtrlMax": "Sortie maximale",
     "lblCtrlMin": "Sortie min.",
+    "lblCtrlMinMax": "utiliser les limites min/max",
     "lblCtrlP": "Valeur P",
     "ttCtrlAct": "activer le contrôleur",
     "ttCtrlAutoStart": "démarrer le contrôleur au début de l'instance",
@@ -34,5 +35,6 @@
     "ttCtrlId": "identification unique du responsable du traitement",
     "ttCtrlMax": "valeur de sortie maximale",
     "ttCtrlMin": "valeur de sortie minimale",
+    "ttCtrlMinMax": "activer pour afficher et utiliser les limites minimales et maximales",
     "ttCtrlP": "facteur proportionnel (P)"
 }

@@ -76,14 +76,25 @@
                             "default": 0
                         },
                         {
+                            "type": "checkbox",
+                            "attr": "ctrlMinMax",
+                            "width": "5% ",
+                            "title": "lblCtrlMinMax",
+                            "tooltip": "ttCtrlMinMax",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
                             "type": "number",
                             "attr": "ctrlMin",
                             "width": "15% ",
                             "title": "lblCtrlMin",
                             "tooltip": "ttCtrlMin",
+                            "hidden": "!data.ctrlMinMax",
                             "filter": false,
                             "sort": false,
-                            "default": ""
+                            "default": 0
                         },
                         {
                             "type": "number",
@@ -91,9 +102,10 @@
                             "width": "15% ",
                             "title": "lblCtrlMax",
                             "tooltip": "ttCtrlMax",
+                            "hidden": "!data.ctrlMinMax",
                             "filter": false,
                             "sort": false,
-                            "default": ""
+                            "default": 0
                         },
                         {
                             "type": "number",

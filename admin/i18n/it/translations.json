@@ -25,6 +25,7 @@
     "lblCtrlInstances": "Istanze del controller PID",
     "lblCtrlMax": "Massimizzare",
     "lblCtrlMin": "Min fuori",
+    "lblCtrlMinMax": "utilizzare i limiti min/max",
     "lblCtrlP": "Valore P",
     "ttCtrlAct": "abilitare il controllore",
     "ttCtrlAutoStart": "avviare il controller all'avvio dell'istanza",
@@ -34,5 +35,6 @@
     "ttCtrlId": "identificazione univoca del titolare del trattamento",
     "ttCtrlMax": "valore massimo di uscita",
     "ttCtrlMin": "valore di uscita minimo",
+    "ttCtrlMinMax": "attivare per visualizzare e utilizzare i limiti minimo e massimo",
     "ttCtrlP": "fattore proporzionale (P)."
 }

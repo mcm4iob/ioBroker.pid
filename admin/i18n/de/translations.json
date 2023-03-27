@@ -25,6 +25,7 @@
     "lblCtrlInstances": "PID-Controller-Instanzen",
     "lblCtrlMax": "Maximal aus",
     "lblCtrlMin": "Min aus",
+    "lblCtrlMinMax": "Verwenden Sie Min/Max-Grenzen",
     "lblCtrlP": "P-Wert",
     "ttCtrlAct": "Steuerung aktivieren",
     "ttCtrlAutoStart": "Controller beim Start der Instanz starten",
@@ -34,5 +35,6 @@
     "ttCtrlId": "eindeutige Identifikation des Controllers",
     "ttCtrlMax": "maximaler Ausgangswert",
     "ttCtrlMin": "minimaler Ausgangswert",
+    "ttCtrlMinMax": "aktivieren, um Mindest- und Höchstgrenzen anzuzeigen und zu verwenden",
     "ttCtrlP": "Proportionalfaktor (P)."
 }

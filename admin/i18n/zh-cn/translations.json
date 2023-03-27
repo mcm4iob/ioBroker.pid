@@ -25,6 +25,7 @@
     "lblCtrlInstances": "PID 控制器实例",
     "lblCtrlMax": "最大输出",
     "lblCtrlMin": "最小输出",
+    "lblCtrlMinMax": "使用最小/最大限制",
     "lblCtrlP": "P值",
     "ttCtrlAct": "启用控制器",
     "ttCtrlAutoStart": "在实例开始时启动控制器",
@@ -34,5 +35,6 @@
     "ttCtrlId": "控制器的唯一标识",
     "ttCtrlMax": "最大输出值",
     "ttCtrlMin": "最小输出值",
+    "ttCtrlMinMax": "激活以显示和使用最小和最大限制",
     "ttCtrlP": "比例 (P) 因子"
 }
