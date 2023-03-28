@@ -458,7 +458,7 @@ class Pid extends utils.Adapter {
         controller.running = pVal;
         if (controller.running) {
             this.clearInterval(controller.timer);
-            controller.timer = setInterval(this.doUpdate.bind(this), controller.ctrlCycle, controller.ctrlId);
+            controller.timer = setInterval(this.doUpdate.bind(this), controller.cycle, pCtrlId);
         } else {
             this.clearInterval(controller.timer);
         }
