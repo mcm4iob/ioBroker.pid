@@ -1,7 +1,6 @@
 {
     "descAct": "实际价值",
     "descDiff": "实际误差值",
-    "descHold": "保持开关",
     "descKd": "比例微分部分",
     "descKi": "组成部分",
     "descKp": "比例部分",
