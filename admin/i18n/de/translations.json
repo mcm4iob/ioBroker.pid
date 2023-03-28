@@ -12,6 +12,7 @@
     "descMin": "minimaler Ausgangswert",
     "descOff": "Offset des Ausgangswertes",
     "descRst": "Neuinitialisierung des Reglers",
+    "descRun": "Laufschalter",
     "descSet": "Sollwert",
     "descSup": "Hysteresewert",
     "descY": "Ausgabewert",

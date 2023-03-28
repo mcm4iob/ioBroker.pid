@@ -1,7 +1,6 @@
 {
     "descAct": "actual value",
     "descDiff": "actual error value",
-    "descHold": "hold switch",
     "descKd": "derivative portion",
     "descKi": "integral portion",
     "descKp": "proportional portion",
@@ -12,6 +11,7 @@
     "descMin": "minimum output value",
     "descOff": "output offset value",
     "descRst": "reset trigger",
+    "descRun": "run switch",
     "descSet": "setpoint value",
     "descSup": "hysteresis value",
     "descY": "output value",

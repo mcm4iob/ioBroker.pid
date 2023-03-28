@@ -12,6 +12,7 @@
     "descMin": "valor mínimo de salida",
     "descOff": "valor de compensación de salida",
     "descRst": "disparador de reinicio",
+    "descRun": "interruptor de ejecución",
     "descSet": "valor de consigna",
     "descSup": "valor de histéresis",
     "descY": "valor de salida",

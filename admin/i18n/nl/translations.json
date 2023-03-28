@@ -12,6 +12,7 @@
     "descMin": "minimale uitgangswaarde",
     "descOff": "output offset waarde",
     "descRst": "herstart trekker",
+    "descRun": "schakelaar draaien",
     "descSet": "gewenste waarde",
     "descSup": "hysterese waarde",
     "descY": "uitgangswaarde",

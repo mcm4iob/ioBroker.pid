@@ -12,6 +12,7 @@
     "descMin": "valor mínimo de saída",
     "descOff": "valor de deslocamento de saída",
     "descRst": "gatilho de reinício",
+    "descRun": "ligar o interruptor",
     "descSet": "valor do ponto de ajuste",
     "descSup": "valor de histerese",
     "descY": "valor de saída",
