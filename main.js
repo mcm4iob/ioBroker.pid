@@ -21,31 +21,34 @@ const PidCtrl = require('./lib/pid.js');
 /* prettier-ignore */
 const STATES_CFG = {
     /* parameters */
-    k_p:      { type: 'number',  name: 'proportional term', desc: 'descKp',     role: 'value',         unit: '', acc: 'RO', init: null },
-    k_i:      { type: 'number',  name: 'integrative term',  desc: 'descKi',     role: 'value',         unit: '', acc: 'RO', init: null },
-    k_d:      { type: 'number',  name: 'derivative term',   desc: 'descKd',     role: 'value',         unit: '', acc: 'RO', init: null },
-    min:      { type: 'number',  name: 'minimum value',     desc: 'descMin',    role: 'value',         unit: '', acc: 'RO', init: null },
-    max:      { type: 'number',  name: 'maximum value',     desc: 'descMax',    role: 'value',         unit: '', acc: 'RO', init: null },
+    k_p:        { type: 'number',  name: 'proportional term', desc: 'descKp',     role: 'value',         unit: '', acc: 'RO', init: null },
+    k_i:        { type: 'number',  name: 'integrative term',  desc: 'descKi',     role: 'value',         unit: '', acc: 'RO', init: null },
+    k_d:        { type: 'number',  name: 'derivative term',   desc: 'descKd',     role: 'value',         unit: '', acc: 'RO', init: null },
+    min:        { type: 'number',  name: 'minimum value',     desc: 'descMin',    role: 'value',         unit: '', acc: 'RO', init: null },
+    max:        { type: 'number',  name: 'maximum value',     desc: 'descMax',    role: 'value',         unit: '', acc: 'RO', init: null },
+    cycle:      { type: 'number',  name: 'cycle time',        desc: 'descCycle',  role: 'value',         unit: 'ms', acc: 'RO', init: null },
 
     /* input states */
-    act:      { type: 'number',  name: 'actual value',      desc: 'descAct',    role: 'value',         unit: '', acc: 'RW', init: 0 },
-    set:      { type: 'number',  name: 'set point',         desc: 'descSet',    role: 'value',         unit: '', acc: 'RW', init: 0 },
-    sup:      { type: 'number',  name: 'suppress value',    desc: 'descSup',    role: 'value',         unit: '', acc: 'RW', init: 0 },
-    offs:     { type: 'number',  name: 'offset value',      desc: 'descOff',    role: 'value',         unit: '', acc: 'RW', init: 0 },
-    man_inp:  { type: 'number',  name: 'manual input',      desc: 'descManInp', role: 'value',         unit: '', acc: 'RW', init: 0 },
-    man:      { type: 'boolean', name: 'manual mode',       desc: 'descMan',    role: 'switch.enable', unit: '', acc: 'RW', init: false },
-    rst:      { type: 'boolean', name: 'reset controller',  desc: 'descRst',    role: 'button',        unit: '', acc: 'WO', init: false },
-    hold:     { type: 'boolean', name: 'hold controller',   desc: 'descHold',   role: 'switch.enable', unit: '', acc: 'RW', init: false },
+    act:        { type: 'number',  name: 'actual value',      desc: 'descAct',    role: 'value',         unit: '', acc: 'RW', init: 0 },
+    set:        { type: 'number',  name: 'set point',         desc: 'descSet',    role: 'value',         unit: '', acc: 'RW', init: 0 },
+    sup:        { type: 'number',  name: 'suppress value',    desc: 'descSup',    role: 'value',         unit: '', acc: 'RW', init: 0 },
+    offs:       { type: 'number',  name: 'offset value',      desc: 'descOff',    role: 'value',         unit: '', acc: 'RW', init: 0 },
+    man_inp:    { type: 'number',  name: 'manual input',      desc: 'descManInp', role: 'value',         unit: '', acc: 'RW', init: 0 },
+    man:        { type: 'boolean', name: 'manual mode',       desc: 'descMan',    role: 'switch.enable', unit: '', acc: 'RW', init: false },
+    rst:        { type: 'boolean', name: 'reset controller',  desc: 'descRst',    role: 'button',        unit: '', acc: 'WO', init: false },
 
     /* output states */
-    y:        { type: 'number',  name: 'output value',      desc: 'descY',      role: 'value',         unit: '', acc: 'RO', init: null },
-    diff:     { type: 'number',  name: 'error value',       desc: 'descDiff',   role: 'value',         unit: '', acc: 'RO', init: null },
-    lim:      { type: 'boolean', name: 'controler limited', desc: 'descLim',    role: 'switch.enable', unit: '', acc: 'RO', init: null },
+    y:          { type: 'number',  name: 'output value',      desc: 'descY',             role: 'value',         unit: '', acc: 'RO', init: null },
+    diff:       { type: 'number',  name: 'error value',       desc: 'descDiff',          role: 'value',         unit: '', acc: 'RO', init: null },
+    lim:        { type: 'boolean', name: 'controler limited', desc: 'descLim',           role: 'switch.enable', unit: '', acc: 'RO', init: null },
+    i_differr:  { type: 'number',  name: 'int diff error',    desc: 'descIDiffErr',      role: 'value',         unit: '', acc: 'RO', init: null },
+    i_sumerr:   { type: 'number',  name: 'int sum error',     desc: 'descISumErr',       role: 'value',         unit: '', acc: 'RO', init: null },
 
     /* utility */
-    last_upd:     { type: 'number', name: 'last update ts', desc: 'descLast',   role: 'value',         unit: '', acc: 'RO', init: null },
-    last_upd_str: { type: 'text',   name: 'last update',    desc: 'descLast',   role: 'value',         unit: '', acc: 'RO', init: null },
-    log:          { type: 'number', name: 'log interval',   desc: 'descLog',    role: 'value',         unit: '', acc: 'RW', init: 0 },
+    run:          { type: 'boolean', name: 'controller running', desc: 'descRun',        role: 'switch.enable', unit: '', acc: 'RO', init: null },
+    last_delta:   { type: 'number',  name: 'last delta time',    desc: 'descLastDelta',  role: 'value',         unit: 'ms', acc: 'RO', init: null },
+    last_upd:     { type: 'number',  name: 'last update ts',     desc: 'descLastUpd',    role: 'value',         unit: '', acc: 'RO', init: null },
+    last_upd_str: { type: 'string',    name: 'last update',        desc: 'descLastUpdStr', role: 'value',         unit: '', acc: 'RO', init: null },
 };
 
 /**
@@ -77,6 +80,7 @@ class Pid extends utils.Adapter {
             k_d:        null,
             min:        null,
             max:        null,
+            cycle:      null,
 
             /* input states */
             act:        this.chgAct.bind(this),
@@ -86,17 +90,19 @@ class Pid extends utils.Adapter {
             man_inp:    this.chkManInp.bind(this),
             man:        this.chkMan.bind(this),
             rst:        this.chgRst.bind(this),
-            hold:       this.chgHold.bind(this),
+            run:        this.chgRun.bind(this),
 
             /* output states */
             y:          null,
             diff:       null,
             lim:        null,
+            i_differr:  null,
+            i_sumerr:   null,
 
             /* utility */
+            last_delta:     null,
             last_upd:       null,
             last_upd_str:   null,
-            log:            this.chkLog.bind(this)
         };
 
         iobInit(this);
@@ -115,7 +121,7 @@ class Pid extends utils.Adapter {
         await this.setStateAsync('info.connection', { val: false, ack: true, q: 0x00 });
 
         // reset and cleanup states
-        // await this.resetStateObjects() *** TODO ***;
+        await this.resetStateObjects();
 
         // init state objects
         if (this.config.controllers) {
@@ -129,7 +135,7 @@ class Pid extends utils.Adapter {
                     common: {
                         name: `controller ${controller.ctrlId}`,
                         statusStates: {
-                            onlineId: `${this.name}.${this.instance}.${ctrlId}.hold`,
+                            onlineId: `${this.name}.${this.instance}.${ctrlId}.run`,
                             errorId: `${this.name}.${this.instance}.${ctrlId}.lim`,
                         },
                     },
@@ -211,16 +217,21 @@ class Pid extends utils.Adapter {
                 await this.setStateAsync(`C-${controller.ctrlId}.k_d`, { val: controller.ctrlD, ack: true, q: 0x00 });
                 await this.setStateAsync(`C-${controller.ctrlId}.min`, { val: min, ack: true, q: 0x00 });
                 await this.setStateAsync(`C-${controller.ctrlId}.max`, { val: max, ack: true, q: 0x00 });
+                await this.setStateAsync(`C-${controller.ctrlId}.cycle`, { val: ctrlCycle, ack: true, q: 0x00 });
 
                 this.controllers[controller.ctrlId].pidCtrl.reset();
                 await this.setStateAsync(`C-${controller.ctrlId}.rst`, { val: false, ack: true, q: 0x00 });
 
-                if (controller.ctrlAutoStart)
+                if (controller.ctrlAutoStart) {
                     this.controllers[controller.ctrlId].timer = setInterval(
                         this.doProcess.bind(this),
                         ctrlCycle,
                         controller.ctrlId,
                     );
+                    await this.setStateAsync(`C-${controller.ctrlId}.run`, { val: true, ack: true, q: 0x00 });
+                } else {
+                    await this.setStateAsync(`C-${controller.ctrlId}.run`, { val: false, ack: true, q: 0x00 });
+                }
                 instanceCnt++;
             }
         }
@@ -281,6 +292,18 @@ class Pid extends utils.Adapter {
 
         if (typeof this.STATECHG_CFG[key] !== 'function') return;
         this.STATECHG_CFG[key](pId, ctrlId, pState.val);
+    }
+
+    /**
+     * resetStateObjects - reset existing state objects
+     *
+     * @return
+     *
+     */
+    async resetStateObjects() {
+        this.log.debug(`resetStateobjects`);
+
+        await iobStates.setStatesAsync('*', { ack: true, q: 0x02 });
     }
 
     /**
@@ -368,16 +391,25 @@ class Pid extends utils.Adapter {
 
         const ret = controller.pidCtrl.update(pAct);
         this.log.debug(`[${controller.ctrlId}] update(${pAct}) - ${JSON.stringify(ret)}`);
+        if (this.config.optLogChg) this.log.info(`[${controller.ctrlId}] update(${pAct}) - ${JSON.stringify(ret)}`);
 
-        const now = Date.now();
-        const nowStr = new Date().toLocaleString();
-        await this.setStateAsync(`${controller.ctrlId}.last_upd`, { val: now, ack: true, q: 0x00 });
+        const nowStr = new Date(ret.ts).toLocaleString();
+        await this.setStateAsync(`${controller.ctrlId}.last_delta`, { val: ret.dt, ack: true, q: 0x00 });
+        await this.setStateAsync(`${controller.ctrlId}.last_upd`, { val: ret.ts, ack: true, q: 0x00 });
         await this.setStateAsync(`${controller.ctrlId}.last_upd_str`, { val: nowStr, ack: true, q: 0x00 });
         await this.setStateAsync(`${controller.ctrlId}.y`, { val: ret.y, ack: true, q: 0x00 });
         await this.setStateAsync(`${controller.ctrlId}.diff`, { val: ret.diff, ack: true, q: 0x00 });
         await this.setStateAsync(`${controller.ctrlId}.lim`, { val: ret.lim, ack: true, q: 0x00 });
+        await this.setStateAsync(`${controller.ctrlId}.i_differr`, { val: ret.differr, ack: true, q: 0x00 });
+        await this.setStateAsync(`${controller.ctrlId}.i_sumerr`, { val: ret.sumerr, ack: true, q: 0x00 });
     }
 
+    /**
+     * chgXxx - callback called if state Xxx changes
+     *
+     * @return  nothing
+     *
+     */
     async chgAct(pId, pCtrlId, pVal) {
         this.log.debug(`chgAct called (${pCtrlId}, ${pVal})`);
 
@@ -429,16 +461,16 @@ class Pid extends utils.Adapter {
         await this.doUpdate(pCtrlId, pVal);
     }
 
-    async chgHold(pId, pCtrlId, pVal) {
-        this.log.debug(`chgHold called (${pCtrlId}, ${pVal})`);
-        //await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
-        // *** TODO ***
-    }
-
-    async chkLog(pId, pCtrlId, pVal) {
-        this.log.debug(`chgLog called (${pCtrlId}, ${pVal})`);
-        // await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
-        // *** TODO ***
+    async chgRun(pId, pCtrlId, pVal) {
+        this.log.debug(`chgRun called (${pCtrlId}, ${pVal})`);
+        await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
+        const controller = this.controllers[pCtrlId];
+        if (pVal) {
+            this.clearInterval(controller.timer);
+            controller.timer = setInterval(this.doProcess.bind(this), controller.ctrlCycle, controller.ctrlId);
+        } else {
+            this.clearInterval(controller.timer);
+        }
     }
 }
 
