@@ -115,8 +115,8 @@
                             "tooltip": "ttCtrlCycle",
                             "filter": false,
                             "sort": false,
-                            "min": 100,
-                            "max": 3600000,
+                            "min": 0,
+                            "max": 60000,
                             "step": 1,
                             "default": 1000
                         }

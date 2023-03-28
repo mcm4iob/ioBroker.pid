@@ -29,13 +29,14 @@ const STATES_CFG = {
     cycle:      { type: 'number',  name: 'cycle time',        desc: 'descCycle',  role: 'value',         unit: 'ms', acc: 'RO', init: null },
 
     /* input states */
-    act:        { type: 'number',  name: 'actual value',      desc: 'descAct',    role: 'value',         unit: '', acc: 'RW', init: 0 },
-    set:        { type: 'number',  name: 'set point',         desc: 'descSet',    role: 'value',         unit: '', acc: 'RW', init: 0 },
-    sup:        { type: 'number',  name: 'suppress value',    desc: 'descSup',    role: 'value',         unit: '', acc: 'RW', init: 0 },
-    offs:       { type: 'number',  name: 'offset value',      desc: 'descOff',    role: 'value',         unit: '', acc: 'RW', init: 0 },
-    man_inp:    { type: 'number',  name: 'manual input',      desc: 'descManInp', role: 'value',         unit: '', acc: 'RW', init: 0 },
-    man:        { type: 'boolean', name: 'manual mode',       desc: 'descMan',    role: 'switch.enable', unit: '', acc: 'RW', init: false },
-    rst:        { type: 'boolean', name: 'reset controller',  desc: 'descRst',    role: 'button',        unit: '', acc: 'WO', init: false },
+    act:        { type: 'number',  name: 'actual value',       desc: 'descAct',    role: 'value',         unit: '', acc: 'RW', init: 0 },
+    set:        { type: 'number',  name: 'set point',          desc: 'descSet',    role: 'value',         unit: '', acc: 'RW', init: 0 },
+    sup:        { type: 'number',  name: 'suppress value',     desc: 'descSup',    role: 'value',         unit: '', acc: 'RW', init: 0 },
+    offs:       { type: 'number',  name: 'offset value',       desc: 'descOff',    role: 'value',         unit: '', acc: 'RW', init: 0 },
+    man_inp:    { type: 'number',  name: 'manual input',       desc: 'descManInp', role: 'value',         unit: '', acc: 'RW', init: 0 },
+    man:        { type: 'boolean', name: 'manual mode',        desc: 'descMan',    role: 'switch.enable', unit: '', acc: 'RW', init: false },
+    rst:        { type: 'boolean', name: 'reset controller',   desc: 'descRst',    role: 'button',        unit: '', acc: 'WO', init: false },
+    run:        { type: 'boolean', name: 'controller running', desc: 'descRun',    role: 'switch.enable', unit: '', acc: 'RW', init: null },
 
     /* output states */
     y:          { type: 'number',  name: 'output value',      desc: 'descY',             role: 'value',         unit: '', acc: 'RO', init: null },
@@ -45,7 +46,6 @@ const STATES_CFG = {
     i_sumerr:   { type: 'number',  name: 'int sum error',     desc: 'descISumErr',       role: 'value',         unit: '', acc: 'RO', init: null },
 
     /* utility */
-    run:          { type: 'boolean', name: 'controller running', desc: 'descRun',        role: 'switch.enable', unit: '', acc: 'RO', init: null },
     last_delta:   { type: 'number',  name: 'last delta time',    desc: 'descLastDelta',  role: 'value',         unit: 'ms', acc: 'RO', init: null },
     last_upd:     { type: 'number',  name: 'last update ts',     desc: 'descLastUpd',    role: 'value',         unit: '', acc: 'RO', init: null },
     last_upd_str: { type: 'string',    name: 'last update',        desc: 'descLastUpdStr', role: 'value',         unit: '', acc: 'RO', init: null },
@@ -166,7 +166,7 @@ class Pid extends utils.Adapter {
                 this.log.info(`[start] start instance with id ${controller.ctrlId}`);
 
                 let ctrlCycle = controller.ctrlCycle;
-                if (ctrlCycle < 500) {
+                if (ctrlCycle !== 0 && ctrlCycle < 500) {
                     ctrlCycle = 500;
                     this.log.warn(`[C-${controller.ctrlId}] - invalid cycle time, set to 500ms`);
                 }
@@ -210,6 +210,7 @@ class Pid extends utils.Adapter {
                         max: max,
                     }),
                     cycle: ctrlCycle,
+                    running: false,
                     timer: null,
                 };
                 await this.setStateAsync(`C-${controller.ctrlId}.k_p`, { val: controller.ctrlP, ack: true, q: 0x00 });
@@ -222,16 +223,15 @@ class Pid extends utils.Adapter {
                 this.controllers[controller.ctrlId].pidCtrl.reset();
                 await this.setStateAsync(`C-${controller.ctrlId}.rst`, { val: false, ack: true, q: 0x00 });
 
-                if (controller.ctrlAutoStart) {
+                controller.running = controller.ctrlAutoStart;
+                if (controller.running && ctrlCycle) {
                     this.controllers[controller.ctrlId].timer = setInterval(
-                        this.doProcess.bind(this),
+                        this.doUpdate.bind(this),
                         ctrlCycle,
                         controller.ctrlId,
                     );
-                    await this.setStateAsync(`C-${controller.ctrlId}.run`, { val: true, ack: true, q: 0x00 });
-                } else {
-                    await this.setStateAsync(`C-${controller.ctrlId}.run`, { val: false, ack: true, q: 0x00 });
                 }
+                await this.setStateAsync(`C-${controller.ctrlId}.run`, { val: controller.running, ack: true, q: 0x00 });
                 instanceCnt++;
             }
         }
@@ -368,30 +368,18 @@ class Pid extends utils.Adapter {
     }
 
     /**
-     * doProcess - process station data
-     *
-     * @return  nothing
-     *
-     */
-    async doProcess(pCtrlId) {
-        this.log.debug(`doProcess triggered (${pCtrlId})`);
-        await this.doUpdate(pCtrlId, null);
-    }
-
-    /**
      * doUpdate - update controller and states
      *
      * @return  nothing
      *
      */
-    async doUpdate(pCtrlId, pAct) {
-        this.log.debug(`doUpdate triggered (${pCtrlId}, ${pAct})`);
+    async doUpdate(pCtrlId) {
+        this.log.debug(`doUpdate triggered (${pCtrlId})`);
 
         const controller = this.controllers[pCtrlId];
-
-        const ret = controller.pidCtrl.update(pAct);
-        this.log.debug(`[${controller.ctrlId}] update(${pAct}) - ${JSON.stringify(ret)}`);
-        if (this.config.optLogChg) this.log.info(`[${controller.ctrlId}] update(${pAct}) - ${JSON.stringify(ret)}`);
+        const ret = controller.pidCtrl.update();
+        this.log.debug(`[${controller.ctrlId}] update() - ${JSON.stringify(ret)}`);
+        if (this.config.optLogChg) this.log.info(`[${controller.ctrlId}] update() - ${JSON.stringify(ret)}`);
 
         const nowStr = new Date(ret.ts).toLocaleString();
         await this.setStateAsync(`${controller.ctrlId}.last_delta`, { val: ret.dt, ack: true, q: 0x00 });
@@ -413,7 +401,9 @@ class Pid extends utils.Adapter {
     async chgAct(pId, pCtrlId, pVal) {
         this.log.debug(`chgAct called (${pCtrlId}, ${pVal})`);
 
-        await this.doUpdate(pCtrlId, pVal);
+        const controller = this.controllers[pCtrlId];
+        const newval = await controller.pidCtrl.setAct(pVal);
+        if (controller.running && !controller.ctrlCycle && newval) await this.doUpdate(pCtrlId);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
 
@@ -422,7 +412,7 @@ class Pid extends utils.Adapter {
 
         const controller = this.controllers[pCtrlId];
         await controller.pidCtrl.setSet(pVal);
-        await this.doUpdate(pCtrlId, null);
+        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
 
@@ -438,7 +428,7 @@ class Pid extends utils.Adapter {
         this.log.debug(`chgOff called (${pCtrlId}, ${pVal})`);
         const controller = this.controllers[pCtrlId];
         await controller.pidCtrl.setOff(pVal);
-        await this.doUpdate(pCtrlId, pVal);
+        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
 
@@ -465,9 +455,10 @@ class Pid extends utils.Adapter {
         this.log.debug(`chgRun called (${pCtrlId}, ${pVal})`);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         const controller = this.controllers[pCtrlId];
-        if (pVal) {
+        controller.running = pVal;
+        if (controller.running) {
             this.clearInterval(controller.timer);
-            controller.timer = setInterval(this.doProcess.bind(this), controller.ctrlCycle, controller.ctrlId);
+            controller.timer = setInterval(this.doUpdate.bind(this), controller.ctrlCycle, controller.ctrlId);
         } else {
             this.clearInterval(controller.timer);
         }
