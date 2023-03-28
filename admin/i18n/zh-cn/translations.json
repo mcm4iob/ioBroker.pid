@@ -16,6 +16,7 @@
     "descSet": "设定值",
     "descSup": "迟滞值",
     "descY": "产值",
+    "hlpOptLogCalc": "日志计算数据",
     "lblConfig": "配置",
     "lblCtrlAct": "启用",
     "lblCtrlAutoStart": "自动启动",
@@ -28,6 +29,8 @@
     "lblCtrlMin": "最小输出",
     "lblCtrlMinMax": "使用最小/最大限制",
     "lblCtrlP": "P值",
+    "lblOptLogCalc": "对数计算",
+    "lblOptions": "选项",
     "ttCtrlAct": "启用控制器",
     "ttCtrlAutoStart": "在实例开始时启动控制器",
     "ttCtrlCycle": "以毫秒为单位的计算周期时间或手动触发为 0",
@@ -37,5 +40,6 @@
     "ttCtrlMax": "最大输出值",
     "ttCtrlMin": "最小输出值",
     "ttCtrlMinMax": "激活以显示和使用最小和最大限制",
-    "ttCtrlP": "比例 (P) 因子"
+    "ttCtrlP": "比例 (P) 因子",
+    "ttOptLogCalc": "记录用于计算的外部和内部数据"
 }

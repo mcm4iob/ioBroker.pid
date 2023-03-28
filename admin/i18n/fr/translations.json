@@ -16,6 +16,7 @@
     "descSet": "valeur de consigne",
     "descSup": "valeur d'hystérésis",
     "descY": "valeur de sortie",
+    "hlpOptLogCalc": "données de calcul de journal",
     "lblConfig": "Configuration",
     "lblCtrlAct": "Activé",
     "lblCtrlAutoStart": "Démarrage automatique",
@@ -28,6 +29,8 @@
     "lblCtrlMin": "Sortie min",
     "lblCtrlMinMax": "utiliser les limites min/max",
     "lblCtrlP": "Valeur P",
+    "lblOptLogCalc": "calcul du journal",
+    "lblOptions": "Choix",
     "ttCtrlAct": "activer le contrôleur",
     "ttCtrlAutoStart": "démarrer le contrôleur au début de l'instance",
     "ttCtrlCycle": "temps de cycle de calcul en millisecondes ou 0 pour déclenchement manuel",
@@ -37,5 +40,6 @@
     "ttCtrlMax": "valeur de sortie maximale",
     "ttCtrlMin": "valeur de sortie minimale",
     "ttCtrlMinMax": "activer pour afficher et utiliser les limites minimales et maximales",
-    "ttCtrlP": "facteur proportionnel (P)"
+    "ttCtrlP": "facteur proportionnel (P)",
+    "ttOptLogCalc": "consigner les données externes et internes utilisées pour le calcul"
 }

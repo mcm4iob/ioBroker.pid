@@ -123,6 +123,19 @@
                     ]
                 }
             }
+        },
+        "options": {
+            "type": "panel",
+            "label": "lblOptions",
+            "items": {
+                "optLogCalc": {
+                    "type": "checkbox",
+                    "label": "lblOptLogCalc",
+                    "default": false,
+                    "tooltip": "ttOptLogCalc",
+                    "help": "hlpOptLogCalc"
+                }
+            }
         }
     }
 }

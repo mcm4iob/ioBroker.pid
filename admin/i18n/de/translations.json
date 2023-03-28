@@ -16,6 +16,7 @@
     "descSet": "Sollwert",
     "descSup": "Hysteresewert",
     "descY": "Ausgabewert",
+    "hlpOptLogCalc": "Berechnungsdaten loggen",
     "lblConfig": "Einstellungen",
     "lblCtrlAct": "Aktiviert",
     "lblCtrlAutoStart": "Automatischer Start",
@@ -28,6 +29,8 @@
     "lblCtrlMin": "Minimalwert",
     "lblCtrlMinMax": "Min/Max-Grenzwerte aktivieren",
     "lblCtrlP": "P-Anteil",
+    "lblOptLogCalc": "Log-Berechnung",
+    "lblOptions": "Optionen",
     "ttCtrlAct": "Regler aktivieren",
     "ttCtrlAutoStart": "Regler beim Start der Instanz automatisch starten",
     "ttCtrlCycle": "Rechenzykluszeit in Millisekunden oder 0 bei manueller Triggerung",
@@ -37,5 +40,6 @@
     "ttCtrlMax": "maximaler Ausgangswert",
     "ttCtrlMin": "minimaler Ausgangswert",
     "ttCtrlMinMax": "Zur Verwendung von Minimal- und Maximalwerten aktivieren.",
-    "ttCtrlP": "Proportionalfaktor (P)"
+    "ttCtrlP": "Proportionalfaktor (P)",
+    "ttOptLogCalc": "Protokollieren externer und interner Daten, die für die Berechnung verwendet werden"
 }

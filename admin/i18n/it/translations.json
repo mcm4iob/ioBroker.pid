@@ -16,6 +16,7 @@
     "descSet": "valore di riferimento",
     "descSup": "valore di isteresi",
     "descY": "valore di uscita",
+    "hlpOptLogCalc": "registrare i dati di calcolo",
     "lblConfig": "Configurazione",
     "lblCtrlAct": "Abilitato",
     "lblCtrlAutoStart": "Avvio automatico",
@@ -28,6 +29,8 @@
     "lblCtrlMin": "Min fuori",
     "lblCtrlMinMax": "utilizzare i limiti min/max",
     "lblCtrlP": "Valore P",
+    "lblOptLogCalc": "calcolo logaritmico",
+    "lblOptions": "Opzioni",
     "ttCtrlAct": "abilitare il controllore",
     "ttCtrlAutoStart": "avviare il controller all'avvio dell'istanza",
     "ttCtrlCycle": "tempo di ciclo di calcolo in millisecondi o 0 per il trigger manuale",
@@ -37,5 +40,6 @@
     "ttCtrlMax": "valore massimo di uscita",
     "ttCtrlMin": "valore di uscita minimo",
     "ttCtrlMinMax": "attivare per visualizzare e utilizzare i limiti minimo e massimo",
-    "ttCtrlP": "fattore proporzionale (P)"
+    "ttCtrlP": "fattore proporzionale (P)",
+    "ttOptLogCalc": "registrare i dati esterni e interni utilizzati per il calcolo"
 }

@@ -16,6 +16,7 @@
     "descSet": "valor do ponto de ajuste",
     "descSup": "valor de histerese",
     "descY": "valor de saída",
+    "hlpOptLogCalc": "dados de cálculo de registro",
     "lblConfig": "Configuração",
     "lblCtrlAct": "Habilitado",
     "lblCtrlAutoStart": "Começo automático",
@@ -28,6 +29,8 @@
     "lblCtrlMin": "Min Out",
     "lblCtrlMinMax": "usar limites mínimo/máximo",
     "lblCtrlP": "Valor P",
+    "lblOptLogCalc": "cálculo de log",
+    "lblOptions": "Opções",
     "ttCtrlAct": "ativar controlador",
     "ttCtrlAutoStart": "iniciar o controlador no início da instância",
     "ttCtrlCycle": "tempo de ciclo de computação em milissegundos ou 0 para acionamento manual",
@@ -37,5 +40,6 @@
     "ttCtrlMax": "valor máximo de saída",
     "ttCtrlMin": "valor mínimo de saída",
     "ttCtrlMinMax": "ative para mostrar e usar os limites mínimo e máximo",
-    "ttCtrlP": "fator proporcional (P)"
+    "ttCtrlP": "fator proporcional (P)",
+    "ttOptLogCalc": "registrar dados externos e internos usados ​​para cálculo"
 }

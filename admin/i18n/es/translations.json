@@ -16,6 +16,7 @@
     "descSet": "valor de consigna",
     "descSup": "valor de histéresis",
     "descY": "valor de salida",
+    "hlpOptLogCalc": "registro de datos de cálculo",
     "lblConfig": "Configuración",
     "lblCtrlAct": "Activado",
     "lblCtrlAutoStart": "Autoencendido",
@@ -28,6 +29,8 @@
     "lblCtrlMin": "Salida mínima",
     "lblCtrlMinMax": "usar límites mínimos/máximos",
     "lblCtrlP": "Valor P",
+    "lblOptLogCalc": "cálculo de registro",
+    "lblOptions": "Opciones",
     "ttCtrlAct": "habilitar controlador",
     "ttCtrlAutoStart": "iniciar el controlador al inicio de la instancia",
     "ttCtrlCycle": "tiempo de ciclo de cálculo en milisegundos o 0 para activación manual",
@@ -37,5 +40,6 @@
     "ttCtrlMax": "valor máximo de salida",
     "ttCtrlMin": "valor mínimo de salida",
     "ttCtrlMinMax": "activar para mostrar y usar límites mínimos y máximos",
-    "ttCtrlP": "factor proporcional (P)"
+    "ttCtrlP": "factor proporcional (P)",
+    "ttOptLogCalc": "registrar datos externos e internos utilizados para el cálculo"
 }

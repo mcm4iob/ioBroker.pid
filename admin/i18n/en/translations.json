@@ -15,6 +15,7 @@
     "descSet": "setpoint value",
     "descSup": "hysteresis value",
     "descY": "output value",
+    "hlpOptLogCalc": "log calculation data",
     "lblConfig": "Configuration",
     "lblCtrlAct": "Enabled",
     "lblCtrlAutoStart": "Autostart",
@@ -27,6 +28,8 @@
     "lblCtrlMin": "Min Out",
     "lblCtrlMinMax": "Use min/max limits",
     "lblCtrlP": "P Gain",
+    "lblOptLogCalc": "log calculation",
+    "lblOptions": "Options",
     "ttCtrlAct": "enable controller",
     "ttCtrlAutoStart": "start controller at start of instance",
     "ttCtrlCycle": "computation cycle time in milliseconds or 0 for manual triggering",
@@ -36,5 +39,6 @@
     "ttCtrlMax": "maximum output value",
     "ttCtrlMin": "minimum output value",
     "ttCtrlMinMax": "Activate to show and use minimum and maximum limits.",
-    "ttCtrlP": "proportional (P) gain"
+    "ttCtrlP": "proportional (P) gain",
+    "ttOptLogCalc": "log external and internal data used for calculation"
 }

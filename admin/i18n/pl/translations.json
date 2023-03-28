@@ -16,6 +16,7 @@
     "descSet": "wartość zadana",
     "descSup": "wartość histerezy",
     "descY": "wartość wyjściowa",
+    "hlpOptLogCalc": "loguj dane obliczeniowe",
     "lblConfig": "Konfiguracja",
     "lblCtrlAct": "Włączony",
     "lblCtrlAutoStart": "Automatyczny start",
@@ -28,6 +29,8 @@
     "lblCtrlMin": "Min Out",
     "lblCtrlMinMax": "użyj limitów min/max",
     "lblCtrlP": "Wartość P",
+    "lblOptLogCalc": "obliczenie dziennika",
+    "lblOptions": "Opcje",
     "ttCtrlAct": "włączyć kontroler",
     "ttCtrlAutoStart": "uruchom kontroler na początku instancji",
     "ttCtrlCycle": "czas cyklu obliczeniowego w milisekundach lub 0 dla wyzwalania ręcznego",
@@ -37,5 +40,6 @@
     "ttCtrlMax": "maksymalna wartość wyjściowa",
     "ttCtrlMin": "minimalna wartość wyjściowa",
     "ttCtrlMinMax": "aktywuj, aby wyświetlać i używać minimalnych i maksymalnych limitów",
-    "ttCtrlP": "współczynnik proporcjonalności (P)"
+    "ttCtrlP": "współczynnik proporcjonalności (P)",
+    "ttOptLogCalc": "loguj dane zewnętrzne i wewnętrzne wykorzystywane do obliczeń"
 }

@@ -16,6 +16,7 @@
     "descSet": "gewenste waarde",
     "descSup": "hysterese waarde",
     "descY": "uitgangswaarde",
+    "hlpOptLogCalc": "logboekberekeningsgegevens",
     "lblConfig": "Configuratie",
     "lblCtrlAct": "Ingeschakeld",
     "lblCtrlAutoStart": "Automatische start",
@@ -28,6 +29,8 @@
     "lblCtrlMin": "Min uit",
     "lblCtrlMinMax": "gebruik min/max limieten",
     "lblCtrlP": "P-waarde",
+    "lblOptLogCalc": "logboekberekening",
+    "lblOptions": "Opties",
     "ttCtrlAct": "regelaar inschakelen",
     "ttCtrlAutoStart": "start de controller bij het begin van de instantie",
     "ttCtrlCycle": "berekeningscyclustijd in milliseconden of 0 voor handmatige activering",
@@ -37,5 +40,6 @@
     "ttCtrlMax": "maximale uitgangswaarde",
     "ttCtrlMin": "minimale uitgangswaarde",
     "ttCtrlMinMax": "activeren om minimum- en maximumlimieten weer te geven en te gebruiken",
-    "ttCtrlP": "proportionele (P) factor"
+    "ttCtrlP": "proportionele (P) factor",
+    "ttOptLogCalc": "log externe en interne gegevens die worden gebruikt voor de berekening"
 }
