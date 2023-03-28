@@ -1,7 +1,6 @@
 {
     "descAct": "valore attuale",
     "descDiff": "valore effettivo dell'errore",
-    "descHold": "tenere premuto l'interruttore",
     "descKd": "parte proporzionale derivata",
     "descKi": "porzione integrale",
     "descKp": "quota proporzionale",
