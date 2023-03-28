@@ -30,11 +30,11 @@
     "ttCtrlAct": "abilitare il controllore",
     "ttCtrlAutoStart": "avviare il controller all'avvio dell'istanza",
     "ttCtrlCycle": "tempo di ciclo di calcolo in millisecondi o 0 per il trigger manuale",
-    "ttCtrlD": "fattore differenziale (D).",
+    "ttCtrlD": "fattore differenziale (D)",
     "ttCtrlI": "fattore integrale (I).",
     "ttCtrlId": "identificazione univoca del titolare del trattamento",
     "ttCtrlMax": "valore massimo di uscita",
     "ttCtrlMin": "valore di uscita minimo",
     "ttCtrlMinMax": "attivare per visualizzare e utilizzare i limiti minimo e massimo",
-    "ttCtrlP": "fattore proporzionale (P)."
+    "ttCtrlP": "fattore proporzionale (P)"
 }
