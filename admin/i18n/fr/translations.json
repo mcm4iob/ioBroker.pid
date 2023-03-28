@@ -1,7 +1,6 @@
 {
     "descAct": "valeur actuelle",
     "descDiff": "valeur d'erreur réelle",
-    "descHold": "maintenir l'interrupteur",
     "descKd": "partie propo-dérivative",
     "descKi": "partie intégrante",
     "descKp": "part proportionnelle",

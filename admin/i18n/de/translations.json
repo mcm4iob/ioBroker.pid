@@ -1,7 +1,6 @@
 {
     "descAct": "tatsächlicher Wert",
     "descDiff": "tatsächlicher Fehlerwert",
-    "descHold": "Berechnung anhalten",
     "descKd": "Differenziereranteil",
     "descKi": "integraler Anteil",
     "descKp": "proportionaler Anteil",

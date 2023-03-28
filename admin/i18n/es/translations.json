@@ -1,7 +1,6 @@
 {
     "descAct": "valor actual",
     "descDiff": "valor de error real",
-    "descHold": "interruptor de espera",
     "descKd": "porción proporcional derivativa",
     "descKi": "porción integral",
     "descKp": "porción proporcional",
