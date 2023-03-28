@@ -24,7 +24,7 @@
     "lblCtrlId": "ID du contrôleur",
     "lblCtrlInstances": "Instances de contrôleur PID",
     "lblCtrlMax": "Sortie maximale",
-    "lblCtrlMin": "Sortie min.",
+    "lblCtrlMin": "Sortie min",
     "lblCtrlMinMax": "utiliser les limites min/max",
     "lblCtrlP": "Valeur P",
     "ttCtrlAct": "activer le contrôleur",
