@@ -36,8 +36,6 @@ This adapter provides a configurable PID Controller.
 
 This adapter provides the functionality of a PID controller.
 
-PID controller
-
 In practical terms, a PID controlelr automatically calculates a correction value for a system based on an actual value and a setpoint. The behavior is controller by paramaters. An everyday example is the cruise control on a car, where ascending a hill would lower speed if constant engine power were applied. The controller's PID algorithm restores the measured speed to the desired speed with minimal delay and overshoot by increasing the power output of the engine in a controlled manner. [(c) Wikipedia]
 
 Within one adapter instance there could be more than one controller configured. The adpter supports configuring the paramaters (P, I, D components) and the cycle time used for calculation. In addition caclulation can be suspended and resumed and the controlelr can be reset at all. As convinient server a manual mode can be switches on to directly set the output. Output can be limited to a minimum/maximum value and contain a fixes offset.
