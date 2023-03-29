@@ -1,9 +1,9 @@
 {
     "common": {
         "name": "pid",
-        "version": "0.0.1",
+        "version": "0.0.0",
         "news": {
-            "0.0.1": {
+            "0.0.0": {
                 "en": "initial release",
                 "de": "Erstveröffentlichung",
                 "ru": "Начальная версия",
@@ -44,14 +44,8 @@
             "zh-cn": "可配置的 PID 控制器",
             "uk": "Настроюваний ПІД-регулятор"
         },
-        "authors": [
-            "mcm1957 <mcm57@gmx.at>"
-        ],
-        "keywords": [
-            "pid",
-            "controller",
-            "pid-controller"
-        ],
+        "authors": ["mcm1957 <mcm57@gmx.at>"],
+        "keywords": ["pid", "controller", "pid-controller"],
         "license": "MIT",
         "platform": "Javascript/Node.js",
         "main": "main.js",
