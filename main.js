@@ -86,9 +86,9 @@ class Pid extends utils.Adapter {
             act:        this.chgAct.bind(this),
             set:        this.chgSet.bind(this),
             sup:        this.chgSup.bind(this),
-            offs:       this.chkOff.bind(this),
-            man_inp:    this.chkManInp.bind(this),
-            man:        this.chkMan.bind(this),
+            offs:       this.chgOff.bind(this),
+            man_inp:    this.chgManInp.bind(this),
+            man:        this.chgMan.bind(this),
             rst:        this.chgRst.bind(this),
             run:        this.chgRun.bind(this),
 
@@ -212,6 +212,7 @@ class Pid extends utils.Adapter {
                     cycle: ctrlCycle,
                     running: false,
                     timer: null,
+                    manual: controller.man,
                 };
                 await this.setStateAsync(`C-${controller.ctrlId}.k_p`, { val: controller.ctrlP, ack: true, q: 0x00 });
                 await this.setStateAsync(`C-${controller.ctrlId}.k_i`, { val: controller.ctrlI, ack: true, q: 0x00 });
@@ -222,6 +223,14 @@ class Pid extends utils.Adapter {
 
                 this.controllers[controller.ctrlId].pidCtrl.reset();
                 await this.setStateAsync(`C-${controller.ctrlId}.rst`, { val: false, ack: true, q: 0x00 });
+
+                const manual = await this.getStateAsync(`C-${controller.ctrlId}.man`);
+                this.controllers[controller.ctrlId].manual = manual.val;
+                if (manual && manual.val) {
+                    const manInp = await this.getStateAsync(`C-${controller.ctrlId}.man_inp`);
+                    await this.setStateAsync(`C-${controller.ctrlId}.y`, { val: manInp?.val, ack: true, q: 0x00 });
+                    this.log.debug(`[C-${controller.ctrlId}] manual value ${manInp?.val} used to set output`);
+                }
 
                 controller.running = controller.ctrlAutoStart;
                 if (controller.running && ctrlCycle) {
@@ -381,15 +390,17 @@ class Pid extends utils.Adapter {
         this.log.debug(`[${controller.ctrlId}] update() - ${JSON.stringify(ret)}`);
         if (this.config.optLogChg) this.log.info(`[${controller.ctrlId}] update() - ${JSON.stringify(ret)}`);
 
-        const nowStr = new Date(ret.ts).toLocaleString();
-        await this.setStateAsync(`${controller.ctrlId}.last_delta`, { val: ret.dt, ack: true, q: 0x00 });
-        await this.setStateAsync(`${controller.ctrlId}.last_upd`, { val: ret.ts, ack: true, q: 0x00 });
-        await this.setStateAsync(`${controller.ctrlId}.last_upd_str`, { val: nowStr, ack: true, q: 0x00 });
-        await this.setStateAsync(`${controller.ctrlId}.y`, { val: ret.y, ack: true, q: 0x00 });
-        await this.setStateAsync(`${controller.ctrlId}.diff`, { val: ret.diff, ack: true, q: 0x00 });
-        await this.setStateAsync(`${controller.ctrlId}.lim`, { val: ret.lim, ack: true, q: 0x00 });
-        await this.setStateAsync(`${controller.ctrlId}.i_differr`, { val: ret.differr, ack: true, q: 0x00 });
-        await this.setStateAsync(`${controller.ctrlId}.i_sumerr`, { val: ret.sumerr, ack: true, q: 0x00 });
+        if (!controller.manual) {
+            const nowStr = new Date(ret.ts).toLocaleString();
+            await this.setStateAsync(`${controller.ctrlId}.last_delta`, { val: ret.dt, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.last_upd`, { val: ret.ts, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.last_upd_str`, { val: nowStr, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.y`, { val: ret.y, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.diff`, { val: ret.diff, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.lim`, { val: ret.lim, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.i_differr`, { val: ret.differr, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.i_sumerr`, { val: ret.sumerr, ack: true, q: 0x00 });
+        }
     }
 
     /**
@@ -424,7 +435,7 @@ class Pid extends utils.Adapter {
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
 
-    async chkOff(pId, pCtrlId, pVal) {
+    async chgOff(pId, pCtrlId, pVal) {
         this.log.debug(`chgOff called (${pCtrlId}, ${pVal})`);
         const controller = this.controllers[pCtrlId];
         await controller.pidCtrl.setOff(pVal);
@@ -432,14 +443,46 @@ class Pid extends utils.Adapter {
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
 
-    async chkManInp(pId, pCtrlId, pVal) {
+    async chgManInp(pId, pCtrlId, pVal) {
         this.log.debug(`chgManInp called (${pCtrlId}, ${pVal})`);
-        // *** TODO ***
+
+        const controller = this.controllers[pCtrlId];
+        if (controller.manual) {
+            const ts = Date.now();
+            const nowStr = new Date(ts).toLocaleString();
+            await this.setStateAsync(`${controller.ctrlId}.last_delta`, { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.last_upd`, { val: ts, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.last_upd_str`, { val: nowStr, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.y`, { val: pVal, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.diff`, { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.lim`, { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.i_differr`, { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.i_sumerr`, { val: null, ack: true, q: 0x00 });
+        }
+        await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
 
-    async chkMan(pId, pCtrlId, pVal) {
+    async chgMan(pId, pCtrlId, pVal) {
         this.log.debug(`chgMan called (${pCtrlId}, ${pVal})`);
-        // *** TODO ***
+
+        const controller = this.controllers[pCtrlId];
+        controller.manual = pVal;
+        if (controller.manual) {
+            const ts = Date.now();
+            const nowStr = new Date(ts).toLocaleString();
+            const manInp = await this.getStateAsync(`${controller.ctrlId}.man_inp`);
+            await this.setStateAsync(`${controller.ctrlId}.last_delta`, { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.last_upd`, { val: ts, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.last_upd_str`, { val: nowStr, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.y`, { val: manInp?.val, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.diff`, { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.lim`, { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.i_differr`, { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(`${controller.ctrlId}.i_sumerr`, { val: null, ack: true, q: 0x00 });
+        } else {
+            await this.doUpdate(pCtrlId);
+        }
+        await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
 
     async chgRst(pId, pCtrlId, pVal) {
@@ -448,7 +491,7 @@ class Pid extends utils.Adapter {
         await this.setStateAsync(pId, { val: false, ack: true, q: 0x00 });
         const controller = this.controllers[pCtrlId];
         if (pVal) await controller.pidCtrl.reset();
-        await this.doUpdate(pCtrlId, pVal);
+        await this.doUpdate(pCtrlId);
     }
 
     async chgRun(pId, pCtrlId, pVal) {
