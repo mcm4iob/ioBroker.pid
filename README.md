@@ -38,6 +38,11 @@ This adapter provides the functionality of a pid controller. Within one instance
 
 All relevant values including internal data is availbale as states for diagnose purposes.
 
+## Documentation
+
+[english documentation](docs/en/envertech.md) is available [here](docs/en/envertech.md) <br>
+<!-- [german documentation](docs/de/envertech.md) is available [here](docs/de/envertech.md) -->
+
 ## Credits
 
 Providing this adapter would not have been possible without the great work of @Philmod (https://github.com/Philmod) who developed node-pid-controller (https://github.com/Philmod/node-pid-controller).
@@ -54,7 +59,8 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### 0.0.1-alpha.0 (2023-03-29)
+
+### **WORK IN PROGRESS**
 
 -   (mcm1957) initial release
 
