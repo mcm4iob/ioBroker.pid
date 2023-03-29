@@ -40,9 +40,9 @@ All relevant values including internal data is availbale as states for diagnose 
 
 ## Documentation
 
-[english documentation](docs/en/envertech.md) is available [here](docs/en/envertech.md) <br>
+[english documentation](docs/en/pid.md) is available [here](docs/en/pid.md) <br>
 
-<!-- [german documentation](docs/de/envertech.md) is available [here](docs/de/envertech.md) -->
+<!-- [german documentation](docs/de/pid.md) is available [here](docs/de/pid.md) -->
 
 ## Credits
 
@@ -60,6 +60,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
 ### 0.0.1-alpha.2 (2023-03-29)
 
 -   (mcm1957) initial release
