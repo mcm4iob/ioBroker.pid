@@ -1,130 +1,149 @@
 {
-    "common": {
-        "name": "pid",
-        "version": "0.0.1-alpha.1",
-        "news": {
-            "0.0.1-alpha.1": {
-                "en": "initial release",
-                "de": "erstausstrahlung",
-                "ru": "начальный выпуск",
-                "pt": "lançamento inicial",
-                "nl": "niet",
-                "fr": "initial release",
-                "it": "rilascio iniziale",
-                "es": "liberación inicial",
-                "pl": "pierwsze wydanie",
-                "uk": "початковий реліз",
-                "zh-cn": "初步释放"
-            },
-            "0.0.1-alpha.0": {
-                "en": "initial release",
-                "de": "erstausstrahlung",
-                "ru": "начальный выпуск",
-                "pt": "lançamento inicial",
-                "nl": "niet",
-                "fr": "initial release",
-                "it": "rilascio iniziale",
-                "es": "liberación inicial",
-                "pl": "pierwsze wydanie",
-                "uk": "початковий реліз",
-                "zh-cn": "初步释放"
-            },
-            "0.0.0": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "zh-cn": "首次出版",
-                "uk": "початковий випуск"
-            }
-        },
-        "title": "PID controller",
-        "titleLang": {
-            "en": "PID controller",
-            "de": "PID-Regler",
-            "ru": "ПИД-регулятор",
-            "pt": "controlador PID",
-            "nl": "PID-regelaar",
-            "fr": "Contrôleur PID",
-            "it": "Controllore PID",
-            "es": "controlador PID",
-            "pl": "regulator PID",
-            "zh-cn": "PID控制器",
-            "uk": "ПІД контролер"
-        },
-        "desc": {
-            "en": "Configurable PID Controller",
-            "de": "Konfigurierbarer PID-Regler",
-            "ru": "Конфигурируемый ПИД-регулятор",
-            "pt": "Controlador PID configurável",
-            "nl": "Configureerbare PID-regelaar",
-            "fr": "Contrôleur PID configurable",
-            "it": "Regolatore PID configurabile",
-            "es": "Controlador PID configurable",
-            "pl": "Konfigurowalny kontroler PID",
-            "zh-cn": "可配置的 PID 控制器",
-            "uk": "Настроюваний ПІД-регулятор"
-        },
-        "authors": ["mcm1957 <mcm57@gmx.at>"],
-        "keywords": ["pid", "controller", "pid-controller"],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "main": "main.js",
-        "icon": "pid.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.pid/master/admin/pid.png",
-        "readme": "https://github.com/iobroker-community-adapters/ioBroker.pid/blob/master/README.md",
-        "loglevel": "info",
-        "mode": "daemon",
-        "type": "general",
-        "compact": true,
-        "connectionType": "local",
-        "dataSource": "push",
-        "adminUI": {
-            "config": "json"
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=3.3.22"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=5.1.13"
-            }
-        ]
+  "common": {
+    "name": "pid",
+    "version": "0.0.1-alpha.2",
+    "news": {
+      "0.0.1-alpha.2": {
+        "en": "initial release",
+        "de": "erstausstrahlung",
+        "ru": "начальный выпуск",
+        "pt": "lançamento inicial",
+        "nl": "niet",
+        "fr": "initial release",
+        "it": "rilascio iniziale",
+        "es": "liberación inicial",
+        "pl": "pierwsze wydanie",
+        "uk": "початковий реліз",
+        "zh-cn": "初步释放"
+      },
+      "0.0.1-alpha.1": {
+        "en": "initial release",
+        "de": "erstausstrahlung",
+        "ru": "начальный выпуск",
+        "pt": "lançamento inicial",
+        "nl": "niet",
+        "fr": "initial release",
+        "it": "rilascio iniziale",
+        "es": "liberación inicial",
+        "pl": "pierwsze wydanie",
+        "uk": "початковий реліз",
+        "zh-cn": "初步释放"
+      },
+      "0.0.1-alpha.0": {
+        "en": "initial release",
+        "de": "erstausstrahlung",
+        "ru": "начальный выпуск",
+        "pt": "lançamento inicial",
+        "nl": "niet",
+        "fr": "initial release",
+        "it": "rilascio iniziale",
+        "es": "liberación inicial",
+        "pl": "pierwsze wydanie",
+        "uk": "початковий реліз",
+        "zh-cn": "初步释放"
+      },
+      "0.0.0": {
+        "en": "initial release",
+        "de": "Erstveröffentlichung",
+        "ru": "Начальная версия",
+        "pt": "lançamento inicial",
+        "nl": "Eerste uitgave",
+        "fr": "Première version",
+        "it": "Versione iniziale",
+        "es": "Versión inicial",
+        "pl": "Pierwsze wydanie",
+        "zh-cn": "首次出版",
+        "uk": "початковий випуск"
+      }
     },
-    "native": {
-        "option1": true,
-        "option2": "42"
+    "title": "PID controller",
+    "titleLang": {
+      "en": "PID controller",
+      "de": "PID-Regler",
+      "ru": "ПИД-регулятор",
+      "pt": "controlador PID",
+      "nl": "PID-regelaar",
+      "fr": "Contrôleur PID",
+      "it": "Controllore PID",
+      "es": "controlador PID",
+      "pl": "regulator PID",
+      "zh-cn": "PID控制器",
+      "uk": "ПІД контролер"
     },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Information"
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "role": "indicator.connected",
-                "name": "Device or service connected",
-                "type": "boolean",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {}
-        }
+    "desc": {
+      "en": "Configurable PID Controller",
+      "de": "Konfigurierbarer PID-Regler",
+      "ru": "Конфигурируемый ПИД-регулятор",
+      "pt": "Controlador PID configurável",
+      "nl": "Configureerbare PID-regelaar",
+      "fr": "Contrôleur PID configurable",
+      "it": "Regolatore PID configurabile",
+      "es": "Controlador PID configurable",
+      "pl": "Konfigurowalny kontroler PID",
+      "zh-cn": "可配置的 PID 控制器",
+      "uk": "Настроюваний ПІД-регулятор"
+    },
+    "authors": [
+      "mcm1957 <mcm57@gmx.at>"
+    ],
+    "keywords": [
+      "pid",
+      "controller",
+      "pid-controller"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "main": "main.js",
+    "icon": "pid.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.pid/master/admin/pid.png",
+    "readme": "https://github.com/iobroker-community-adapters/ioBroker.pid/blob/master/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "general",
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "push",
+    "adminUI": {
+      "config": "json"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=3.3.22"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=5.1.13"
+      }
     ]
+  },
+  "native": {
+    "option1": true,
+    "option2": "42"
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Information"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "role": "indicator.connected",
+        "name": "Device or service connected",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    }
+  ]
 }
