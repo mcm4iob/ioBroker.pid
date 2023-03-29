@@ -2,20 +2,19 @@
 
 ## General information
 
-This adapter provides one or more configurable pid controllers per instance. 
+This adapter provides one or more configurable pid controllers per instance.
 
 The general functionality of a pir controller is documented i.e. at wikipedia (https://en.wikipedia.org/wiki/PID_controller). In short a pid controller computes an output value depending on the input value and three parameters:
 
-- proprotional conponent
-- integral component
-- deriative component
+-   proprotional conponent
+-   integral component
+-   deriative component
 
-This ioBroker adapter allows the configuration of the pid controller by specifying several paramaters listed ... . The output value is calculated in regular intervalls specified as cylce time or on request whenever a new input value is set. In addition the calulation can be suspended and all internal values can be rest on demand. 
+This ioBroker adapter allows the configuration of the pid controller by specifying several paramaters listed ... . The output value is calculated in regular intervalls specified as cylce time or on request whenever a new input value is set. In addition the calulation can be suspended and all internal values can be rest on demand.
 
 As an convinient feature the output value can be set to a specified value when operating in manual mode.
 
 States used for input and set by controller output are listed in section ...
-
 
 ## Configuration
 
@@ -45,8 +44,10 @@ Here you specify some general options
 
 <p align=center><img src="img/envertech_tab_options.jpg" width="600" /></p>
 
--   Enable logging  <br>
+-   Enable logging <br>
     Setting this option activates logging of data calculated during regular recomputaions.
+
+## Details of Functionality
 
 ### Description of States
 
@@ -81,4 +82,13 @@ Every adapter instance creates a set of states per configured controller. The fo
 | last_upd    | number  | RO    | timestamp (ms since epoch) of last iupdate cycle                                            |
 | last_upd_str| number  | RO    | textual representation auf date/time of last iupdate cycle                                  |
 <!-- prettier-ignore-end -->
-    
+
+### Hystereis Handling and Update of Output
+
+The adapter evaluates every input written to State 'act'. If the new value does not differ from the current value more than the Hysteresis value of state 'sup' the new value is ignored; otherwise it is stored for calculation.
+
+If the adapter control state 'run' is set to false, no new calculation is performed. The oitput is frozen ('on-hold') while 'run'is set to false.
+
+If a non zero cycle time is configured (and 'run' is true) the adapter performs a recalculation every x ms specified by 'cycle'. The result ofthe calulation is written to the appropiate states. You can check the internal values of differr (differnece of the last two error values used for D term computation) and sumerr (accumulated error value used for P term computation) too.
+
+If cycle time is zero no timebased calculations are performed. In this case every time a new value is written to state 'act' a recalculation is performed.
