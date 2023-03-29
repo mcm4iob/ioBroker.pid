@@ -6,7 +6,7 @@
     "name": "mcm1957",
     "email": "mcm57@gmx.at"
   },
-  "homepage": "https://github.com/mcm1957/ioBroker.pid",
+  "homepage": "https://github.com/iobroker-community-adapters/ioBroker.pid",
   "license": "MIT",
   "keywords": [
     "pid",
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mcm1957/ioBroker.pid.git"
+    "url": "https://github.com/iobroker-community-adapters/ioBroker.pid.git"
   },
   "engines": {
     "node": ">= 14"
@@ -72,7 +72,7 @@
     "release": "release-script"
   },
   "bugs": {
-    "url": "https://github.com/mcm1957/ioBroker.pid/issues"
+    "url": "https://github.com/iobroker-community-adapters/ioBroker.pid/issues"
   },
   "readmeFilename": "README.md"
 }
