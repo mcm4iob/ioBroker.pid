@@ -26,11 +26,17 @@
 For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)! Sentry reporting is used starting with js-controller 3.0.
 -->
 
-## pid adapter for ioBroker
+## PID Adapter for ioBroker
 
 This adapter provides a configurable PID Controller.
 
-# __Current state is WORK IN PROGRESS. Adapter is NOT FUNCTIONAL__
+# **Current state is WORK IN PROGRESS**
+
+## General Information
+
+This adapter provides the functionality of a pid controller. Within one instance there could be more than one controller configured. The adpter supports configuring the paramaters (P, I, D components) and the cycle time used for calculation. In addition caclulation can be suspended and resumed and the controlelr can be reset at all. As convinient server a manual mode can be switches on to directly set the output. Output can be limited to a minimum/maximum value and contain a fixes offset.
+
+All relevant values including internal data is availbale as states for diagnose purposes.
 
 ## Credits
 
