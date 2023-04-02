@@ -2,10 +2,78 @@
     "i18n": true,
     "type": "tabs",
     "items": {
-        "devices": {
+        "_devices": {
             "type": "panel",
             "label": "lblConfig",
             "items": {
+                "_headerMode": {
+                    "type": "header",
+                    "text": "hdrMode",
+                    "size": 2
+                },
+
+                "ctrlMode": {
+                    "type": "select",
+                    "newLine": true,
+                    "sm": 2,
+                    "md": 2,
+                    "lg": 2,
+                    "label": "lblCtrlMode",
+                    "tooltip": "ttCtrlMode",
+                    "options": [
+                        { "label": "lblCtrlModeKp", "value": 0 },
+                        { "label": "lblCtrlModeXp", "value": 1 }
+                    ],
+                    "default": 0
+                },
+                "_ctrlModeTxt_0": {
+                    "type": "staticText",
+                    "sm": 10,
+                    "md": 10,
+                    "lg": 10,
+                    "text": "lblCtrlModeText_0",
+                    "hidden": "data.ctrlMode!==0"
+                },
+                "_ctrlModeTxt_1": {
+                    "type": "staticText",
+                    "sm": 10,
+                    "md": 10,
+                    "lg": 10,
+                    "text": "lblCtrlModeText_1",
+                    "hidden": "data.ctrlMode!==1"
+                },
+                "ctrlActDiff": {
+                    "type": "checkbox",
+                    "newLine": true,
+                    "sm": 2,
+                    "md": 2,
+                    "lg": 2,
+                    "label": "lblCtrlActDiffText",
+                    "tooltip": "ttCtrlActDiffText",
+                    "default": false
+                },
+                "_ctrlActDiff_f": {
+                    "type": "staticText",
+                    "sm": 10,
+                    "md": 10,
+                    "lg": 10,
+                    "text": "lblCtrlActDiffText_f",
+                    "hidden": "!data.ctrlActDiff"
+                },
+                "_ctrlActDiff_t": {
+                    "type": "staticText",
+                    "sm": 10,
+                    "md": 10,
+                    "lg": 10,
+                    "text": "lblCtrlActDiffText_t",
+                    "hidden": "!!data.ctrlActDiff"
+                },
+                "_headerControllers": {
+                    "type": "header",
+                    "text": "hdrCtrl",
+                    "size": 2
+                },
+
                 "controllers": {
                     "type": "table",
                     "newLine": true,
@@ -36,9 +104,19 @@
                             "default": true
                         },
                         {
+                            "type": "checkbox",
+                            "attr": "ctrlUseStateCfg",
+                            "width": "5% ",
+                            "title": "lblCtrlUseStateCfg",
+                            "tooltip": "ttCtrlUseStateCfg",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
                             "type": "text",
                             "attr": "ctrlId",
-                            "width": "15% ",
+                            "width": "8% ",
                             "title": "lblCtrlId",
                             "tooltip": "ttCtrlId",
                             "filter": false,
@@ -47,51 +125,50 @@
                         },
                         {
                             "type": "number",
-                            "attr": "ctrlP",
-                            "width": "10% ",
-                            "title": "lblCtrlP",
-                            "tooltip": "ttCtrlP",
+                            "attr": "ctrlKpXp",
+                            "width": "6% ",
+                            "title": "lblCtrlKpXp",
+                            "tooltip": "ttCtrlKpXp",
+                            "hidden": "data.ctrlUseStateCfg",
                             "filter": false,
                             "sort": false,
+                            "min": 0,
+                            "step": 0.001,
+                            "default": 1
+                        },
+                        {
+                            "type": "number",
+                            "attr": "ctrlTn",
+                            "width": "6% ",
+                            "title": "lblCtrlTn",
+                            "tooltip": "ttCtrlTn",
+                            "hidden": "data.ctrlUseStateCfg",
+                            "filter": false,
+                            "sort": false,
+                            "min": 0,
+                            "step": 0.001,
                             "default": 0
                         },
                         {
                             "type": "number",
-                            "attr": "ctrlI",
-                            "width": "10% ",
-                            "title": "lblCtrlI",
-                            "tooltip": "ttCtrlI",
+                            "attr": "ctrlTv",
+                            "width": "6% ",
+                            "title": "lblCtrlTv",
+                            "tooltip": "ttCtrlTv",
+                            "hidden": "data.ctrlUseStateCfg",
                             "filter": false,
                             "sort": false,
+                            "min": 0,
+                            "step": 0.001,
                             "default": 0
-                        },
-                        {
-                            "type": "number",
-                            "attr": "ctrlD",
-                            "width": "10% ",
-                            "title": "lblCtrlD",
-                            "tooltip": "ttCtrlD",
-                            "filter": false,
-                            "sort": false,
-                            "default": 0
-                        },
-                        {
-                            "type": "checkbox",
-                            "attr": "ctrlMinMax",
-                            "width": "5% ",
-                            "title": "lblCtrlMinMax",
-                            "tooltip": "ttCtrlMinMax",
-                            "filter": false,
-                            "sort": false,
-                            "default": false
                         },
                         {
                             "type": "number",
                             "attr": "ctrlMin",
-                            "width": "15% ",
+                            "width": "6% ",
                             "title": "lblCtrlMin",
                             "tooltip": "ttCtrlMin",
-                            "hidden": "!data.ctrlMinMax",
+                            "hidden": "data.ctrlUseStateCfg",
                             "filter": false,
                             "sort": false,
                             "default": 0
@@ -99,18 +176,50 @@
                         {
                             "type": "number",
                             "attr": "ctrlMax",
-                            "width": "15% ",
+                            "width": "6% ",
                             "title": "lblCtrlMax",
                             "tooltip": "ttCtrlMax",
-                            "hidden": "!data.ctrlMinMax",
+                            "hidden": "data.ctrlUseStateCfg",
+                            "filter": false,
+                            "sort": false,
+                            "default": 100
+                        },
+                        {
+                            "type": "number",
+                            "attr": "ctrlOff",
+                            "width": "6% ",
+                            "title": "lblCtrlOff",
+                            "tooltip": "ttCtrlOff",
+                            "hidden": "data.ctrlUseStateCfg",
                             "filter": false,
                             "sort": false,
                             "default": 0
                         },
                         {
                             "type": "number",
+                            "attr": "ctrlSup",
+                            "width": "6% ",
+                            "title": "lblCtrlSup",
+                            "tooltip": "ttCtrlSup",
+                            "hidden": "data.ctrlUseStateCfg",
+                            "filter": false,
+                            "sort": false,
+                            "default": 0
+                        },
+                        {
+                            "type": "checkbox",
+                            "attr": "ctrlInvert",
+                            "width": "6% ",
+                            "title": "lblCtrlInvert",
+                            "tooltip": "ttCtrInvert",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "number",
                             "attr": "ctrlCycle",
-                            "width": "10% ",
+                            "width": "13% ",
                             "title": "lblCtrlCycle",
                             "tooltip": "ttCtrlCycle",
                             "filter": false,

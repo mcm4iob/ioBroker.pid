@@ -65,9 +65,11 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     ### **WORK IN PROGRESS**
 -->
 
-### 0.0.1-alpha.2 (2023-03-29)
+### **WORK IN PROGRESS**
 
--   (mcm1957) initial release
+-   (mcm1957) THIS IS AN ALPHA RELEASE ONLY
+-   (mcm1957) major changes after discussion in forum
+-   (mcm1957) new initial release
 
 ## License
 
