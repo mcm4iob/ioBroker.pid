@@ -129,6 +129,9 @@ class Pid extends utils.Adapter {
 
         await this.setStateAsync('info.connection', { val: false, ack: true, q: 0x00 });
 
+        // validate config
+        // TODO if (! await this.validateConfig()) ...Pid;
+
         // reset and cleanup states
         await this.resetStateObjects();
 
@@ -145,14 +148,40 @@ class Pid extends utils.Adapter {
 
                 const ctrlIdTxt = `C-${controller.ctrlId}`.replace(this.FORBIDDEN_CHARS, '_');
 
+                let _KpXp;
+                let _tn;
+                let _min;
+                let _max;
+                let _tv;
+                let _off;
+                let _sup;
                 const useXp = this.config.ctrlMode === 1;
-                const KpXp = this.getNumParam(ctrlIdTxt, 'xp', controller.ctrlKpXp, 1);
-                const tn = this.getNumParam(ctrlIdTxt, 'tn', controller.ctrlTn, 0);
-                let min = this.getNumParam(ctrlIdTxt, 'min', controller.ctrlMin, 0);
-                let max = this.getNumParam(ctrlIdTxt, 'max', controller.ctrlMax, 100);
-                const tv = this.getNumParam(ctrlIdTxt, 'tv', controller.ctrlTv, 0);
-                const off = this.getNumParam(ctrlIdTxt, 'off', controller.ctrlOff, 0);
-                const sup = this.getNumParam(ctrlIdTxt, 'sup', controller.ctrlsup, 0);
+                if (controller.ctrlUseStateCfg) {
+                    _KpXp = useXp
+                        ? (await this.getStateAsync(`${ctrlIdTxt}.xp`))?.val
+                        : (await this.getStateAsync(`${ctrlIdTxt}.kp`))?.val;
+                    _tn = (await this.getStateAsync(`${ctrlIdTxt}.tn`))?.val;
+                    _max = (await this.getStateAsync(`${ctrlIdTxt}.max`))?.val;
+                    _tv = (await this.getStateAsync(`${ctrlIdTxt}.tv`))?.val;
+                    _off = (await this.getStateAsync(`${ctrlIdTxt}.off`))?.val;
+                    _sup = (await this.getStateAsync(`${ctrlIdTxt}.sup`))?.val;
+                } else {
+                    _KpXp = controller.ctrlKpXp;
+                    _tn = controller.ctrlTn;
+                    _min = controller.ctrlMin;
+                    _max = controller.ctrlMax;
+                    _tv = controller.ctrlTv;
+                    _off = controller.ctrlOff;
+                    _sup = controller.ctrlSup;
+                }
+
+                const KpXp = this.getNumParam(ctrlIdTxt, 'xpkp', _KpXp, 1);
+                const tn = this.getNumParam(ctrlIdTxt, 'tn', _tn, 0);
+                let min = this.getNumParam(ctrlIdTxt, 'min', _min, 0);
+                let max = this.getNumParam(ctrlIdTxt, 'max', _max, 100);
+                const tv = this.getNumParam(ctrlIdTxt, 'tv', _tv, 0);
+                const off = this.getNumParam(ctrlIdTxt, 'off', _off, 0);
+                const sup = this.getNumParam(ctrlIdTxt, 'sup', _sup, 0);
 
                 if (min >= max) {
                     this.log.warn(`[C-${controller.ctrlId}] - ${min} >= ${min}, using min=0, max=100 instead`);
@@ -193,6 +222,8 @@ class Pid extends utils.Adapter {
                     manual: controller.man || false,
                 };
 
+                const params = pidCtrl.getParams();
+                this.log.info(`[${ctrlIdTxt}] controller initialized (${JSON.stringify(params)})`);
                 await this.updParamStates(controller.ctrlId);
 
                 await this.setStateAsync(`${ctrlIdTxt}.cycle`, { val: ctrlCycle, ack: true, q: 0x00 });
