@@ -143,7 +143,7 @@ class Pid extends utils.Adapter {
 
                 this.log.info(`[start] start instance with id ${controller.ctrlId}`);
 
-                const ctrlIdTxt = `C-${controller.ctrlId}`;
+                const ctrlIdTxt = `C-${controller.ctrlId}`.replace(this.FORBIDDEN_CHARS, '_');
 
                 const useXp = this.config.ctrlMode === 1;
                 const KpXp = this.getNumParam(ctrlIdTxt, 'xp', controller.ctrlKpXp, 1);
@@ -317,27 +317,28 @@ class Pid extends utils.Adapter {
             for (const controller of this.config.controllers) {
                 if (!controller.ctrlAct) continue;
 
-                const ctrlId = `C-${controller.ctrlId}`;
+                const ctrlIdTxt = `C-${controller.ctrlId}`.replace(this.FORBIDDEN_CHARS, '_');
                 await this.initObject({
-                    _id: ctrlId,
+                    _id: ctrlIdTxt,
                     type: 'device',
                     common: {
                         name: `controller ${controller.ctrlId}`,
                         statusStates: {
-                            onlineId: `${this.name}.${this.instance}.${ctrlId}.run`,
-                            errorId: `${this.name}.${this.instance}.${ctrlId}.lim`,
+                            onlineId: `${this.name}.${this.instance}.${ctrlIdTxt}.run`,
+                            errorId: `${this.name}.${this.instance}.${ctrlIdTxt}.lim`,
                         },
                     },
                     native: {},
                 });
 
                 for (const key in STATES_CFG) {
-                    await this.initStateObject(`${ctrlId}.${key}`, STATES_CFG[key]);
+                    await this.initStateObject(`${ctrlIdTxt}.${key}`, STATES_CFG[key]);
 
-                    const fullId = `${this.name}.${this.instance}.${ctrlId}.${key}`;
+                    const fullId = `${this.name}.${this.instance}.${ctrlIdTxt}.${key}`;
                     this.stateMap[fullId] = {
                         key: key,
                         ctrlId: `${controller.ctrlId}`,
+                        ctrlIdTxt: ctrlIdTxt,
                     };
                 }
             }
