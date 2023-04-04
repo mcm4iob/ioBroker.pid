@@ -32,7 +32,7 @@ const STATES_CFG = {
     tv:         { type: 'number',  name: 'derivative time',     desc: 'descKd',       role: 'value',         unit: 's',  acc: 'RW', init: 0 },
     min:        { type: 'number',  name: 'minimum value',       desc: 'descMin',      role: 'value',         unit: '',   acc: 'RW', init: 0 },
     max:        { type: 'number',  name: 'maximum value',       desc: 'descMax',      role: 'value',         unit: '',   acc: 'RW', init: 100 },
-    offs:       { type: 'number',  name: 'offset value',        desc: 'descOff',      role: 'value',         unit: '',   acc: 'RW', init: 0 },
+    off:        { type: 'number',  name: 'offset value',        desc: 'descOff',      role: 'value',         unit: '',   acc: 'RW', init: 0 },
     sup:        { type: 'number',  name: 'suppress value',      desc: 'descSup',      role: 'value',         unit: '',   acc: 'RW', init: 0 },
 
     /* input states */
@@ -88,7 +88,7 @@ class Pid extends utils.Adapter {
             tv:         this.chgTv.bind(this),
             min:        this.chgMin.bind(this),
             max:        this.chgMax.bind(this),
-            offs:       this.chgOff.bind(this),
+            off:        this.chgOff.bind(this),
             sup:        this.chgSup.bind(this),
 
             cycle:      null,
