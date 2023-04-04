@@ -451,7 +451,7 @@ class Pid extends utils.Adapter {
 
         const ret = controller.pidCtrl.update();
         this.log.debug(`[${ctrlIdTxt}] update() - ${JSON.stringify(ret)}`);
-        if (this.config.optLogChg) this.log.info(`[${ctrlIdTxt}] update() - ${JSON.stringify(ret)}`);
+        if (this.config.optLogCalc) this.log.info(`[${ctrlIdTxt}] update() - ${JSON.stringify(ret)}`);
 
         if (!controller.manual) {
             const nowStr = new Date(ret.ts).toLocaleString();
