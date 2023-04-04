@@ -17,7 +17,7 @@
     "descSup": "Hysteresewert",
     "descUseXp": "XP für die Berechnung des proportionalen Terms verwenden",
     "descY": "Ausgabewert",
-    "errValCtrlId": "FEHLER: Controller-ID ist ungültig; Die ID muss eindeutig sein und darf nur die Zeichen „A–Z“, „a–z“, „0–9“, „-“, „_“ enthalten",
+    "errValCtrlId": "FEHLER: Regler-ID ist ungültig; Die Regler-ID muss eindeutig sein und darf nur die Zeichen „A–Z“, „a–z“, „0–9“, „-“ und „_“ enthalten.",
     "hdrCtrl": "Regler-Konfiguration",
     "hdrMode": "Auswahl des Konfigurationsmodus",
     "hlpOptLogCalc": "Berechnungsdaten loggen",
