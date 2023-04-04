@@ -18,6 +18,7 @@
     "descSup": "valeur d'hystérésis",
     "descUseXp": "utiliser xp pour le terme proportionnel",
     "descY": "valeur de sortie",
+    "errValCtrlId": "ERREUR : l'identifiant du contrôleur n'est pas valide ; l'identifiant doit être unique et contenir uniquement les caractères 'A-Z', 'a-z', '0-9', '-', '_'",
     "hdrCtrl": "Configuration du contrôleur",
     "hdrMode": "Sélection du mode de configuration",
     "hlpOptLogCalc": "données de calcul de journal",

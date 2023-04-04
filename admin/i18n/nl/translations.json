@@ -18,6 +18,7 @@
     "descSup": "hysterese waarde",
     "descUseXp": "gebruik xp voor proportionele term",
     "descY": "uitgangswaarde",
+    "errValCtrlId": "FOUT: controller-ID is ongeldig; id moet uniek zijn en alleen tekens 'A-Z','a-z','0-9','-','_' bevatten",
     "hdrCtrl": "Controllerconfiguratie",
     "hdrMode": "Selectie configuratiemodus",
     "hlpOptLogCalc": "logboekberekeningsgegevens",

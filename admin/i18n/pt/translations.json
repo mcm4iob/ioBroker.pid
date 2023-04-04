@@ -18,6 +18,7 @@
     "descSup": "valor de histerese",
     "descUseXp": "use xp para termo proporcional",
     "descY": "valor de saída",
+    "errValCtrlId": "ERRO: id do controlador é inválido; id deve ser único e conter apenas caracteres 'A-Z','a-z','0-9','-','_'",
     "hdrCtrl": "Configuração do Controlador",
     "hdrMode": "Seleção do modo de configuração",
     "hlpOptLogCalc": "dados de cálculo de registro",

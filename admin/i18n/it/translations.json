@@ -18,6 +18,7 @@
     "descSup": "valore di isteresi",
     "descUseXp": "usa xp per il termine proporzionale",
     "descY": "valore di uscita",
+    "errValCtrlId": "ERRORE: ID controller non valido; l'id deve essere univoco e contenere solo caratteri \"A-Z\", \"a-z\", \"0-9\", \"-\", \"_\"",
     "hdrCtrl": "Configurazione del controllore",
     "hdrMode": "Selezione della modalità di configurazione",
     "hlpOptLogCalc": "registrare i dati di calcolo",

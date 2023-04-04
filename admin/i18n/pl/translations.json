@@ -18,6 +18,7 @@
     "descSup": "wartość histerezy",
     "descUseXp": "użyj xp dla terminu proporcjonalnego",
     "descY": "wartość wyjściowa",
+    "errValCtrlId": "BŁĄD: identyfikator kontrolera jest nieprawidłowy; id musi być unikalny i zawierać tylko znaki „A-Z”, „a-z”, „0-9”, „-”, „_”",
     "hdrCtrl": "Konfiguracja kontrolera",
     "hdrMode": "Wybór trybu konfiguracji",
     "hlpOptLogCalc": "loguj dane obliczeniowe",
