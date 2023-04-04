@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "pid",
-        "version": "0.0.2-alpha.0",
+        "version": "0.0.2-alpha.1",
         "news": {
+            "0.0.2-alpha.1": {
+                "en": "changed: some small fixes",
+                "de": "geändert: einige kleine Fixes",
+                "ru": "изменено: некоторые небольшие исправления",
+                "pt": "alterado: algumas pequenas correções",
+                "nl": "verandering:",
+                "fr": "changé: quelques petites corrections",
+                "it": "cambiato: alcune piccole correzioni",
+                "es": "cambiado: algunos pequeños arreglos",
+                "pl": "zmienione: niektóre drobne zmiany",
+                "uk": "змінено: деякі маленькі кріплення",
+                "zh-cn": "变化:一些小型装置"
+            },
             "0.0.2-alpha.0": {
                 "en": "THIS IS AN ALPHA RELEASE ONLY\nmajor changes after discussion in forum\nnew initial release",
                 "de": "ALPHA VERSION - nur für Testzwecke\nNeuveröffentlichung nach Diskussionen im Forum",
