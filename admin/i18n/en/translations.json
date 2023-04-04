@@ -69,5 +69,6 @@
     "ttCtrlTn": "TN (integral) time constant",
     "ttCtrlTv": "TV (deriative) time constant",
     "ttCtrlUseStateCfg": "Activates the possibility to dynamically configure the controller using states and disables gui configuration",
-    "ttOptLogCalc": "log external and internal data used for calculation"
+    "ttOptLogCalc": "log external and internal data used for calculation",
+    "errValCtrlId": "ERROR: controller id is invalid; id must be unique and contain'A-Z','a-z','0-9','-','_' characters only"
 }

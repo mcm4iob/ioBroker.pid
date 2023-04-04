@@ -32,7 +32,10 @@
                     "md": 10,
                     "lg": 10,
                     "text": "lblCtrlModeText_0",
-                    "hidden": "data.ctrlMode!==0"
+                    "hidden": "data.ctrlMode!==0",
+                    "style": {
+                        "fontSize": 16
+                    }
                 },
                 "_ctrlModeTxt_1": {
                     "type": "staticText",
@@ -40,7 +43,10 @@
                     "md": 10,
                     "lg": 10,
                     "text": "lblCtrlModeText_1",
-                    "hidden": "data.ctrlMode!==1"
+                    "hidden": "data.ctrlMode!==1",
+                    "style": {
+                        "fontSize": 16
+                    }
                 },
                 "ctrlActDiff": {
                     "type": "checkbox",
@@ -58,7 +64,10 @@
                     "md": 10,
                     "lg": 10,
                     "text": "lblCtrlActDiffText_f",
-                    "hidden": "!data.ctrlActDiff"
+                    "hidden": "!!data.ctrlActDiff",
+                    "style": {
+                        "fontSize": 16
+                    }
                 },
                 "_ctrlActDiff_t": {
                     "type": "staticText",
@@ -66,12 +75,28 @@
                     "md": 10,
                     "lg": 10,
                     "text": "lblCtrlActDiffText_t",
-                    "hidden": "!!data.ctrlActDiff"
+                    "hidden": "!data.ctrlActDiff",
+                    "style": {
+                        "fontSize": 16
+                    }
                 },
                 "_headerControllers": {
                     "type": "header",
                     "text": "hdrCtrl",
                     "size": 2
+                },
+
+                "_ctrlErrTxt_1": {
+                    "type": "staticText",
+                    "sm": 10,
+                    "md": 10,
+                    "lg": 10,
+                    "text": "errValCtrlId",
+                    "hidden": "const x={};for (const c of data.controllers) {if ((!c.ctrlId.match(/^[A-Za-z0-9]([A-Za-z0-9-_])*$/)) || (x[c.ctrlId]==='x') ) return false; x[c.ctrlId]='x';}; return true;",
+                    "style": {
+                        "fontSize": 16,
+                        "color": "red"
+                    }
                 },
 
                 "controllers": {
@@ -80,7 +105,7 @@
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
-                    "label": "lblCtrlInstances",
+                    "label": "",
                     "showSecondAddAt": 5,
                     "items": [
                         {
@@ -121,7 +146,9 @@
                             "tooltip": "ttCtrlId",
                             "filter": false,
                             "sort": false,
-                            "default": ""
+                            "default": "",
+                            "validator": "const x={};for (const c of globalData.controllers) {if (x[c.ctrlId]==='x') return false; x[c.ctrlId]='x';}; return data.ctrlId.match(/^[A-Za-z0-9]([A-Za-z0-9-_])*$/);",
+                            "validatorNoSaveOnError": true
                         },
                         {
                             "type": "number",
@@ -171,7 +198,10 @@
                             "hidden": "data.ctrlUseStateCfg",
                             "filter": false,
                             "sort": false,
-                            "default": 0
+                            "default": 0,
+                            "validator": "data.ctrlMin < data.ctrlMax",
+                            "validatorErrorText": "errValCtrlMinMax",
+                            "validatorNoSaveOnError": true
                         },
                         {
                             "type": "number",
@@ -182,7 +212,10 @@
                             "hidden": "data.ctrlUseStateCfg",
                             "filter": false,
                             "sort": false,
-                            "default": 100
+                            "default": 100,
+                            "validator": "data.ctrlMin < data.ctrlMax",
+                            "validatorErrorText": "errValCtrlMinMax",
+                            "validatorNoSaveOnError": true
                         },
                         {
                             "type": "number",
@@ -204,6 +237,7 @@
                             "hidden": "data.ctrlUseStateCfg",
                             "filter": false,
                             "sort": false,
+                            "min": 0,
                             "default": 0
                         },
                         {
