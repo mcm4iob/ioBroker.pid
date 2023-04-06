@@ -64,8 +64,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.0.2-alpha.2 (2023-04-06)
 
 -   (mcm1957) changed: values of 'kp', 'xp' and 'sup' are now verified if set using states
 -   (mcm1957) changed: values of 'min' and 'max' are now verified if set using states
