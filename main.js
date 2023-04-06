@@ -175,7 +175,7 @@ class Pid extends utils.Adapter {
                     _sup = controller.ctrlSup;
                 }
 
-                const KpXp = this.getNumParam(ctrlIdTxt, 'xpkp', _KpXp, 1);
+                const KpXp = this.getNumParam(ctrlIdTxt, 'kpxp', _KpXp, 1);
                 const tn = this.getNumParam(ctrlIdTxt, 'tn', _tn, 0);
                 let min = this.getNumParam(ctrlIdTxt, 'min', _min, 0);
                 let max = this.getNumParam(ctrlIdTxt, 'max', _max, 100);
@@ -189,7 +189,7 @@ class Pid extends utils.Adapter {
                     max = 100;
                 }
 
-                const kp = useXp ? (max - min) * KpXp : KpXp;
+                const kp = useXp ? (max - min) / KpXp : KpXp;
 
                 let ctrlCycle = controller.ctrlCycle;
                 if (ctrlCycle !== 0 && ctrlCycle < 100) {
