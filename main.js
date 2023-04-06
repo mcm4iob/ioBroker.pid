@@ -162,6 +162,7 @@ class Pid extends utils.Adapter {
                         : (await this.getStateAsync(`${ctrlIdTxt}.kp`))?.val;
                     _tn = (await this.getStateAsync(`${ctrlIdTxt}.tn`))?.val;
                     _max = (await this.getStateAsync(`${ctrlIdTxt}.max`))?.val;
+                    _min = (await this.getStateAsync(`${ctrlIdTxt}.min`))?.val;
                     _tv = (await this.getStateAsync(`${ctrlIdTxt}.tv`))?.val;
                     _off = (await this.getStateAsync(`${ctrlIdTxt}.off`))?.val;
                     _sup = (await this.getStateAsync(`${ctrlIdTxt}.sup`))?.val;
