@@ -548,6 +548,14 @@ class Pid extends utils.Adapter {
         this.log.debug(`chgSup called (${pCtrlId}, ${pVal})`);
 
         const controller = this.controllers[pCtrlId];
+
+        if (typeof pVal !== 'number' || pVal < 0) {
+            this.log.warn(`[C-${controller.ctrlId}] invalid value (${pVal}) for sup ignored`);
+            const params = await controller.pidCtrl.getParams();
+            await this.setStateAsync(pId, { val: params.sup, ack: true, q: 0x00 });
+            return;
+        }
+
         await controller.pidCtrl.setSup(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
@@ -556,6 +564,14 @@ class Pid extends utils.Adapter {
         this.log.debug(`chgKp called (${pCtrlId}, ${pVal})`);
 
         const controller = this.controllers[pCtrlId];
+
+        if (typeof pVal !== 'number' || pVal <= 0) {
+            this.log.warn(`[C-${controller.ctrlId}] invalid value (${pVal}) for kp ignored`);
+            const params = await controller.pidCtrl.getParams();
+            await this.setStateAsync(pId, { val: params.kp, ack: true, q: 0x00 });
+            return;
+        }
+
         await controller.pidCtrl.setKp(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         await this.updParamStates(pCtrlId);
@@ -566,6 +582,14 @@ class Pid extends utils.Adapter {
         this.log.debug(`chgXp called (${pCtrlId}, ${pVal})`);
 
         const controller = this.controllers[pCtrlId];
+
+        if (typeof pVal !== 'number' || pVal <= 0) {
+            this.log.warn(`[C-${controller.ctrlId}] invalid value (${pVal}) for xp ignored`);
+            const params = await controller.pidCtrl.getParams();
+            await this.setStateAsync(pId, { val: params.xp, ack: true, q: 0x00 });
+            return;
+        }
+
         await controller.pidCtrl.setXp(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         await this.updParamStates(pCtrlId);
