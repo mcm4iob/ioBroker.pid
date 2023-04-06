@@ -512,6 +512,16 @@ class Pid extends utils.Adapter {
         this.log.debug(`chgMin called (${pCtrlId}, ${pVal})`);
 
         const controller = this.controllers[pCtrlId];
+        const params = await controller.pidCtrl.getParams();
+
+        if (typeof pVal !== 'number' || pVal >= params.max) {
+            this.log.warn(
+                `[${controller.ctrlIdTxt}] invalid value (${pVal}) for min ignored, must be less than ${params.max}`,
+            );
+            await this.setStateAsync(pId, { val: params.min, ack: true, q: 0x00 });
+            return;
+        }
+
         await controller.pidCtrl.setMin(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         await this.updParamStates(pCtrlId);
@@ -522,6 +532,16 @@ class Pid extends utils.Adapter {
         this.log.debug(`chgMax called (${pCtrlId}, ${pVal})`);
 
         const controller = this.controllers[pCtrlId];
+        const params = await controller.pidCtrl.getParams();
+
+        if (typeof pVal !== 'number' || pVal <= params.min) {
+            this.log.warn(
+                `[${controller.ctrlIdTxt}] invalid value (${pVal}) for max ignored, must be greater than ${params.min}`,
+            );
+            await this.setStateAsync(pId, { val: params.max, ack: true, q: 0x00 });
+            return;
+        }
+
         await controller.pidCtrl.setMax(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         await this.updParamStates(pCtrlId);

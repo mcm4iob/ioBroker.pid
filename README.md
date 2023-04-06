@@ -64,6 +64,14 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+-   (mcm1957) changed: values of 'kp', 'xp' and 'sup' are now verified if set using states
+-   (mcm1957) changed: activation of 'man' updates output 'y' with current value of 'man_inp' now
+-   (mcm1957) changed: 'min' value is now conserved when restarting the instance
+-   (mcm1957) changed: conversion between and xp has been fixed at several places
+
 ### 0.0.2-alpha.1 (2023-04-04)
 
 -   (mcm1957) changed: some small fixes
