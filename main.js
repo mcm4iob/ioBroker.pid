@@ -195,11 +195,17 @@ class Pid extends utils.Adapter {
                 let ctrlCycle = controller.ctrlCycle;
                 if (ctrlCycle !== 0 && ctrlCycle < 100) {
                     ctrlCycle = 100;
-                    this.log.warn(`[C-${controller.ctrlId}] - invalid cycle time, set to 100ms`);
+                    this.log.warn(`[${ctrlIdTxt}] - invalid cycle time, set to 100ms`);
                 }
                 if (ctrlCycle > 3600 * 1000) {
                     ctrlCycle = 3600 * 1000;
-                    this.log.warn(`[C-${controller.ctrlId}] - invalid cycle time, set to 3600s`);
+                    this.log.warn(`[${ctrlIdTxt}] - invalid cycle time, set to 3600s`);
+                }
+
+                if (useXp) {
+                    await this.extendObjectAsync(`${ctrlIdTxt}.kp`, { common: { write: false } });
+                } else {
+                    await this.extendObjectAsync(`${ctrlIdTxt}.xp`, { common: { write: false } });
                 }
 
                 const pidCtrl = new PidCtrl(this, {
@@ -584,6 +590,8 @@ class Pid extends utils.Adapter {
     async chgKp(pId, pCtrlId, pVal) {
         this.log.debug(`chgKp called (${pCtrlId}, ${pVal})`);
 
+        if (this.config.ctrlMode === 1) return; // xp mode
+
         const controller = this.controllers[pCtrlId];
 
         if (typeof pVal !== 'number' || pVal <= 0) {
@@ -601,6 +609,8 @@ class Pid extends utils.Adapter {
 
     async chgXp(pId, pCtrlId, pVal) {
         this.log.debug(`chgXp called (${pCtrlId}, ${pVal})`);
+
+        if (this.config.ctrlMode !== 1) return; // kp mode
 
         const controller = this.controllers[pCtrlId];
 

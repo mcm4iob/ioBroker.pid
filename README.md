@@ -72,6 +72,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 -   (mcm1957) changed: activation of 'man' updates output 'y' with current value of 'man_inp' now
 -   (mcm1957) changed: 'min' value is now conserved when restarting the instance
 -   (mcm1957) changed: conversion between and xp has been fixed at several places
+-   (mcm1957) changed: 'kp' or 'xp' are writepotected now depending on 'useXp' parameter
 
 ### 0.0.2-alpha.1 (2023-04-04)
 
