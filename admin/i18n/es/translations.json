@@ -40,7 +40,7 @@
     "lblCtrlMode": "Modo de configuración",
     "lblCtrlModeKp": "Kp/Tn/Tv",
     "lblCtrlModeText_0": "Modo Kp / Tn / Tv seleccionado. El controlador calcula la salida mediante la fórmula<br>Y = KP * (DIFF + 1/TN*INTEGRAL(DIFF)/DT + (DIFF[t]-DIFF[t-1]/TV) + OFF",
-    "lblCtrlModeText_1": "Modo Kp / Tn / Tv seleccionado. El controlador calcula la salida mediante la fórmula<br>Y = (MAX-MIN)*XP * (DIFF + 1/TN*INTEGRAL(DIFF)/DT + (DIFF[t]-DIFF[t-1]/TV) + OFF",
+    "lblCtrlModeText_1": "Modo Kp / Tn / Tv seleccionado. El controlador calcula la salida mediante la fórmula<br>Y = (MAX-MIN)/XP * (DIFF + 1/TN*INTEGRAL(DIFF)/DT + (DIFF[t]-DIFF[t-1]/TV) + OFF",
     "lblCtrlModeXp": "Xp/Tn/Tv",
     "lblCtrlOff": "Compensar",
     "lblCtrlP": "Valor P",
