@@ -363,7 +363,6 @@ class Pid extends utils.Adapter {
                         name: `controller ${controller.ctrlId}`,
                         statusStates: {
                             onlineId: `${this.name}.${this.instance}.${ctrlIdTxt}.run`,
-                            errorId: `${this.name}.${this.instance}.${ctrlIdTxt}.lim`,
                         },
                     },
                     native: {},
