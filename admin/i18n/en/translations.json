@@ -1,6 +1,6 @@
 {
     "descAct": "actual value",
-    "descDao": "use act for deriative only",
+    "descDao": "use act for derivative only",
     "descDiff": "actual error value",
     "descKd": "derivative portion",
     "descKi": "integral portion",
@@ -67,7 +67,7 @@
     "ttCtrlP": "proportional (P) gain",
     "ttCtrlSup": "Supression / hysteresis value to suppress small changes of actual value",
     "ttCtrlTn": "TN (integral) time constant",
-    "ttCtrlTv": "TV (deriative) time constant",
+    "ttCtrlTv": "TV (derivative) time constant",
     "ttCtrlUseStateCfg": "Activates the possibility to dynamically configure the controller using states and disables gui configuration",
     "ttOptLogCalc": "log external and internal data used for calculation"
 }

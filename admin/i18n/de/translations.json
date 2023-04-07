@@ -67,7 +67,7 @@
     "ttCtrlP": "Proportionalfaktor (P)",
     "ttCtrlSup": "Hysteresiswert zur Unterdrückung kleiner Istwertänderungen",
     "ttCtrlTn": "TN (Integral) Zeitkonstante",
-    "ttCtrlTv": "TV (Differntial) Zeitkonstante",
+    "ttCtrlTv": "TV (Differential) Zeitkonstante",
     "ttCtrlUseStateCfg": "Aktiviert die Möglichkeit, den Controller mithilfe von Zuständen dynamisch zu konfigurieren, und deaktiviert die GUI-Konfiguration",
     "ttOptLogCalc": "Protokollieren externer und interner Daten, die für die Berechnung verwendet werden"
 }
