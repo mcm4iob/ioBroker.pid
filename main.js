@@ -61,7 +61,7 @@ const STATES_CFG = {
     rst:          { folder: 'in',   type: 'boolean', name: 'reset controller',    desc: 'descRst',      role: 'button',
                     unit:   '',     acc:  'WO',      init: false, warnAck: true  },
     hold:         { folder: 'in',   type: 'boolean', name: 'controller suspend',  desc: 'descHold',     role: 'switch.enable',
-                    unit:   '',     acc:  'RW',      init: null,  warnAck: false },
+                    unit:   '',     acc:  'RW',      init: false, warnAck: false },
 
     /* output states */
     y:            { folder: 'out',  type: 'number',  name: 'output value',        desc: 'descY',        role: 'value',
@@ -82,8 +82,8 @@ const STATES_CFG = {
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
     last_upd_str: { folder: 'xtra', type: 'string',  name: 'last update',       desc: 'descLastUpdStr',  role: 'value',
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
-    run:          { folder: 'xtra',   type: 'boolean', name: 'controller running',  desc: 'descRun',      role: 'indicator.working',
-                    unit:   '',     acc:  'RW',      init: null,  warnAck: false },
+    run:          { folder: 'xtra', type: 'boolean', name: 'controller running',  desc: 'descRun',      role: 'indicator.working',
+                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
 
 };
 /* eslint-enable */
