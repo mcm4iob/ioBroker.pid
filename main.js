@@ -82,7 +82,7 @@ const STATES_CFG = {
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
     last_upd_str: { folder: 'xtra', type: 'string',  name: 'last update',       desc: 'descLastUpdStr',  role: 'value',
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
-    run:          { folder: 'in',   type: 'boolean', name: 'controller running',  desc: 'descRun',      role: 'indicator.working',
+    run:          { folder: 'xtra',   type: 'boolean', name: 'controller running',  desc: 'descRun',      role: 'indicator.working',
                     unit:   '',     acc:  'RW',      init: null,  warnAck: false },
 
 };
