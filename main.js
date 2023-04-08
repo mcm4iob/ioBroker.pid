@@ -844,9 +844,9 @@ class Pid extends utils.Adapter {
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
 
         const controller = this.controllers[pCtrlId];
-        await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: pVal, ack: true, q: 0x00 });
+        await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: !pVal, ack: true, q: 0x00 });
 
-        controller.running = pVal;
+        controller.running = !pVal;
         if (controller.running) {
             this.clearInterval(controller.timer);
             controller.timer = setInterval(this.doUpdate.bind(this), controller.cycle, pCtrlId);
