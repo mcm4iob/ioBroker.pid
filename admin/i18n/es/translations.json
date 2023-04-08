@@ -2,6 +2,7 @@
     "descAct": "valor actual",
     "descDao": "usar acto solo para derivativo",
     "descDiff": "valor de error real",
+    "descHold": "interruptor de espera",
     "descKd": "porción proporcional derivativa",
     "descKi": "porción integral",
     "descKp": "porción proporcional",
@@ -21,6 +22,8 @@
     "hdrCtrl": "Configuración del controlador",
     "hdrMode": "Selección del modo de configuración",
     "hlpOptLogCalc": "registro de datos de cálculo",
+    "hlpOptNoFolders": "No utilice carpetas para estructurar estados.",
+    "lblCancel": "Cancelar",
     "lblConfig": "Configuración",
     "lblCtrlAct": "Activado",
     "lblCtrlActDiffText": "ignorar el punto de referencia para la derivada",
@@ -48,8 +51,11 @@
     "lblCtrlTn": "Tennesse",
     "lblCtrlTv": "TELEVISOR",
     "lblCtrlUseStateCfg": "Usar estados para la configuración",
+    "lblOk": "De acuerdo",
     "lblOptLogCalc": "cálculo de registro",
+    "lblOptNoFolders": "deshabilitar carpetas para estados",
     "lblOptions": "Opciones",
+    "lblWarning": "ADVERTENCIA",
     "ttCtrlAct": "habilitar controlador",
     "ttCtrlActDiffText": "Ignorar el valor del punto de ajuste para el cálculo del término derivado",
     "ttCtrlAutoStart": "iniciar el controlador al inicio de la instancia",
@@ -69,5 +75,7 @@
     "ttCtrlTn": "Constante de tiempo TN (integral)",
     "ttCtrlTv": "TV constante de tiempo (derivativa)",
     "ttCtrlUseStateCfg": "Activa la posibilidad de configurar dinámicamente el controlador usando estados y deshabilita la configuración de interfaz gráfica de usuario",
-    "ttOptLogCalc": "registrar datos externos e internos utilizados para el cálculo"
+    "ttOptLogCalc": "registrar datos externos e internos utilizados para el cálculo",
+    "ttOptNoFolders": "La opción deshabilita la estructuración de estados usando carpetas",
+    "txtNoFoldersChg": "Cambiar esta opción eliminará todos los estados actualmente definidos para esta instancia y creará una nueva estructura"
 }

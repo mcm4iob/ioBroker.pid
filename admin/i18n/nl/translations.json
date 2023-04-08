@@ -2,6 +2,7 @@
     "descAct": "werkelijke waarde",
     "descDao": "gebruik act alleen voor afgeleide",
     "descDiff": "werkelijke foutwaarde",
+    "descHold": "schakelaar vasthouden",
     "descKd": "proporderivatieve deel",
     "descKi": "integraal deel",
     "descKp": "proportioneel deel",
@@ -21,6 +22,8 @@
     "hdrCtrl": "Controllerconfiguratie",
     "hdrMode": "Selectie configuratiemodus",
     "hlpOptLogCalc": "logboekberekeningsgegevens",
+    "hlpOptNoFolders": "Gebruik geen mappen om statussen te structureren.",
+    "lblCancel": "Annuleren",
     "lblConfig": "Configuratie",
     "lblCtrlAct": "Ingeschakeld",
     "lblCtrlActDiffText": "negeer setpoint voor afgeleide",
@@ -48,8 +51,11 @@
     "lblCtrlTn": "TN",
     "lblCtrlTv": "TV",
     "lblCtrlUseStateCfg": "Gebruik Staten voor Config",
+    "lblOk": "OK",
     "lblOptLogCalc": "logboekberekening",
+    "lblOptNoFolders": "schakel mappen uit voor staten",
     "lblOptions": "Opties",
+    "lblWarning": "WAARSCHUWING",
     "ttCtrlAct": "regelaar inschakelen",
     "ttCtrlActDiffText": "Negeer instelwaarde voor berekening van afgeleide term",
     "ttCtrlAutoStart": "start de controller bij het begin van de instantie",
@@ -69,5 +75,7 @@
     "ttCtrlTn": "TN (integraal) tijdconstante",
     "ttCtrlTv": "TV (afgeleide) tijdconstante",
     "ttCtrlUseStateCfg": "Activeert de mogelijkheid om de controller dynamisch te configureren met behulp van statussen en schakelt gui-configuratie uit",
-    "ttOptLogCalc": "log externe en interne gegevens die worden gebruikt voor de berekening"
+    "ttOptLogCalc": "log externe en interne gegevens die worden gebruikt voor de berekening",
+    "ttOptNoFolders": "Optie schakelt het structureren van statussen met behulp van mappen uit",
+    "txtNoFoldersChg": "Als u deze optie wijzigt, worden alle statussen verwijderd die momenteel voor deze instantie zijn gedefinieerd en wordt een nieuwe structuur gemaakt"
 }

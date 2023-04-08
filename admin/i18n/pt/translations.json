@@ -2,6 +2,7 @@
     "descAct": "valor atual",
     "descDao": "use ato apenas para derivativo",
     "descDiff": "valor de erro real",
+    "descHold": "segure o interruptor",
     "descKd": "porção proporcional derivativa",
     "descKi": "porção integral",
     "descKp": "porção proporcional",
@@ -21,6 +22,8 @@
     "hdrCtrl": "Configuração do Controlador",
     "hdrMode": "Seleção do modo de configuração",
     "hlpOptLogCalc": "dados de cálculo de registro",
+    "hlpOptNoFolders": "Não use pastas para estruturar estados.",
+    "lblCancel": "Cancelar",
     "lblConfig": "Configuração",
     "lblCtrlAct": "Habilitado",
     "lblCtrlActDiffText": "ignorar ponto de ajuste para derivada",
@@ -48,8 +51,11 @@
     "lblCtrlTn": "TN",
     "lblCtrlTv": "televisão",
     "lblCtrlUseStateCfg": "Usar estados para configuração",
+    "lblOk": "OK",
     "lblOptLogCalc": "cálculo de log",
+    "lblOptNoFolders": "desativar pastas para estados",
     "lblOptions": "Opções",
+    "lblWarning": "AVISO",
     "ttCtrlAct": "ativar controlador",
     "ttCtrlActDiffText": "Ignorar o valor do ponto de ajuste para cálculo do termo derivado",
     "ttCtrlAutoStart": "iniciar o controlador no início da instância",
@@ -69,5 +75,7 @@
     "ttCtrlTn": "Constante de tempo TN (integral)",
     "ttCtrlTv": "TV (derivativa) constante de tempo",
     "ttCtrlUseStateCfg": "Ativa a possibilidade de configurar dinamicamente o controlador usando estados e desabilita a configuração do gui",
-    "ttOptLogCalc": "registrar dados externos e internos usados ​​para cálculo"
+    "ttOptLogCalc": "registrar dados externos e internos usados ​​para cálculo",
+    "ttOptNoFolders": "Opção desativa a estruturação de estados usando pastas",
+    "txtNoFoldersChg": "Alterar esta opção excluirá todos os estados atualmente definidos para esta instância e criará uma nova estrutura"
 }

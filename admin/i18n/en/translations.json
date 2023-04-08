@@ -2,6 +2,7 @@
     "descAct": "actual value",
     "descDao": "use act for derivative only",
     "descDiff": "actual error value",
+    "descHold": "",
     "descKd": "derivative portion",
     "descKi": "integral portion",
     "descKp": "proportional portion",
@@ -21,6 +22,8 @@
     "hdrCtrl": "Controller Configuration",
     "hdrMode": "Configurationmode Selection",
     "hlpOptLogCalc": "log calculation data",
+    "hlpOptNoFolders": "Do not use folders to structure states.",
+    "lblCancel": "Cancel",
     "lblConfig": "Configuration",
     "lblCtrlAct": "Enabled",
     "lblCtrlActDiffText": "ignore setpoint for derivative",
@@ -48,8 +51,11 @@
     "lblCtrlTn": "TN",
     "lblCtrlTv": "TV",
     "lblCtrlUseStateCfg": "Use States for Config",
+    "lblOk": "Ok",
     "lblOptLogCalc": "log calculation",
+    "lblOptNoFolders": "disable folders for states",
     "lblOptions": "Options",
+    "lblWarning": "WARNING",
     "ttCtrlAct": "enable controller",
     "ttCtrlActDiffText": "Ignore setpoint value for computation of derivative term",
     "ttCtrlAutoStart": "start controller at start of instance",
@@ -69,5 +75,7 @@
     "ttCtrlTn": "TN (integral) time constant",
     "ttCtrlTv": "TV (derivative) time constant",
     "ttCtrlUseStateCfg": "Activates the possibility to dynamically configure the controller using states and disables gui configuration",
-    "ttOptLogCalc": "log external and internal data used for calculation"
+    "ttOptLogCalc": "log external and internal data used for calculation",
+    "ttOptNoFolders": "Option disables structuring of states using folders",
+    "txtNoFoldersChg": "Changing this option will delete all states currently defined for this instance and create a new structure"
 }

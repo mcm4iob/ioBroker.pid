@@ -2,6 +2,7 @@
     "descAct": "valore attuale",
     "descDao": "usa atto solo per derivativo",
     "descDiff": "valore effettivo dell'errore",
+    "descHold": "tenere premuto l'interruttore",
     "descKd": "parte proporzionale derivata",
     "descKi": "porzione integrale",
     "descKp": "quota proporzionale",
@@ -21,6 +22,8 @@
     "hdrCtrl": "Configurazione del controllore",
     "hdrMode": "Selezione della modalità di configurazione",
     "hlpOptLogCalc": "registrare i dati di calcolo",
+    "hlpOptNoFolders": "Non utilizzare le cartelle per strutturare gli stati.",
+    "lblCancel": "Annulla",
     "lblConfig": "Configurazione",
     "lblCtrlAct": "Abilitato",
     "lblCtrlActDiffText": "ignorare il setpoint per la derivata",
@@ -48,8 +51,11 @@
     "lblCtrlTn": "TN",
     "lblCtrlTv": "tv",
     "lblCtrlUseStateCfg": "Usa stati per la configurazione",
+    "lblOk": "OK",
     "lblOptLogCalc": "calcolo logaritmico",
+    "lblOptNoFolders": "disabilitare le cartelle per gli stati",
     "lblOptions": "Opzioni",
+    "lblWarning": "AVVERTIMENTO",
     "ttCtrlAct": "abilitare il controllore",
     "ttCtrlActDiffText": "Ignora il valore del setpoint per il calcolo del termine derivativo",
     "ttCtrlAutoStart": "avviare il controller all'avvio dell'istanza",
@@ -69,5 +75,7 @@
     "ttCtrlTn": "Costante di tempo TN (integrale).",
     "ttCtrlTv": "Costante di tempo TV (derivativa).",
     "ttCtrlUseStateCfg": "Attiva la possibilità di configurare dinamicamente il controller utilizzando gli stati e disabilita la configurazione della GUI",
-    "ttOptLogCalc": "registrare i dati esterni e interni utilizzati per il calcolo"
+    "ttOptLogCalc": "registrare i dati esterni e interni utilizzati per il calcolo",
+    "ttOptNoFolders": "L'opzione disabilita la strutturazione degli stati utilizzando le cartelle",
+    "txtNoFoldersChg": "La modifica di questa opzione eliminerà tutti gli stati attualmente definiti per questa istanza e creerà una nuova struttura"
 }
