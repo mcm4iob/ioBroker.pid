@@ -75,6 +75,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 -   (mcm1957) changes: remove error dispaly whenever adapter is hitting the limits
 -   (mcm1957) changes: fix q flag handling
 -   (mcm1957) changes: fix unexpected bahavior of sup paramater
+-   (mcm1957) changes: rename run state to hold
 
 ### 0.0.2-alpha.2 (2023-04-06)
 

@@ -50,17 +50,17 @@ const STATES_CFG = {
                     unit:   '',     acc:  'RW',      init: 0,     warnAck: false },
 
     /* input states */
-    act:          { folder: 'in',   type: 'number',  name: 'actual value',        desc: 'descAct',      role: 'value',
+    act:          { folder: 'in',   type: 'number',  name: 'actual value',        desc: 'descAct',      role: 'level',
                     unit:   '',     acc:  'RW',      init: 0,     warnAck: true  },
-    set:          { folder: 'in',   type: 'number',  name: 'set point',           desc: 'descSet',      role: 'value',
+    set:          { folder: 'in',   type: 'number',  name: 'set point',           desc: 'descSet',      role: 'level',
                     unit:   '',     acc:  'RW',      init: 0,     warnAck: true  },
-    man_inp:      { folder: 'in',   type: 'number',  name: 'manual input',        desc: 'descManInp',   role: 'value',
+    man_inp:      { folder: 'in',   type: 'number',  name: 'manual input',        desc: 'descManInp',   role: 'level',
                     unit:   '',     acc:  'RW',      init: 0,     warnAck: true  },
     man:          { folder: 'in',   type: 'boolean', name: 'manual mode',         desc: 'descMan',      role: 'switch.enable',
                     unit:   '',     acc:  'RW',      init: false, warnAck: true  },
     rst:          { folder: 'in',   type: 'boolean', name: 'reset controller',    desc: 'descRst',      role: 'button',
                     unit:   '',     acc:  'WO',      init: false, warnAck: true  },
-    run:          { folder: 'in',   type: 'boolean', name: 'controller running',  desc: 'descRun',      role: 'switch.enable',
+    hold:         { folder: 'in',   type: 'boolean', name: 'controller suspend',  desc: 'descHold',     role: 'switch.enable',
                     unit:   '',     acc:  'RW',      init: null,  warnAck: false },
 
     /* output states */
@@ -68,20 +68,23 @@ const STATES_CFG = {
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
     diff:         { folder: 'out',  type: 'number',  name: 'error value',         desc: 'descDiff',     role: 'value',
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
-    lim:          { folder: 'out',  type: 'boolean', name: 'controler limited',   desc: 'descLim',      role: 'switch.enable',
-                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
-    i_differr:    { folder: 'out',  type: 'number',  name: 'int diff error',      desc: 'descIDiffErr', role: 'value',
-                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
-    i_sumerr:     { folder: 'out',  type: 'number',  name: 'int sum error',       desc: 'descISumErr',  role: 'value',
+    lim:          { folder: 'out',  type: 'boolean', name: 'controler limited',   desc: 'descLim',      role: 'indicator.alarm',
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
 
     /* utility */
+    i_differr:    { folder: 'xtra', type: 'number',  name: 'int diff error',      desc: 'descIDiffErr', role: 'value',
+                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
+    i_sumerr:     { folder: 'xtra', type: 'number',  name: 'int sum error',       desc: 'descISumErr',  role: 'value',
+                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
     last_delta:   { folder: 'xtra', type: 'number',  name: 'last delta time',   desc: 'descLastDelta',   role: 'value',
                     unit:   'ms',   acc:  'RO',      init: null,  warnAck: false },
     last_upd:     { folder: 'xtra', type: 'number',  name: 'last update ts',    desc: 'descLastUpd',     role: 'value',
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
     last_upd_str: { folder: 'xtra', type: 'string',  name: 'last update',       desc: 'descLastUpdStr',  role: 'value',
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
+    run:          { folder: 'in',   type: 'boolean', name: 'controller running',  desc: 'descRun',      role: 'indicator.working',
+                    unit:   '',     acc:  'RW',      init: null,  warnAck: false },
+
 };
 /* eslint-enable */
 
@@ -129,19 +132,20 @@ class Pid extends utils.Adapter {
             man_inp:    this.chgManInp.bind(this),
             man:        this.chgMan.bind(this),
             rst:        this.chgRst.bind(this),
-            run:        this.chgRun.bind(this),
+            hold:       this.chgHold.bind(this),
 
             /* output states */
             y:          null,
             diff:       null,
             lim:        null,
-            i_differr:  null,
-            i_sumerr:   null,
 
             /* utility */
+            i_differr:      null,
+            i_sumerr:       null,
             last_delta:     null,
             last_upd:       null,
             last_upd_str:   null,
+            run:            null,
         };
 
         iobInit(this);
@@ -835,10 +839,13 @@ class Pid extends utils.Adapter {
         await this.doUpdate(pCtrlId);
     }
 
-    async chgRun(pId, pCtrlId, pVal) {
-        this.log.debug(`chgRun called (${pCtrlId}, ${pVal})`);
+    async chgHold(pId, pCtrlId, pVal) {
+        this.log.debug(`chgHold called (${pCtrlId}, ${pVal})`);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
+
         const controller = this.controllers[pCtrlId];
+        await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: pVal, ack: true, q: 0x00 });
+
         controller.running = pVal;
         if (controller.running) {
             this.clearInterval(controller.timer);
