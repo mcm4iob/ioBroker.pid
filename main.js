@@ -145,7 +145,7 @@ class Pid extends utils.Adapter {
             last_delta:     null,
             last_upd:       null,
             last_upd_str:   null,
-            run:            null,
+            run:            this.chgRun.bind(this),
         };
 
         iobInit(this);
@@ -262,9 +262,10 @@ class Pid extends utils.Adapter {
                     ctrlIdTxt: ctrlIdTxt,
                     pidCtrl: pidCtrl,
                     cycle: ctrlCycle,
+                    man: false, // set below
+                    hold: false, // set below
                     running: false,
                     timer: null,
-                    manual: controller.man || false,
                 };
 
                 const params = pidCtrl.getParams();
@@ -273,6 +274,7 @@ class Pid extends utils.Adapter {
 
                 await this.setStateAsync(this.getExtId(ctrlIdTxt, 'cycle'), { val: ctrlCycle, ack: true, q: 0x00 });
 
+                const xxx = await this.getStateAsync(this.getExtId(ctrlIdTxt, 'act'));
                 const _act = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'act')))?.val;
                 const act = this.getNumParam(ctrlIdTxt, 'act', _act, 0);
                 this.controllers[controller.ctrlId].pidCtrl.setAct(act);
@@ -286,9 +288,8 @@ class Pid extends utils.Adapter {
                 this.controllers[controller.ctrlId].pidCtrl.reset();
                 await this.setStateAsync(this.getExtId(ctrlIdTxt, 'rst'), { val: false, ack: true, q: 0x00 });
 
-                const manual = await this.getStateAsync(this.getExtId(ctrlIdTxt, 'man'));
-                const man = manual?.val || false;
-                this.controllers[controller.ctrlId].manual = man;
+                const man = !!(await this.getStateAsync(this.getExtId(ctrlIdTxt, 'man'))?.val);
+                this.controllers[controller.ctrlId].man = man;
                 await this.setStateAsync(this.getExtId(ctrlIdTxt, 'man'), { val: man, ack: true, q: 0x00 });
 
                 const manInp = await this.getStateAsync(this.getExtId(ctrlIdTxt, 'man_inp'));
@@ -297,13 +298,21 @@ class Pid extends utils.Adapter {
                 if (man) {
                     await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: manInp?.val, ack: true, q: 0x00 });
                     this.log.debug(`[${ctrlIdTxt}] manual value ${manInp?.val} used to set output`);
-                    this.controllers[controller.ctrlId].manual = true;
+                    this.controllers[controller.ctrlId].man = true;
                 } else {
-                    this.controllers[controller.ctrlId].manual = false;
+                    this.controllers[controller.ctrlId].man = false;
                 }
 
-                controller.running = controller.ctrlAutoStart;
+                const hold = !controller.ctrlAutoStart;
+                this.controllers[controller.ctrlId].hold = hold;
+                await this.setStateAsync(this.getExtId(ctrlIdTxt, 'hold'), { val: hold, ack: true, q: 0x00 });
+
+                const run = !(hold || man);
+                controller.running = run;
+                await this.setStateAsync(this.getExtId(ctrlIdTxt, 'run'), { val: run, ack: true, q: 0x00 });
+
                 if (controller.running && ctrlCycle) {
+                    await pidCtrl.restart(); // reset dt
                     await this.doUpdate(controller.ctrlId);
                     this.controllers[controller.ctrlId].timer = setInterval(
                         this.doUpdate.bind(this),
@@ -311,11 +320,6 @@ class Pid extends utils.Adapter {
                         controller.ctrlId,
                     );
                 }
-                await this.setStateAsync(this.getExtId(ctrlIdTxt, 'run'), {
-                    val: controller.running,
-                    ack: true,
-                    q: 0x00,
-                });
                 instanceCnt++;
             }
         }
@@ -412,9 +416,9 @@ class Pid extends utils.Adapter {
         this.log.debug(`resetStateobjects`);
 
         if (this.useFolders) {
-            await this.delObjects('C-*.*', 'state');
+            await this.delObjects('C-\\w+\\.\\w+', 'state');
         } else {
-            await this.delObjects('C-*.*', 'folder');
+            await this.delObjects('C-\\w+\\.\\w+', 'folder');
         }
 
         await iobStates.setStatesAsync('*', { ack: true, q: 0x02 });
@@ -567,16 +571,21 @@ class Pid extends utils.Adapter {
      *
      */
     async delObjects(pPattern, pType) {
-        this.log.debug(`delObjects (${pPattern})`);
+        this.log.debug(`delObjects (${pPattern}, ${pType})`);
 
-        const objs = await this.getForeignObjectsAsync(`${this.name}.${this.instance}.${pPattern}`, pType);
+        const re = new RegExp(`^${this.name}.${this.instance}.${pPattern}$`);
+        const objs = await this.getForeignObjectsAsync(`${this.name}.${this.instance}.*`, pType);
+        let logflag = false;
+
         if (objs) {
-            if (Object.values(objs).length) {
-                this.log.info(`removing states ${pPattern}...`);
-            }
             for (const obj of Object.values(objs)) {
-                this.log.debug(`removing object ${obj._id}...`);
-                await this.delForeignObjectAsync(obj._id, { recursive: true });
+                if (re.test(obj._id)) {
+                    if (!logflag) this.log.info(`removing old states ...`);
+                    logflag = true;
+
+                    this.log.debug(`removing object ${obj._id}...`);
+                    await this.delForeignObjectAsync(obj._id, { recursive: true });
+                }
             }
         }
     }
@@ -597,7 +606,7 @@ class Pid extends utils.Adapter {
         this.log.debug(`[${ctrlIdTxt}] update() - ${JSON.stringify(ret)}`);
         if (this.config.optLogCalc) this.log.info(`[${ctrlIdTxt}] update() - ${JSON.stringify(ret)}`);
 
-        if (!controller.manual) {
+        if (!controller.man) {
             const nowStr = new Date(ret.ts).toLocaleString();
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_delta'), { val: ret.dt, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd'), { val: ret.ts, ack: true, q: 0x00 });
@@ -785,13 +794,50 @@ class Pid extends utils.Adapter {
         if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
+    async chgHold(pId, pCtrlId, pVal) {
+        this.log.debug(`chgHold called (${pCtrlId}, ${pVal})`);
+
+        const controller = this.controllers[pCtrlId];
+        controller.hold = pVal;
+        await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
+
+        const run = !(controller.hold || controller.man);
+        await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: run, ack: false, q: 0x00 }); //ack=false to trigger action
+    }
+
+    async chgMan(pId, pCtrlId, pVal) {
+        this.log.debug(`chgMan called (${pCtrlId}, ${pVal})`);
+
+        const controller = this.controllers[pCtrlId];
+        controller.man = pVal;
+        await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
+
+        const run = !(controller.hold || controller.man);
+        await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: run, ack: false, q: 0x00 }); //ack=false to trigger action
+
+        if (controller.man) {
+            const ctrlIdTxt = controller.ctrlIdTxt;
+            const ts = Date.now();
+            const nowStr = new Date(ts).toLocaleString();
+            const manInp = await this.getStateAsync(this.getExtId(ctrlIdTxt, 'man_inp'));
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_delta'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd'), { val: ts, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd_str'), { val: nowStr, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: manInp?.val, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'diff'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'lim'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_differr'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_sumerr'), { val: null, ack: true, q: 0x00 });
+        }
+    }
+
     async chgManInp(pId, pCtrlId, pVal) {
         this.log.debug(`chgManInp called (${pCtrlId}, ${pVal})`);
 
         const controller = this.controllers[pCtrlId];
         const ctrlIdTxt = controller.ctrlIdTxt;
 
-        if (controller.manual) {
+        if (controller.man) {
             const ts = Date.now();
             const nowStr = new Date(ts).toLocaleString();
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_delta'), { val: null, ack: true, q: 0x00 });
@@ -806,30 +852,6 @@ class Pid extends utils.Adapter {
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
 
-    async chgMan(pId, pCtrlId, pVal) {
-        this.log.debug(`chgMan called (${pCtrlId}, ${pVal})`);
-
-        const controller = this.controllers[pCtrlId];
-        const ctrlIdTxt = controller.ctrlIdTxt;
-        controller.manual = pVal;
-        if (controller.manual) {
-            const ts = Date.now();
-            const nowStr = new Date(ts).toLocaleString();
-            const manInp = await this.getStateAsync(this.getExtId(ctrlIdTxt, 'man_inp'));
-            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_delta'), { val: null, ack: true, q: 0x00 });
-            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd'), { val: ts, ack: true, q: 0x00 });
-            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd_str'), { val: nowStr, ack: true, q: 0x00 });
-            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: manInp?.val, ack: true, q: 0x00 });
-            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'diff'), { val: null, ack: true, q: 0x00 });
-            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'lim'), { val: null, ack: true, q: 0x00 });
-            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_differr'), { val: null, ack: true, q: 0x00 });
-            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_sumerr'), { val: null, ack: true, q: 0x00 });
-        } else {
-            await this.doUpdate(pCtrlId);
-        }
-        await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
-    }
-
     async chgRst(pId, pCtrlId, pVal) {
         this.log.debug(`chgRst called (${pCtrlId}, ${pVal})`);
 
@@ -839,20 +861,31 @@ class Pid extends utils.Adapter {
         await this.doUpdate(pCtrlId);
     }
 
-    async chgHold(pId, pCtrlId, pVal) {
+    async chgRun(pId, pCtrlId, pVal) {
         this.log.debug(`chgHold called (${pCtrlId}, ${pVal})`);
-        await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
 
         const controller = this.controllers[pCtrlId];
-        await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: !pVal, ack: true, q: 0x00 });
+        const ctrlIdTxt = controller.ctrlIdTxt;
+        const isRunning = controller.running;
+        controller.running = pVal;
 
-        controller.running = !pVal;
         if (controller.running) {
-            this.clearInterval(controller.timer);
-            controller.timer = setInterval(this.doUpdate.bind(this), controller.cycle, pCtrlId);
+            if (!isRunning) {
+                // (re)start only if not already running
+                if (controller.timer) this.clearInterval(controller.timer);
+                if (this.config.optLogCalc) this.log.info(`[${ctrlIdTxt}] controller starting`);
+                await controller.pidCtrl.restart(); // reset dt
+                this.doUpdate(pCtrlId);
+                controller.timer = setInterval(this.doUpdate.bind(this), controller.cycle, pCtrlId);
+            }
         } else {
-            this.clearInterval(controller.timer);
+            if (controller.timer) {
+                this.clearInterval(controller.timer);
+                controller.timer = null;
+                if (this.config.optLogCalc) this.log.info(`[${ctrlIdTxt}] controller stopped`);
+            }
         }
+        await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
 }
 

@@ -2,7 +2,7 @@
     "descAct": "actual value",
     "descDao": "use act for derivative only",
     "descDiff": "actual error value",
-    "descHold": "",
+    "descHold": "stop calculation",
     "descKd": "derivative portion",
     "descKi": "integral portion",
     "descKp": "proportional portion",
