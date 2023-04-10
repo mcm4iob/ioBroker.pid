@@ -377,9 +377,10 @@ class Pid extends utils.Adapter {
             const key = stateMap.key;
 
             // ignore write with ack=true
-            if (pState.ack && pState.from !== `system.adapter.${this.name}.${this.instance}`) {
+            if (pState.ack) {
                 //if (STATES_CFG[key].warnAck)
-                this.log.warn(`[${ctrlIdTxt}] state ${key} changed with ack=true; ignoring change`);
+                if (pState.from !== `system.adapter.${this.name}.${this.instance}`)
+                    this.log.warn(`[${ctrlIdTxt}] state ${key} changed with ack=true; ignoring change`);
                 return;
             }
 
