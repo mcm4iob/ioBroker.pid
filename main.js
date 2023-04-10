@@ -33,21 +33,21 @@ const STATES_CFG = {
 
     /* changeable params */
     xp:           { folder: 'para', type: 'number',  name: 'prop factor',         desc: 'descXp',       role: 'value',
-                    unit:   '',     acc:  'RW',      init: 50,    warnAck: false },
+                    unit:   '',     acc:  'RW',      init: 50,    warnAck: true },
     kp:           { folder: 'para', type: 'number',  name: 'prop term',           desc: 'descKp',       role: 'value',
-                    unit:   '',     acc:  'RW',      init: 1,     warnAck: false },
+                    unit:   '',     acc:  'RW',      init: 1,     warnAck: true },
     tn:           { folder: 'para', type: 'number',  name: 'reset time',          desc: 'descKi',       role: 'value',
-                    unit:   's',    acc:  'RW',      init: 0,     warnAck: false },
+                    unit:   's',    acc:  'RW',      init: 0,     warnAck: true },
     tv:           { folder: 'para', type: 'number',  name: 'derivative time',     desc: 'descKd',       role: 'value',
-                    unit:   's',    acc:  'RW',      init: 0,     warnAck: false },
+                    unit:   's',    acc:  'RW',      init: 0,     warnAck: true },
     min:          { folder: 'para', type: 'number',  name: 'minimum value',       desc: 'descMin',      role: 'value',
-                    unit:   '',     acc:  'RW',      init: 0,     warnAck: false },
+                    unit:   '',     acc:  'RW',      init: 0,     warnAck: true },
     max:          { folder: 'para', type: 'number',  name: 'maximum value',       desc: 'descMax',      role: 'value',
-                    unit:   '',     acc:  'RW',      init: 100,   warnAck: false },
+                    unit:   '',     acc:  'RW',      init: 100,   warnAck: true },
     off:          { folder: 'para', type: 'number',  name: 'offset value',        desc: 'descOff',      role: 'value',
-                    unit:   '',     acc:  'RW',      init: 0,     warnAck: false },
+                    unit:   '',     acc:  'RW',      init: 0,     warnAck: true },
     sup:          { folder: 'para', type: 'number',  name: 'suppress value',      desc: 'descSup',      role: 'value',
-                    unit:   '',     acc:  'RW',      init: 0,     warnAck: false },
+                    unit:   '',     acc:  'RW',      init: 0,     warnAck: true },
 
     /* input states */
     act:          { folder: 'in',   type: 'number',  name: 'actual value',        desc: 'descAct',      role: 'level',
@@ -61,7 +61,7 @@ const STATES_CFG = {
     rst:          { folder: 'in',   type: 'boolean', name: 'reset controller',    desc: 'descRst',      role: 'button',
                     unit:   '',     acc:  'WO',      init: false, warnAck: true  },
     hold:         { folder: 'in',   type: 'boolean', name: 'controller suspend',  desc: 'descHold',     role: 'switch.enable',
-                    unit:   '',     acc:  'RW',      init: false, warnAck: false },
+                    unit:   '',     acc:  'RW',      init: false, warnAck: true },
 
     /* output states */
     y:            { folder: 'out',  type: 'number',  name: 'output value',        desc: 'descY',        role: 'value',
@@ -274,7 +274,6 @@ class Pid extends utils.Adapter {
 
                 await this.setStateAsync(this.getExtId(ctrlIdTxt, 'cycle'), { val: ctrlCycle, ack: true, q: 0x00 });
 
-                const xxx = await this.getStateAsync(this.getExtId(ctrlIdTxt, 'act'));
                 const _act = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'act')))?.val;
                 const act = this.getNumParam(ctrlIdTxt, 'act', _act, 0);
                 this.controllers[controller.ctrlId].pidCtrl.setAct(act);
@@ -378,9 +377,9 @@ class Pid extends utils.Adapter {
             const key = stateMap.key;
 
             // ignore write with ack=true
-            if (pState.ack) {
-                if (STATES_CFG[key].warnAck)
-                    this.log.warn(`[${ctrlIdTxt}] state ${key} changed with ack=true; ignoring change`);
+            if (pState.ack && pState.from !== `system.adapter.${this.name}.${this.instance}`) {
+                //if (STATES_CFG[key].warnAck)
+                this.log.warn(`[${ctrlIdTxt}] state ${key} changed with ack=true; ignoring change`);
                 return;
             }
 
