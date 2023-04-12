@@ -255,7 +255,7 @@ class Pid extends utils.Adapter {
                     sup: sup,
                     dao: this.config.ctrlActDiff || false,
                     useXp: useXp,
-                    inv: this.config.ctrlInv || false,
+                    inv: controller.ctrlInvert || false,
                 });
 
                 this.controllers[controller.ctrlId] = {
