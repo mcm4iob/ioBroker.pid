@@ -2,6 +2,7 @@
     "descAct": "aktualna wartość",
     "descDao": "użyj act tylko dla pochodnej",
     "descDiff": "rzeczywista wartość błędu",
+    "descHold": "przytrzymaj przełącznik",
     "descKd": "część proorderywatywna",
     "descKi": "część integralna",
     "descKp": "porcja proporcjonalna",
@@ -21,6 +22,8 @@
     "hdrCtrl": "Konfiguracja kontrolera",
     "hdrMode": "Wybór trybu konfiguracji",
     "hlpOptLogCalc": "loguj dane obliczeniowe",
+    "hlpOptNoFolders": "Nie używaj folderów do strukturyzowania stanów.",
+    "lblCancel": "Anulować",
     "lblConfig": "Konfiguracja",
     "lblCtrlAct": "Włączony",
     "lblCtrlActDiffText": "zignorować wartość zadaną dla pochodnej",
@@ -48,8 +51,11 @@
     "lblCtrlTn": "TN",
     "lblCtrlTv": "telewizja",
     "lblCtrlUseStateCfg": "Użyj stanów dla konfiguracji",
+    "lblOk": "OK",
     "lblOptLogCalc": "obliczenie dziennika",
+    "lblOptNoFolders": "wyłącz foldery dla stanów",
     "lblOptions": "Opcje",
+    "lblWarning": "OSTRZEŻENIE",
     "ttCtrlAct": "włączyć kontroler",
     "ttCtrlActDiffText": "Zignoruj ​​wartość zadaną przy obliczaniu składnika pochodnego",
     "ttCtrlAutoStart": "uruchom kontroler na początku instancji",
@@ -69,5 +75,7 @@
     "ttCtrlTn": "Stała czasowa TN (całkowa).",
     "ttCtrlTv": "TV (pochodna) stała czasowa",
     "ttCtrlUseStateCfg": "Aktywuje możliwość dynamicznej konfiguracji kontrolera za pomocą stanów i wyłącza konfigurację gui",
-    "ttOptLogCalc": "loguj dane zewnętrzne i wewnętrzne wykorzystywane do obliczeń"
+    "ttOptLogCalc": "loguj dane zewnętrzne i wewnętrzne wykorzystywane do obliczeń",
+    "ttOptNoFolders": "Opcja wyłącza strukturyzację stanów przy użyciu folderów",
+    "txtNoFoldersChg": "Zmiana tej opcji spowoduje usunięcie wszystkich stanów aktualnie zdefiniowanych dla tej instancji i utworzenie nowej struktury"
 }

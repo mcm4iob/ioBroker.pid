@@ -2,6 +2,7 @@
     "descAct": "tatsächlicher Wert",
     "descDao": "Nur IST-Werte ('act') für die Ableitungskomponente verwenden",
     "descDiff": "tatsächlicher Fehlerwert",
+    "descHold": "Berechnung anhalten",
     "descKd": "differenzieller Anteil",
     "descKi": "integraler Anteil",
     "descKp": "proportionaler Anteil",
@@ -21,6 +22,8 @@
     "hdrCtrl": "Regler-Konfiguration",
     "hdrMode": "Auswahl des Konfigurationsmodus",
     "hlpOptLogCalc": "Berechnungsdaten loggen",
+    "hlpOptNoFolders": "Verwenden Sie keine Ordner, um Zustände zu strukturieren.",
+    "lblCancel": "Stornieren",
     "lblConfig": "Einstellungen",
     "lblCtrlAct": "Aktiviert",
     "lblCtrlActDiffText": "Sollwert für Berechnung des Differentialanteils ignorieren",
@@ -48,8 +51,11 @@
     "lblCtrlTn": "TN",
     "lblCtrlTv": "TV",
     "lblCtrlUseStateCfg": "Zustände für die Konfiguration verwenden",
+    "lblOk": "OK",
     "lblOptLogCalc": "Berechnungswerte loggen",
+    "lblOptNoFolders": "Deaktivieren Sie Ordner für Zustände",
     "lblOptions": "Optionen",
+    "lblWarning": "WARNUNG",
     "ttCtrlAct": "Regler aktivieren",
     "ttCtrlActDiffText": "Sollwert für die Berechnung des Differentialanteils ignorieren",
     "ttCtrlAutoStart": "Regler beim Start der Instanz automatisch starten",
@@ -69,5 +75,7 @@
     "ttCtrlTn": "TN (Integral) Zeitkonstante",
     "ttCtrlTv": "TV (Differential) Zeitkonstante",
     "ttCtrlUseStateCfg": "Aktiviert die Möglichkeit, den Controller mithilfe von Zuständen dynamisch zu konfigurieren, und deaktiviert die GUI-Konfiguration",
-    "ttOptLogCalc": "Protokollieren externer und interner Daten, die für die Berechnung verwendet werden"
+    "ttOptLogCalc": "Protokollieren externer und interner Daten, die für die Berechnung verwendet werden",
+    "ttOptNoFolders": "Option deaktiviert die Strukturierung von Zuständen mithilfe von Ordnern",
+    "txtNoFoldersChg": "Wenn Sie diese Option ändern, werden alle derzeit für diese Instanz definierten Zustände gelöscht und eine neue Struktur erstellt"
 }

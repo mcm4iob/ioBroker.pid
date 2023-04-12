@@ -2,6 +2,7 @@
     "descAct": "valeur actuelle",
     "descDao": "utiliser l'acte pour la dérivée uniquement",
     "descDiff": "valeur d'erreur réelle",
+    "descHold": "maintenir l'interrupteur",
     "descKd": "partie propo-dérivative",
     "descKi": "partie intégrante",
     "descKp": "part proportionnelle",
@@ -21,6 +22,8 @@
     "hdrCtrl": "Configuration du contrôleur",
     "hdrMode": "Sélection du mode de configuration",
     "hlpOptLogCalc": "données de calcul de journal",
+    "hlpOptNoFolders": "N'utilisez pas de dossiers pour structurer les états.",
+    "lblCancel": "Annuler",
     "lblConfig": "Configuration",
     "lblCtrlAct": "Activé",
     "lblCtrlActDiffText": "ignorer la consigne pour la dérivée",
@@ -48,8 +51,11 @@
     "lblCtrlTn": "TN",
     "lblCtrlTv": "la télé",
     "lblCtrlUseStateCfg": "Utiliser les états pour la configuration",
+    "lblOk": "D'accord",
     "lblOptLogCalc": "calcul du journal",
+    "lblOptNoFolders": "désactiver les dossiers pour les états",
     "lblOptions": "Choix",
+    "lblWarning": "AVERTISSEMENT",
     "ttCtrlAct": "activer le contrôleur",
     "ttCtrlActDiffText": "Ignorer la valeur de consigne pour le calcul du terme dérivé",
     "ttCtrlAutoStart": "démarrer le contrôleur au début de l'instance",
@@ -69,5 +75,7 @@
     "ttCtrlTn": "Constante de temps TN (intégrale)",
     "ttCtrlTv": "Constante de temps TV (dérivée)",
     "ttCtrlUseStateCfg": "Active la possibilité de configurer dynamiquement le contrôleur à l'aide d'états et désactive la configuration de l'interface graphique",
-    "ttOptLogCalc": "consigner les données externes et internes utilisées pour le calcul"
+    "ttOptLogCalc": "consigner les données externes et internes utilisées pour le calcul",
+    "ttOptNoFolders": "L'option désactive la structuration des états à l'aide de dossiers",
+    "txtNoFoldersChg": "La modification de cette option supprimera tous les états actuellement définis pour cette instance et créera une nouvelle structure"
 }

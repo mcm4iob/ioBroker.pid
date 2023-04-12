@@ -70,8 +70,14 @@
             "zh-cn": "可配置的 PID 控制器",
             "uk": "Настроюваний ПІД-регулятор"
         },
-        "authors": ["mcm1957 <mcm57@gmx.at>"],
-        "keywords": ["pid", "controller", "pid-controller"],
+        "authors": [
+            "mcm1957 <mcm57@gmx.at>"
+        ],
+        "keywords": [
+            "pid",
+            "controller",
+            "pid-controller"
+        ],
         "license": "MIT",
         "platform": "Javascript/Node.js",
         "main": "main.js",

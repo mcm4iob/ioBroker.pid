@@ -18,43 +18,77 @@ const { iobInit, iobStates, iobTranslator } = require('@mcm1957/iobroker.library
 
 const PidCtrl = require('./lib/pid.js');
 
+/* eslint-disable */
 /* prettier-ignore */
 const STATES_CFG = {
     /* parameters */
-    cycle:      { type: 'number',  name: 'cycle time',          desc: 'descCycle',   role: 'value',         unit: 'ms', acc: 'RO', init: null },
-    useXp:      { type: 'boolean',  name: 'use Xp mode',        desc: 'descUseXp',   role: 'value',         unit: '',   acc: 'RO', init: false },
-    dao:        { type: 'boolean',  name: 'deriative act only', desc: 'descDao',   role: 'value',         unit: '',   acc: 'RO', init: false },
+    cycle:        { folder: 'cfg',  type: 'number',  name: 'cycle time',          desc: 'descCycle',   role: 'value',
+                    unit: 'ms',     acc: 'RO',       init: null,  warnAck: false },
+    useXp:        { folder: 'cfg',  type: 'boolean', name: 'use Xp mode',         desc: 'descUseXp',   role: 'value',
+                    unit: '',       acc: 'RO',       init: false, warnAck: false },
+    dao:          { folder: 'cfg',  type: 'boolean', name: 'derivative act only', desc: 'descDao',     role: 'value',
+                    unit: '',       acc: 'RO',       init: false, warnAck: false },
+    inv:          { folder: 'cfg',  type: 'boolean', name: 'invert output',       desc: 'descInv',     role: 'value',
+                    unit: '',       acc: 'RO',       init: false, warnAck: false },
 
     /* changeable params */
-    xp:         { type: 'number',  name: 'prop factor',         desc: 'descXp',       role: 'value',         unit: '',  acc: 'RW', init: 50 },
-    kp:         { type: 'number',  name: 'prop term',           desc: 'descKp',       role: 'value',         unit: '',   acc: 'RW', init: 1 },
-    tn:         { type: 'number',  name: 'reset time',          desc: 'descKi',       role: 'value',         unit: 's',  acc: 'RW', init: 0 },
-    tv:         { type: 'number',  name: 'derivative time',     desc: 'descKd',       role: 'value',         unit: 's',  acc: 'RW', init: 0 },
-    min:        { type: 'number',  name: 'minimum value',       desc: 'descMin',      role: 'value',         unit: '',   acc: 'RW', init: 0 },
-    max:        { type: 'number',  name: 'maximum value',       desc: 'descMax',      role: 'value',         unit: '',   acc: 'RW', init: 100 },
-    off:        { type: 'number',  name: 'offset value',        desc: 'descOff',      role: 'value',         unit: '',   acc: 'RW', init: 0 },
-    sup:        { type: 'number',  name: 'suppress value',      desc: 'descSup',      role: 'value',         unit: '',   acc: 'RW', init: 0 },
+    xp:           { folder: 'para', type: 'number',  name: 'prop factor',         desc: 'descXp',       role: 'value',
+                    unit:   '',     acc:  'RW',      init: 50,    warnAck: true },
+    kp:           { folder: 'para', type: 'number',  name: 'prop term',           desc: 'descKp',       role: 'value',
+                    unit:   '',     acc:  'RW',      init: 1,     warnAck: true },
+    tn:           { folder: 'para', type: 'number',  name: 'reset time',          desc: 'descKi',       role: 'value',
+                    unit:   's',    acc:  'RW',      init: 0,     warnAck: true },
+    tv:           { folder: 'para', type: 'number',  name: 'derivative time',     desc: 'descKd',       role: 'value',
+                    unit:   's',    acc:  'RW',      init: 0,     warnAck: true },
+    min:          { folder: 'para', type: 'number',  name: 'minimum value',       desc: 'descMin',      role: 'value',
+                    unit:   '',     acc:  'RW',      init: 0,     warnAck: true },
+    max:          { folder: 'para', type: 'number',  name: 'maximum value',       desc: 'descMax',      role: 'value',
+                    unit:   '',     acc:  'RW',      init: 100,   warnAck: true },
+    off:          { folder: 'para', type: 'number',  name: 'offset value',        desc: 'descOff',      role: 'value',
+                    unit:   '',     acc:  'RW',      init: 0,     warnAck: true },
+    sup:          { folder: 'para', type: 'number',  name: 'suppress value',      desc: 'descSup',      role: 'value',
+                    unit:   '',     acc:  'RW',      init: 0,     warnAck: true },
 
     /* input states */
-    act:        { type: 'number',  name: 'actual value',        desc: 'descAct',      role: 'value',         unit: '',   acc: 'RW', init: 0 },
-    set:        { type: 'number',  name: 'set point',           desc: 'descSet',      role: 'value',         unit: '',   acc: 'RW', init: 0 },
-    man_inp:    { type: 'number',  name: 'manual input',        desc: 'descManInp',   role: 'value',         unit: '',   acc: 'RW', init: 0 },
-    man:        { type: 'boolean', name: 'manual mode',         desc: 'descMan',      role: 'switch.enable', unit: '',   acc: 'RW', init: false },
-    rst:        { type: 'boolean', name: 'reset controller',    desc: 'descRst',      role: 'button',        unit: '',   acc: 'WO', init: false },
-    run:        { type: 'boolean', name: 'controller running',  desc: 'descRun',      role: 'switch.enable', unit: '',   acc: 'RW', init: null },
+    act:          { folder: 'in',   type: 'number',  name: 'actual value',        desc: 'descAct',      role: 'level',
+                    unit:   '',     acc:  'RW',      init: 0,     warnAck: true  },
+    set:          { folder: 'in',   type: 'number',  name: 'set point',           desc: 'descSet',      role: 'level',
+                    unit:   '',     acc:  'RW',      init: 0,     warnAck: true  },
+    man_inp:      { folder: 'in',   type: 'number',  name: 'manual input',        desc: 'descManInp',   role: 'level',
+                    unit:   '',     acc:  'RW',      init: 0,     warnAck: true  },
+    man:          { folder: 'in',   type: 'boolean', name: 'manual mode',         desc: 'descMan',      role: 'switch.enable',
+                    unit:   '',     acc:  'RW',      init: false, warnAck: true  },
+    rst:          { folder: 'in',   type: 'boolean', name: 'reset controller',    desc: 'descRst',      role: 'button',
+                    unit:   '',     acc:  'WO',      init: false, warnAck: true  },
+    hold:         { folder: 'in',   type: 'boolean', name: 'controller suspend',  desc: 'descHold',     role: 'switch.enable',
+                    unit:   '',     acc:  'RW',      init: false, warnAck: true },
 
     /* output states */
-    y:          { type: 'number',  name: 'output value',        desc: 'descY',        role: 'value',         unit: '',   acc: 'RO', init: null },
-    diff:       { type: 'number',  name: 'error value',         desc: 'descDiff',     role: 'value',         unit: '',   acc: 'RO', init: null },
-    lim:        { type: 'boolean', name: 'controler limited',   desc: 'descLim',      role: 'switch.enable', unit: '',   acc: 'RO', init: null },
-    i_differr:  { type: 'number',  name: 'int diff error',      desc: 'descIDiffErr', role: 'value',         unit: '',   acc: 'RO', init: null },
-    i_sumerr:   { type: 'number',  name: 'int sum error',       desc: 'descISumErr',  role: 'value',         unit: '',   acc: 'RO', init: null },
+    y:            { folder: 'out',  type: 'number',  name: 'output value',        desc: 'descY',        role: 'value',
+                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
+    diff:         { folder: 'out',  type: 'number',  name: 'error value',         desc: 'descDiff',     role: 'value',
+                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
+    lim:          { folder: 'out',  type: 'boolean', name: 'controler limited',   desc: 'descLim',      role: 'indicator.alarm',
+                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
+    supr:         { folder: 'out',  type: 'boolean', name: 'supression active',   desc: 'descSupr',     role: 'indicator.alarm',
+                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
 
     /* utility */
-    last_delta:   { type: 'number',  name: 'last delta time',   desc: 'descLastDelta',   role: 'value',      unit: 'ms', acc: 'RO', init: null },
-    last_upd:     { type: 'number',  name: 'last update ts',    desc: 'descLastUpd',     role: 'value',      unit: '',   acc: 'RO', init: null },
-    last_upd_str: { type: 'string',  name: 'last update',       desc: 'descLastUpdStr',  role: 'value',      unit: '',   acc: 'RO', init: null },
+    i_differr:    { folder: 'xtra', type: 'number',  name: 'int diff error',      desc: 'descIDiffErr', role: 'value',
+                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
+    i_sumerr:     { folder: 'xtra', type: 'number',  name: 'int sum error',       desc: 'descISumErr',  role: 'value',
+                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
+    last_delta:   { folder: 'xtra', type: 'number',  name: 'last delta time',   desc: 'descLastDelta',   role: 'value',
+                    unit:   'ms',   acc:  'RO',      init: null,  warnAck: false },
+    last_upd:     { folder: 'xtra', type: 'number',  name: 'last update ts',    desc: 'descLastUpd',     role: 'value',
+                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
+    last_upd_str: { folder: 'xtra', type: 'string',  name: 'last update',       desc: 'descLastUpdStr',  role: 'value',
+                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
+    run:          { folder: 'xtra', type: 'boolean', name: 'controller running',  desc: 'descRun',      role: 'indicator.working',
+                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
+
 };
+/* eslint-enable */
 
 /**
  * main adapter class
@@ -84,6 +118,7 @@ class Pid extends utils.Adapter {
             kp:         this.chgKp.bind(this),
             useXp:      null,
             dao:        null,
+            inv:        null,
             tn:         this.chgTn.bind(this),
             tv:         this.chgTv.bind(this),
             min:        this.chgMin.bind(this),
@@ -99,19 +134,21 @@ class Pid extends utils.Adapter {
             man_inp:    this.chgManInp.bind(this),
             man:        this.chgMan.bind(this),
             rst:        this.chgRst.bind(this),
-            run:        this.chgRun.bind(this),
+            hold:       this.chgHold.bind(this),
 
             /* output states */
             y:          null,
             diff:       null,
             lim:        null,
-            i_differr:  null,
-            i_sumerr:   null,
+            supr:       null,
 
             /* utility */
+            i_differr:      null,
+            i_sumerr:       null,
             last_delta:     null,
             last_upd:       null,
             last_upd_str:   null,
+            run:            this.chgRun.bind(this),
         };
 
         iobInit(this);
@@ -128,6 +165,9 @@ class Pid extends utils.Adapter {
         this.log.debug('onReady triggered');
 
         await this.setStateAsync('info.connection', { val: false, ack: true, q: 0x00 });
+
+        /* set global config */
+        this.useFolders = !(this.config.optNoFolders || false);
 
         // validate config
         // TODO if (! await this.validateConfig()) ...Pid;
@@ -158,14 +198,14 @@ class Pid extends utils.Adapter {
                 const useXp = this.config.ctrlMode === 1;
                 if (controller.ctrlUseStateCfg) {
                     _KpXp = useXp
-                        ? (await this.getStateAsync(`${ctrlIdTxt}.xp`))?.val
-                        : (await this.getStateAsync(`${ctrlIdTxt}.kp`))?.val;
-                    _tn = (await this.getStateAsync(`${ctrlIdTxt}.tn`))?.val;
-                    _max = (await this.getStateAsync(`${ctrlIdTxt}.max`))?.val;
-                    _min = (await this.getStateAsync(`${ctrlIdTxt}.min`))?.val;
-                    _tv = (await this.getStateAsync(`${ctrlIdTxt}.tv`))?.val;
-                    _off = (await this.getStateAsync(`${ctrlIdTxt}.off`))?.val;
-                    _sup = (await this.getStateAsync(`${ctrlIdTxt}.sup`))?.val;
+                        ? (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'xp')))?.val
+                        : (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'kp')))?.val;
+                    _tn = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'tn')))?.val;
+                    _max = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'max')))?.val;
+                    _min = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'min')))?.val;
+                    _tv = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'tv')))?.val;
+                    _off = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'off')))?.val;
+                    _sup = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'sup')))?.val;
                 } else {
                     _KpXp = controller.ctrlKpXp;
                     _tn = controller.ctrlTn;
@@ -203,9 +243,9 @@ class Pid extends utils.Adapter {
                 }
 
                 if (useXp) {
-                    await this.extendObjectAsync(`${ctrlIdTxt}.kp`, { common: { write: false } });
+                    await this.extendObjectAsync(this.getExtId(ctrlIdTxt, 'kp'), { common: { write: false } });
                 } else {
-                    await this.extendObjectAsync(`${ctrlIdTxt}.xp`, { common: { write: false } });
+                    await this.extendObjectAsync(this.getExtId(ctrlIdTxt, 'xp'), { common: { write: false } });
                 }
 
                 const pidCtrl = new PidCtrl(this, {
@@ -216,38 +256,65 @@ class Pid extends utils.Adapter {
                     max: max,
                     off: off,
                     sup: sup,
-                    dao: this.config.ctrlActDiff,
+                    dao: this.config.ctrlActDiff || false,
                     useXp: useXp,
+                    inv: controller.ctrlInvert || false,
                 });
 
                 this.controllers[controller.ctrlId] = {
                     ctrlIdTxt: ctrlIdTxt,
                     pidCtrl: pidCtrl,
                     cycle: ctrlCycle,
+                    man: false, // set below
+                    hold: false, // set below
                     running: false,
                     timer: null,
-                    manual: controller.man || false,
                 };
 
                 const params = pidCtrl.getParams();
                 this.log.info(`[${ctrlIdTxt}] controller initialized (${JSON.stringify(params)})`);
                 await this.updParamStates(controller.ctrlId);
 
-                await this.setStateAsync(`${ctrlIdTxt}.cycle`, { val: ctrlCycle, ack: true, q: 0x00 });
+                await this.setStateAsync(this.getExtId(ctrlIdTxt, 'cycle'), { val: ctrlCycle, ack: true, q: 0x00 });
+
+                const _act = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'act')))?.val;
+                const act = this.getNumParam(ctrlIdTxt, 'act', _act, 0);
+                this.controllers[controller.ctrlId].pidCtrl.setAct(act);
+                await this.setStateAsync(this.getExtId(ctrlIdTxt, 'act'), { val: act, ack: true, q: 0x00 });
+
+                const _set = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'set')))?.val;
+                const set = this.getNumParam(ctrlIdTxt, 'set', _set, 0);
+                this.controllers[controller.ctrlId].pidCtrl.setSet(set);
+                await this.setStateAsync(this.getExtId(ctrlIdTxt, 'set'), { val: set, ack: true, q: 0x00 });
 
                 this.controllers[controller.ctrlId].pidCtrl.reset();
-                await this.setStateAsync(`${ctrlIdTxt}.rst`, { val: false, ack: true, q: 0x00 });
+                await this.setStateAsync(this.getExtId(ctrlIdTxt, 'rst'), { val: false, ack: true, q: 0x00 });
 
-                const manual = await this.getStateAsync(`${ctrlIdTxt}.man`);
-                this.controllers[controller.ctrlId].manual = manual.val;
-                if (manual && manual.val) {
-                    const manInp = await this.getStateAsync(`${ctrlIdTxt}.man_inp`);
-                    await this.setStateAsync(`${ctrlIdTxt}.y`, { val: manInp?.val, ack: true, q: 0x00 });
+                const man = !!(await this.getStateAsync(this.getExtId(ctrlIdTxt, 'man'))?.val);
+                this.controllers[controller.ctrlId].man = man;
+                await this.setStateAsync(this.getExtId(ctrlIdTxt, 'man'), { val: man, ack: true, q: 0x00 });
+
+                const manInp = await this.getStateAsync(this.getExtId(ctrlIdTxt, 'man_inp'));
+                await this.setStateAsync(this.getExtId(ctrlIdTxt, 'man_inp'), { val: manInp?.val, ack: true, q: 0x00 });
+
+                if (man) {
+                    await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: manInp?.val, ack: true, q: 0x00 });
                     this.log.debug(`[${ctrlIdTxt}] manual value ${manInp?.val} used to set output`);
+                    this.controllers[controller.ctrlId].man = true;
+                } else {
+                    this.controllers[controller.ctrlId].man = false;
                 }
 
-                controller.running = controller.ctrlAutoStart;
+                const hold = !controller.ctrlAutoStart;
+                this.controllers[controller.ctrlId].hold = hold;
+                await this.setStateAsync(this.getExtId(ctrlIdTxt, 'hold'), { val: hold, ack: true, q: 0x00 });
+
+                const run = !(hold || man);
+                controller.running = run;
+                await this.setStateAsync(this.getExtId(ctrlIdTxt, 'run'), { val: run, ack: true, q: 0x00 });
+
                 if (controller.running && ctrlCycle) {
+                    await pidCtrl.restart(); // reset dt
                     await this.doUpdate(controller.ctrlId);
                     this.controllers[controller.ctrlId].timer = setInterval(
                         this.doUpdate.bind(this),
@@ -255,7 +322,6 @@ class Pid extends utils.Adapter {
                         controller.ctrlId,
                     );
                 }
-                await this.setStateAsync(`${ctrlIdTxt}.run`, { val: controller.running, ack: true, q: 0x00 });
                 instanceCnt++;
             }
         }
@@ -303,16 +369,29 @@ class Pid extends utils.Adapter {
     onStateChange(pId, pState) {
         this.log.debug(`[statechange] ${pId} changed: ${pState?.val} (ack = ${pState?.ack})`);
 
-        // ignore statechanges with ack flag set and unknown states
-        if (!pState || pState.ack) return;
-        if (!this.stateMap[pId]) return; // ignore unknown states
+        if (!pState) return;
 
-        // get ctrlId from map
-        const ctrlId = this.stateMap[pId].ctrlId;
-        const key = this.stateMap[pId].key;
+        const stateMap = this.stateMap[pId];
 
-        if (typeof this.STATECHG_CFG[key] !== 'function') return;
-        this.STATECHG_CFG[key](pId, ctrlId, pState.val);
+        if (stateMap) {
+            // well known own states
+            const ctrlId = stateMap.ctrlId;
+            const ctrlIdTxt = stateMap.ctrlIdTxt;
+            const key = stateMap.key;
+
+            // ignore write with ack=true
+            if (pState.ack) {
+                //if (STATES_CFG[key].warnAck)
+                if (pState.from !== `system.adapter.${this.name}.${this.instance}`)
+                    this.log.warn(`[${ctrlIdTxt}] state ${key} changed with ack=true; ignoring change`);
+                return;
+            }
+
+            if (typeof this.STATECHG_CFG[key] !== 'function') return;
+            this.STATECHG_CFG[key](pId, ctrlId, pState.val);
+        } else {
+            // foreign states
+        }
     }
 
     /**
@@ -339,6 +418,12 @@ class Pid extends utils.Adapter {
     async resetStateObjects() {
         this.log.debug(`resetStateobjects`);
 
+        if (this.useFolders) {
+            await this.delObjects('C-\\w+\\.\\w+', 'state');
+        } else {
+            await this.delObjects('C-\\w+\\.\\w+', 'folder');
+        }
+
         await iobStates.setStatesAsync('*', { ack: true, q: 0x02 });
     }
 
@@ -353,7 +438,7 @@ class Pid extends utils.Adapter {
 
         if (this.config.controllers) {
             for (const controller of this.config.controllers) {
-                if (!controller.ctrlAct) continue;
+                // if (!controller.ctrlAct) continue;
 
                 const ctrlIdTxt = `C-${controller.ctrlId}`.replace(this.FORBIDDEN_CHARS, '_');
                 await this.initObject({
@@ -363,20 +448,35 @@ class Pid extends utils.Adapter {
                         name: `controller ${controller.ctrlId}`,
                         statusStates: {
                             onlineId: `${this.name}.${this.instance}.${ctrlIdTxt}.run`,
-                            errorId: `${this.name}.${this.instance}.${ctrlIdTxt}.lim`,
                         },
                     },
                     native: {},
                 });
 
                 for (const key in STATES_CFG) {
-                    await this.initStateObject(`${ctrlIdTxt}.${key}`, STATES_CFG[key]);
+                    if (this.useFolders) {
+                        const folder = STATES_CFG[key].folder || '';
+                        if (folder) {
+                            await this.initObject({
+                                _id: `${ctrlIdTxt}.${folder}`,
+                                type: 'folder',
+                                common: {
+                                    name: '',
+                                },
+                                native: {},
+                            });
+                        }
+                    }
 
-                    const fullId = `${this.name}.${this.instance}.${ctrlIdTxt}.${key}`;
+                    const extId = this.getExtId(ctrlIdTxt, key);
+                    await this.initStateObject(extId, STATES_CFG[key]);
+
+                    const fullId = `${this.name}.${this.instance}.${extId}`;
                     this.stateMap[fullId] = {
                         key: key,
                         ctrlId: `${controller.ctrlId}`,
                         ctrlIdTxt: ctrlIdTxt,
+                        extId: extId,
                     };
                 }
             }
@@ -445,6 +545,55 @@ class Pid extends utils.Adapter {
     }
 
     /**
+     * getExtId - return real object id dependin g on useFolder and id values
+     *
+     * @param   {string}    pCtrlId     id prefix based on controller
+     * @param   {string}    pStateId    id part baded on state
+     *
+     * @return  extended Id (folder.id or simply id)
+     *
+     */
+    getExtId(pCtrlId, pStateId) {
+        this.log.debug(`getExtId (${pCtrlId}, ${pStateId})`);
+
+        let id = pStateId;
+
+        if (this.useFolders) {
+            const folder = STATES_CFG[pStateId].folder || '';
+            if (folder) id = `${folder}.${pStateId}`;
+        }
+        return `${pCtrlId}.${id}`;
+    }
+
+    /**
+     * delObjects - delete objects specified by pattern
+     *
+     * @param   {string}    pPattern    pattern to select object for deletion
+     * @param   {string}    pType       type oj obecjts to select for deletion
+     * @return  nothing
+     *
+     */
+    async delObjects(pPattern, pType) {
+        this.log.debug(`delObjects (${pPattern}, ${pType})`);
+
+        const re = new RegExp(`^${this.name}.${this.instance}.${pPattern}$`);
+        const objs = await this.getForeignObjectsAsync(`${this.name}.${this.instance}.*`, pType);
+        let logflag = false;
+
+        if (objs) {
+            for (const obj of Object.values(objs)) {
+                if (re.test(obj._id)) {
+                    if (!logflag) this.log.info(`removing old states ...`);
+                    logflag = true;
+
+                    this.log.debug(`removing object ${obj._id}...`);
+                    await this.delForeignObjectAsync(obj._id, { recursive: true });
+                }
+            }
+        }
+    }
+
+    /**
      * doUpdate - update controller and states
      *
      * @return  nothing
@@ -460,16 +609,17 @@ class Pid extends utils.Adapter {
         this.log.debug(`[${ctrlIdTxt}] update() - ${JSON.stringify(ret)}`);
         if (this.config.optLogCalc) this.log.info(`[${ctrlIdTxt}] update() - ${JSON.stringify(ret)}`);
 
-        if (!controller.manual) {
+        if (!controller.man) {
             const nowStr = new Date(ret.ts).toLocaleString();
-            await this.setStateAsync(`${ctrlIdTxt}.last_delta`, { val: ret.dt, ack: true, q: 0x00 });
-            await this.setStateAsync(`${ctrlIdTxt}.last_upd`, { val: ret.ts, ack: true, q: 0x00 });
-            await this.setStateAsync(`${ctrlIdTxt}.last_upd_str`, { val: nowStr, ack: true, q: 0x00 });
-            await this.setStateAsync(`${ctrlIdTxt}.y`, { val: ret.y, ack: true, q: 0x00 });
-            await this.setStateAsync(`${ctrlIdTxt}.diff`, { val: ret.diff, ack: true, q: 0x00 });
-            await this.setStateAsync(`${ctrlIdTxt}.lim`, { val: ret.lim, ack: true, q: 0x00 });
-            await this.setStateAsync(`${ctrlIdTxt}.i_differr`, { val: ret.differr, ack: true, q: 0x00 });
-            await this.setStateAsync(`${ctrlIdTxt}.i_sumerr`, { val: ret.sumerr, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_delta'), { val: ret.dt, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd'), { val: ret.ts, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd_str'), { val: nowStr, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: ret.y, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'diff'), { val: ret.diff, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'lim'), { val: ret.lim, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'supr'), { val: ret.supr, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_differr'), { val: ret.differr, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_sumerr'), { val: ret.sumerr, ack: true, q: 0x00 });
         }
     }
 
@@ -486,17 +636,18 @@ class Pid extends utils.Adapter {
         const params = controller.pidCtrl.getParams();
         const ctrlIdTxt = controller.ctrlIdTxt;
 
-        await this.setStateAsync(`${ctrlIdTxt}.kp`, { val: params.kp, ack: true, q: 0x00 });
-        await this.setStateAsync(`${ctrlIdTxt}.xp`, { val: params.xp, ack: true, q: 0x00 });
-        await this.setStateAsync(`${ctrlIdTxt}.useXp`, { val: params.useXp, ack: true, q: 0x00 });
-        await this.setStateAsync(`${ctrlIdTxt}.dao`, { val: params.dao, ack: true, q: 0x00 });
+        await this.setStateAsync(this.getExtId(ctrlIdTxt, 'kp'), { val: params.kp, ack: true, q: 0x00 });
+        await this.setStateAsync(this.getExtId(ctrlIdTxt, 'xp'), { val: params.xp, ack: true, q: 0x00 });
+        await this.setStateAsync(this.getExtId(ctrlIdTxt, 'useXp'), { val: params.useXp, ack: true, q: 0x00 });
+        await this.setStateAsync(this.getExtId(ctrlIdTxt, 'dao'), { val: params.dao, ack: true, q: 0x00 });
+        await this.setStateAsync(this.getExtId(ctrlIdTxt, 'inv'), { val: params.inv, ack: true, q: 0x00 });
 
-        await this.setStateAsync(`${ctrlIdTxt}.tn`, { val: params.tn, ack: true, q: 0x00 });
-        await this.setStateAsync(`${ctrlIdTxt}.tv`, { val: params.tv, ack: true, q: 0x00 });
-        await this.setStateAsync(`${ctrlIdTxt}.min`, { val: params.min, ack: true, q: 0x00 });
-        await this.setStateAsync(`${ctrlIdTxt}.max`, { val: params.max, ack: true, q: 0x00 });
-        await this.setStateAsync(`${ctrlIdTxt}.off`, { val: params.off, ack: true, q: 0x00 });
-        await this.setStateAsync(`${ctrlIdTxt}.sup`, { val: params.sup, ack: true, q: 0x00 });
+        await this.setStateAsync(this.getExtId(ctrlIdTxt, 'tn'), { val: params.tn, ack: true, q: 0x00 });
+        await this.setStateAsync(this.getExtId(ctrlIdTxt, 'tv'), { val: params.tv, ack: true, q: 0x00 });
+        await this.setStateAsync(this.getExtId(ctrlIdTxt, 'min'), { val: params.min, ack: true, q: 0x00 });
+        await this.setStateAsync(this.getExtId(ctrlIdTxt, 'max'), { val: params.max, ack: true, q: 0x00 });
+        await this.setStateAsync(this.getExtId(ctrlIdTxt, 'off'), { val: params.off, ack: true, q: 0x00 });
+        await this.setStateAsync(this.getExtId(ctrlIdTxt, 'sup'), { val: params.sup, ack: true, q: 0x00 });
     }
 
     /**
@@ -509,8 +660,8 @@ class Pid extends utils.Adapter {
         this.log.debug(`chgAct called (${pCtrlId}, ${pVal})`);
 
         const controller = this.controllers[pCtrlId];
-        const newval = await controller.pidCtrl.setAct(pVal);
-        if (controller.running && !controller.ctrlCycle && newval) await this.doUpdate(pCtrlId);
+        await controller.pidCtrl.setAct(pVal);
+        if (controller.running && !controller.cycle) await this.doUpdate(pCtrlId);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
 
@@ -647,44 +798,64 @@ class Pid extends utils.Adapter {
         if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
-    async chgManInp(pId, pCtrlId, pVal) {
-        this.log.debug(`chgManInp called (${pCtrlId}, ${pVal})`);
+    async chgHold(pId, pCtrlId, pVal) {
+        this.log.debug(`chgHold called (${pCtrlId}, ${pVal})`);
 
         const controller = this.controllers[pCtrlId];
-        if (controller.manual) {
-            const ts = Date.now();
-            const nowStr = new Date(ts).toLocaleString();
-            await this.setStateAsync(`${controller.ctrlIdTxt}.last_delta`, { val: null, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.last_upd`, { val: ts, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.last_upd_str`, { val: nowStr, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.y`, { val: pVal, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.diff`, { val: null, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.lim`, { val: null, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.i_differr`, { val: null, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.i_sumerr`, { val: null, ack: true, q: 0x00 });
-        }
+        controller.hold = pVal;
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
+
+        const run = !(controller.hold || controller.man);
+        //await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: run, ack: false, q: 0x00 }); //ack=false to trigger action
+        await this.chgRun(this.getExtId(controller.ctrlIdTxt, 'run'), pCtrlId, run);
     }
 
     async chgMan(pId, pCtrlId, pVal) {
         this.log.debug(`chgMan called (${pCtrlId}, ${pVal})`);
 
         const controller = this.controllers[pCtrlId];
-        controller.manual = pVal;
-        if (controller.manual) {
+        controller.man = pVal;
+        await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
+
+        if (controller.man) {
+            const ctrlIdTxt = controller.ctrlIdTxt;
             const ts = Date.now();
             const nowStr = new Date(ts).toLocaleString();
-            const manInp = await this.getStateAsync(`${controller.ctrlIdTxt}.man_inp`);
-            await this.setStateAsync(`${controller.ctrlIdTxt}.last_delta`, { val: null, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.last_upd`, { val: ts, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.last_upd_str`, { val: nowStr, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.y`, { val: manInp?.val, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.diff`, { val: null, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.lim`, { val: null, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.i_differr`, { val: null, ack: true, q: 0x00 });
-            await this.setStateAsync(`${controller.ctrlIdTxt}.i_sumerr`, { val: null, ack: true, q: 0x00 });
-        } else {
-            await this.doUpdate(pCtrlId);
+            const manInp = await this.getStateAsync(this.getExtId(ctrlIdTxt, 'man_inp'));
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_delta'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd'), { val: ts, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd_str'), { val: nowStr, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: manInp?.val, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'diff'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'lim'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'supr'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_differr'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_sumerr'), { val: null, ack: true, q: 0x00 });
+        }
+
+        const run = !(controller.hold || controller.man);
+        //await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: run, ack: false, q: 0x00 }); //ack=false to trigger action
+        await this.chgRun(this.getExtId(controller.ctrlIdTxt, 'run'), pCtrlId, run);
+    }
+
+    async chgManInp(pId, pCtrlId, pVal) {
+        this.log.debug(`chgManInp called (${pCtrlId}, ${pVal})`);
+
+        const controller = this.controllers[pCtrlId];
+        const ctrlIdTxt = controller.ctrlIdTxt;
+
+        if (controller.man) {
+            const ts = Date.now();
+            const nowStr = new Date(ts).toLocaleString();
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_delta'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd'), { val: ts, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd_str'), { val: nowStr, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: pVal, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'diff'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'lim'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'supr'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_differr'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_sumerr'), { val: null, ack: true, q: 0x00 });
         }
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
@@ -699,16 +870,30 @@ class Pid extends utils.Adapter {
     }
 
     async chgRun(pId, pCtrlId, pVal) {
-        this.log.debug(`chgRun called (${pCtrlId}, ${pVal})`);
-        await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
+        this.log.debug(`chgHold called (${pCtrlId}, ${pVal})`);
+
         const controller = this.controllers[pCtrlId];
+        const ctrlIdTxt = controller.ctrlIdTxt;
+        const isRunning = controller.running;
         controller.running = pVal;
+
         if (controller.running) {
-            this.clearInterval(controller.timer);
-            controller.timer = setInterval(this.doUpdate.bind(this), controller.cycle, pCtrlId);
+            if (!isRunning) {
+                // (re)start only if not already running
+                if (controller.timer) this.clearInterval(controller.timer);
+                if (this.config.optLogCalc) this.log.info(`[${ctrlIdTxt}] controller starting`);
+                await controller.pidCtrl.restart(); // reset dt
+                this.doUpdate(pCtrlId);
+                controller.timer = setInterval(this.doUpdate.bind(this), controller.cycle, pCtrlId);
+            }
         } else {
-            this.clearInterval(controller.timer);
+            if (controller.timer) {
+                this.clearInterval(controller.timer);
+                controller.timer = null;
+                if (this.config.optLogCalc) this.log.info(`[${ctrlIdTxt}] controller stopped`);
+            }
         }
+        await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
     }
 }
 

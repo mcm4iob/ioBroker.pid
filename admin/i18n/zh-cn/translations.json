@@ -2,6 +2,7 @@
     "descAct": "实际价值",
     "descDao": "仅将 act 用于导数",
     "descDiff": "实际误差值",
+    "descHold": "保持开关",
     "descKd": "比例微分部分",
     "descKi": "组成部分",
     "descKp": "比例部分",
@@ -21,6 +22,8 @@
     "hdrCtrl": "控制器配置",
     "hdrMode": "配置模式选择",
     "hlpOptLogCalc": "日志计算数据",
+    "hlpOptNoFolders": "不要使用文件夹来构建状态。",
+    "lblCancel": "取消",
     "lblConfig": "配置",
     "lblCtrlAct": "启用",
     "lblCtrlActDiffText": "忽略导数的设定值",
@@ -48,8 +51,11 @@
     "lblCtrlTn": "田纳西州",
     "lblCtrlTv": "电视",
     "lblCtrlUseStateCfg": "使用状态进行配置",
+    "lblOk": "好的",
     "lblOptLogCalc": "对数计算",
+    "lblOptNoFolders": "为状态禁用文件夹",
     "lblOptions": "选项",
+    "lblWarning": "警告",
     "ttCtrlAct": "启用控制器",
     "ttCtrlActDiffText": "忽略微分项计算的设定点值",
     "ttCtrlAutoStart": "在实例开始时启动控制器",
@@ -69,5 +75,7 @@
     "ttCtrlTn": "TN（积分）时间常数",
     "ttCtrlTv": "TV（微分）时间常数",
     "ttCtrlUseStateCfg": "激活使用状态动态配置控制器的可能性并禁用 gui 配置",
-    "ttOptLogCalc": "记录用于计算的外部和内部数据"
+    "ttOptLogCalc": "记录用于计算的外部和内部数据",
+    "ttOptNoFolders": "选项禁用使用文件夹的状态结构",
+    "txtNoFoldersChg": "更改此选项将删除当前为此实例定义的所有状态并创建一个新结构"
 }

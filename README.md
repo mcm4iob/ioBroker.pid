@@ -64,6 +64,20 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+-   (mcm1957) new: optionally use folder structure for states
+-   (mcm1957) changed: reset timer at restart after pausing calculation
+-   (mcm1957) changed: use values stored for ack and set when starting adapter
+-   (mcm1957) changed: log state changes with unexpected ack=true
+-   (mcm1957) changed: fix incorrect updates occuring whenever act is written
+-   (mcm1957) changed: fix invert flag not working at all
+-   (mcm1957) changed: remove error dispaly whenever adapter is hitting the limits
+-   (mcm1957) changed: fix q flag handling
+-   (mcm1957) changed: fix unexpected bahavior of sup paramater
+-   (mcm1957) changed: rename run state to hold
+
 ### 0.0.2-alpha.2 (2023-04-06)
 
 -   (mcm1957) changed: values of 'kp', 'xp' and 'sup' are now verified if set using states
