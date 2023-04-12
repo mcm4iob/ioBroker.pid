@@ -43,7 +43,7 @@
     "lblCtrlMode": "Konfigurationsmodus",
     "lblCtrlModeKp": "Kp / Tn / Tv",
     "lblCtrlModeText_0": "Kp / Tn / Tv-Modus ausgewählt. Der Controller berechnet den Ausgang anhand der Formel<br>y = kp * (diff + 1/tn*∫(diff)*dt + tv * (diff[t]-diff[t-1])/dt ) + off mit diff = ist[t]-ist[t-1]",
-    "lblCtrlModeText_1": "Kp / Tn / Tv-Modus ausgewählt. Der Controller berechnet die Ausgabe anhand der Formel<br>y = (max-min)/xp * (diff + 1/tn*∫(diff)*dt + tv * (diff[t]-diff[t-1])/dt ) + off mit diff = ist[t]-ist[t-1]",
+    "lblCtrlModeText_1": "Xp / Tn / Tv-Modus ausgewählt. Der Controller berechnet die Ausgabe anhand der Formel<br>y = (max-min)/xp * (diff + 1/tn*∫(diff)*dt + tv * (diff[t]-diff[t-1])/dt ) + off mit diff = ist[t]-ist[t-1]",
     "lblCtrlModeXp": "Xp / Tn / Tv",
     "lblCtrlOff": "Offset",
     "lblCtrlP": "P-Anteil",
