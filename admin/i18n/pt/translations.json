@@ -16,6 +16,7 @@
     "descRun": "ligar o interruptor",
     "descSet": "valor do ponto de ajuste",
     "descSup": "valor de histerese",
+    "descSupr": "suprimir área alcançada",
     "descUseXp": "use xp para termo proporcional",
     "descY": "valor de saída",
     "errValCtrlId": "ERRO: id do controlador é inválido; id deve ser único e conter apenas caracteres 'A-Z','a-z','0-9','-','_'",

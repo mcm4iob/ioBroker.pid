@@ -16,6 +16,7 @@
     "descRun": "run switch",
     "descSet": "setpoint value",
     "descSup": "hysteresis value",
+    "descSupr": "supress area reached",
     "descUseXp": "use xp for proportional term",
     "descY": "output value",
     "errValCtrlId": "ERROR: controller id is invalid; id must be unique and contain 'A-Z', 'a-z', '0-9', '-' and '_' characters only.",

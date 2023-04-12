@@ -16,6 +16,7 @@
     "descRun": "interruptor de ejecución",
     "descSet": "valor de consigna",
     "descSup": "valor de histéresis",
+    "descSupr": "suprimir área alcanzada",
     "descUseXp": "use xp para el término proporcional",
     "descY": "valor de salida",
     "errValCtrlId": "ERROR: la identificación del controlador no es válida; El ID debe ser único y contener solo caracteres 'A-Z', 'a-z', '0-9', '-', '_'",
