@@ -802,7 +802,8 @@ class Pid extends utils.Adapter {
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
 
         const run = !(controller.hold || controller.man);
-        await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: run, ack: false, q: 0x00 }); //ack=false to trigger action
+        //await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: run, ack: false, q: 0x00 }); //ack=false to trigger action
+        await this.chgRun(pId, pCtrlId, run);
     }
 
     async chgMan(pId, pCtrlId, pVal) {
@@ -811,9 +812,6 @@ class Pid extends utils.Adapter {
         const controller = this.controllers[pCtrlId];
         controller.man = pVal;
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
-
-        const run = !(controller.hold || controller.man);
-        await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: run, ack: false, q: 0x00 }); //ack=false to trigger action
 
         if (controller.man) {
             const ctrlIdTxt = controller.ctrlIdTxt;
@@ -829,6 +827,10 @@ class Pid extends utils.Adapter {
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_differr'), { val: null, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_sumerr'), { val: null, ack: true, q: 0x00 });
         }
+
+        const run = !(controller.hold || controller.man);
+        //await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: run, ack: false, q: 0x00 }); //ack=false to trigger action
+        await this.chgRun(pId, pCtrlId, run);
     }
 
     async chgManInp(pId, pCtrlId, pVal) {
