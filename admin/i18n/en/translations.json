@@ -43,7 +43,7 @@
     "lblCtrlMode": "Configurationmode",
     "lblCtrlModeKp": "Kp / Tn / Tv",
     "lblCtrlModeText_0": "Kp / Tn / Tv mode selected. Controller computes output using the formula<br>y = kp * (diff + 1/tn*∫(diff)*dt + tv * (diff[t]-diff[t-1])/dt) + off where diff = act[t]-act[t-1]",
-    "lblCtrlModeText_1": "Kp / Tn / Tv mode selected. Controller computes output using the formula<br>y = (max-min)/xp * (diff + 1/tn*∫(diff)*dt + tv * (diff[t]-diff[t-1])/dt ) + off where diff = act[t]-act[t-1]",
+    "lblCtrlModeText_1": "Xp / Tn / Tv mode selected. Controller computes output using the formula<br>y = (max-min)/xp * (diff + 1/tn*∫(diff)*dt + tv * (diff[t]-diff[t-1])/dt ) + off where diff = act[t]-act[t-1]",
     "lblCtrlModeXp": "Xp / Tn / Tv",
     "lblCtrlOff": "Offset",
     "lblCtrlP": "P Gain",
