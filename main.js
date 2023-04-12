@@ -803,7 +803,7 @@ class Pid extends utils.Adapter {
 
         const run = !(controller.hold || controller.man);
         //await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: run, ack: false, q: 0x00 }); //ack=false to trigger action
-        await this.chgRun(pId, pCtrlId, run);
+        await this.chgRun(this.getExtId(controller.ctrlIdTxt, 'run'), pCtrlId, run);
     }
 
     async chgMan(pId, pCtrlId, pVal) {
@@ -830,7 +830,7 @@ class Pid extends utils.Adapter {
 
         const run = !(controller.hold || controller.man);
         //await this.setStateAsync(this.getExtId(controller.ctrlIdTxt, 'run'), { val: run, ack: false, q: 0x00 }); //ack=false to trigger action
-        await this.chgRun(pId, pCtrlId, run);
+        await this.chgRun(this.getExtId(controller.ctrlIdTxt, 'run'), pCtrlId, run);
     }
 
     async chgManInp(pId, pCtrlId, pVal) {
