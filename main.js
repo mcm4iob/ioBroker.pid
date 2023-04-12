@@ -70,6 +70,8 @@ const STATES_CFG = {
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
     lim:          { folder: 'out',  type: 'boolean', name: 'controler limited',   desc: 'descLim',      role: 'indicator.alarm',
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
+    supr:         { folder: 'out',  type: 'boolean', name: 'supression active',   desc: 'descSupr',     role: 'indicator.alarm',
+                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
 
     /* utility */
     i_differr:    { folder: 'xtra', type: 'number',  name: 'int diff error',      desc: 'descIDiffErr', role: 'value',
@@ -138,6 +140,7 @@ class Pid extends utils.Adapter {
             y:          null,
             diff:       null,
             lim:        null,
+            supr:       null,
 
             /* utility */
             i_differr:      null,
@@ -614,6 +617,7 @@ class Pid extends utils.Adapter {
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: ret.y, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'diff'), { val: ret.diff, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'lim'), { val: ret.lim, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'supr'), { val: ret.supr, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_differr'), { val: ret.differr, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_sumerr'), { val: ret.sumerr, ack: true, q: 0x00 });
         }
@@ -824,6 +828,7 @@ class Pid extends utils.Adapter {
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: manInp?.val, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'diff'), { val: null, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'lim'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'supr'), { val: null, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_differr'), { val: null, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_sumerr'), { val: null, ack: true, q: 0x00 });
         }
@@ -848,6 +853,7 @@ class Pid extends utils.Adapter {
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: pVal, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'diff'), { val: null, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'lim'), { val: null, ack: true, q: 0x00 });
+            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'supr'), { val: null, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_differr'), { val: null, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'i_sumerr'), { val: null, ack: true, q: 0x00 });
         }
