@@ -64,8 +64,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.0.3-alpha.0 (2023-04-12)
 
 -   (mcm1957) new: optionally use folder structure for states
 -   (mcm1957) changed: reset timer at restart after pausing calculation
