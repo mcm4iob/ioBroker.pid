@@ -16,6 +16,7 @@
     "descRun": "运行开关",
     "descSet": "设定值",
     "descSup": "迟滞值",
+    "descSupr": "抑制区域到达",
     "descUseXp": "使用 xp 作为比例项",
     "descY": "产值",
     "errValCtrlId": "错误：控制器 ID 无效； id必须是唯一的并且只能包含'A-Z','a-z','0-9','-','_'字符",

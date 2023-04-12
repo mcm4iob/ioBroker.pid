@@ -16,6 +16,7 @@
     "descRun": "interrupteur de marche",
     "descSet": "valeur de consigne",
     "descSup": "valeur d'hystérésis",
+    "descSupr": "zone de suppression atteinte",
     "descUseXp": "utiliser xp pour le terme proportionnel",
     "descY": "valeur de sortie",
     "errValCtrlId": "ERREUR : l'identifiant du contrôleur n'est pas valide ; l'identifiant doit être unique et contenir uniquement les caractères 'A-Z', 'a-z', '0-9', '-', '_'",
