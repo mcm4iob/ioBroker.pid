@@ -73,9 +73,9 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 -   (mcm1957) changed: log state changes with unexpected ack=true
 -   (mcm1957) changed: fix incorrect updates occuring whenever act is written
 -   (mcm1957) changed: fix invert flag not working at all
--   (mcm1957) changed: remove error dispaly whenever adapter is hitting the limits
+-   (mcm1957) changed: remove error display whenever adapter is hitting the limits
 -   (mcm1957) changed: fix q flag handling
--   (mcm1957) changed: fix unexpected bahavior of sup paramater
+-   (mcm1957) changed: fix unexpected bahavior of sup parameter
 -   (mcm1957) changed: rename run state to hold
 
 ### 0.0.2-alpha.2 (2023-04-06)
