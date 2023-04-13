@@ -64,8 +64,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.0.3-alpha.1 (2023-04-13)
 
 -   (mcm1957) changed: Setting rst state does no longer trigger a recalculation
 -   (mcm1957) changed: State diff now displays error value even if sup is active
