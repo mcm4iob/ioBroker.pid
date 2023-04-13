@@ -661,8 +661,8 @@ class Pid extends utils.Adapter {
 
         const controller = this.controllers[pCtrlId];
         await controller.pidCtrl.setAct(pVal);
-        if (controller.running && !controller.cycle) await this.doUpdate(pCtrlId);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
+        if (controller.running && !controller.cycle) await this.doUpdate(pCtrlId);
     }
 
     async chgMin(pId, pCtrlId, pVal) {
@@ -709,8 +709,10 @@ class Pid extends utils.Adapter {
         this.log.debug(`chgOff called (${pCtrlId}, ${pVal})`);
         const controller = this.controllers[pCtrlId];
         await controller.pidCtrl.setOff(pVal);
-        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
+
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
+        await this.updParamStates(pCtrlId);
+        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
     async chgSet(pId, pCtrlId, pVal) {
@@ -718,8 +720,8 @@ class Pid extends utils.Adapter {
 
         const controller = this.controllers[pCtrlId];
         await controller.pidCtrl.setSet(pVal);
-        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
+        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
     async chgSup(pId, pCtrlId, pVal) {
@@ -866,7 +868,7 @@ class Pid extends utils.Adapter {
         await this.setStateAsync(pId, { val: false, ack: true, q: 0x00 });
         const controller = this.controllers[pCtrlId];
         if (pVal) await controller.pidCtrl.reset();
-        await this.doUpdate(pCtrlId);
+        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
     async chgRun(pId, pCtrlId, pVal) {
@@ -883,7 +885,7 @@ class Pid extends utils.Adapter {
                 if (controller.timer) this.clearInterval(controller.timer);
                 if (this.config.optLogCalc) this.log.info(`[${ctrlIdTxt}] controller starting`);
                 await controller.pidCtrl.restart(); // reset dt
-                this.doUpdate(pCtrlId);
+                await this.doUpdate(pCtrlId);
                 controller.timer = setInterval(this.doUpdate.bind(this), controller.cycle, pCtrlId);
             }
         } else {
