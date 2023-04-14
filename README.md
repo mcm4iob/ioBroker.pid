@@ -65,7 +65,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 
 ### **WORK IN PROGRESS**
 
--   (mcm1957) fixed: Calculation of sumerr in case of hitting max/min Limits has been corrected
+-   (mcm1957) solved: Calculation of sumerr in case of hitting max/min Limits has been corrected
 
 ### 0.0.5 (2023-04-14)
 
