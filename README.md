@@ -67,6 +67,8 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 
 ### **WORK IN PROGRESS**
 
+-   (mcm1957) changed: State last_upd_str has been removed
+-   (mcm1957) changed: Some roles have been updated
 -   (mcm1957) changed: Translations have been updated
 
 ### 0.0.3-alpha.1 (2023-04-13)
