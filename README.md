@@ -62,8 +62,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.0.6 (2023-04-14)
 
 -   (mcm1957) solved: Calculation of sumerr in case of hitting max/min Limits has been corrected
 

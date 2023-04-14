@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "pid",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "news": {
+            "0.0.6": {
+                "en": "solved: Calculation of sumerr in case of hitting max/min Limits has been corrected",
+                "de": "gelöst: Berechnung des Summierers beim Erreichen des max/min Limits wurde korrigiert",
+                "ru": "решено: Вычисление резюмера в случае попадания макс/мин Лимиты было исправлено",
+                "pt": "resolvido: Cálculo do sumerr em caso de atingir limites máximo/min foi corrigido",
+                "nl": "opgelost: Berekening van sumerr in geval van het raken van max/min Limits is gecorrigeerd",
+                "fr": "résolu: Calcul de la sommeur en cas d'atteinte des limites max/min a été corrigé",
+                "it": "risolto: Calcolo del sumerr in caso di colpire max/min Limiti è stato corretto",
+                "es": "resuelto: Cálculo de sumerr en caso de golpear máx/min Límites ha sido corregido",
+                "pl": "rozwiązać Kalkulacja sumera w przypadku trafienia max/min Limits została poprawiona",
+                "uk": "вирішити: Розрахунок сумарної суми при впаданні максимальних / хв",
+                "zh-cn": "解决: 在受打击的玉米/米限制的情况下计算总价已予以纠正。"
+            },
             "0.0.5": {
                 "en": "new: npm/npmjs support has been added",
                 "de": "neu: npm/npmjs Unterstützung wurde hinzugefügt",
