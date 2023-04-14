@@ -62,6 +62,11 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+-   (mcm1957) fixed: Calculation of sumerr in case of hitting max/min Limits has been corrected
+
 ### 0.0.5 (2023-04-14)
 
 -   (mcm1957) new: npm/npmjs support has been added
