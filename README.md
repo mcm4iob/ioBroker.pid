@@ -67,6 +67,10 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 
 ### **WORK IN PROGRESS**
 
+-   (mcm1957) changed: Translations have been updated
+
+### 0.0.3-alpha.1 (2023-04-13)
+
 -   (mcm1957) changed: Setting rst state does no longer trigger a recalculation
 -   (mcm1957) changed: State diff now displays error value even if sup is active
 -   (mcm1957) changed: Calculation of I-part has been changed, changing Tn effects future calculations only now

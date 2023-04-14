@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pid",
-    "version": "0.0.3-alpha.0",
+    "version": "0.0.3-alpha.1",
     "news": {
+      "0.0.3-alpha.1": {
+        "en": "changed: Setting rst state does no longer trigger a recalculation\nchanged: State diff now displays error value even if sup is active\nchanged: Calculation of I-part has been changed, changing Tn effects future calculations only now",
+        "de": "geändert: Einstellung rst Zustand löst keine Neuberechnung mehr aus\ngeändert: State diff zeigt nun den Fehlerwert, auch wenn sup aktiv ist\ngeändert: Die Berechnung des I-Teils wurde geändert; Änderungen a, Paramater Tn wirken nur mehr auf zuküftige Anteile",
+        "ru": "изменено: Установка состояния RST больше не вызывает пересчета\nизменено: State diff теперь отображает значение ошибки, даже если sup активен\nизменено: Расчет I-part был изменен, изменен Тн эффекты будущие расчеты только сейчас",
+        "pt": "mudou: Definir estado rst não desencadeia mais um recalculação\nmudou: Estado diff agora exibe valor de erro mesmo se sup estiver ativo\nmudou: Cálculo de I-part foi alterado, mudando Tn efeitos futuros cálculos só agora",
+        "nl": "_ Vertaling:\n_ Staatsdiff vertoont nu de waarde van de fout, zelfs als sup actief is\n_ De berekening van I-part is veranderd. Vertaling:",
+        "fr": "changé: Réglage de l'état de rst ne déclenche plus un nouveau calcul\nchangé: State diff affiche désormais la valeur d'erreur même si sup est actif\nchangé: Le calcul de la partie I a été modifié, changeant Tn effets futurs calculs seulement maintenant",
+        "it": "cambiato: Impostare lo stato rst non attiva più un ricalcolo\ncambiato: State diff ora visualizza il valore di errore anche se il sup è attivo\ncambiato: Il calcolo della I-part è stato cambiato, cambiando Tn effetti calcoli futuri solo ora",
+        "es": "cambiado: Configurar el estado rst ya no activa una recalculación\ncambiado: State diff ahora muestra valor de error incluso si sup es activo\ncambiado: Cálculo de la parte I ha sido cambiado, cambiando Efectos Tn cálculos futuros sólo ahora",
+        "pl": "zmieniono: Stan spustowy nie jest już w stanie wywołać rekultywację\nzmieniono: Stan dyfunduje wartość błędu, nawet jeśli sup jest aktywny\nzmieniono: Zmieniono kalendarz I części, zmieniając zmianę. Efektywność przyszłych obliczeń tylko obecnie",
+        "uk": "змінено: Налаштування рст-стану більше не викликає перерахунок\nзмінено: Стан дифу тепер відображає значення помилки навіть якщо sup активний\nзмінено: Зміна розрахункових показників, зміни Цільові ефекти майбутніх обчислень тільки зараз",
+        "zh-cn": "修改: 设置国不再引起重新定性\n修改: 国家现在的错误表现值甚至是积极的\n修改: 对第一部分的计算已经改变,变化 未来效应计算现在仅为现值"
+      },
       "0.0.3-alpha.0": {
         "en": "new: optionally use folder structure for states\nchanged: reset timer at restart after pausing calculation\nchanged: use values stored for act and set when starting adapter\nchanged: log state changes with unexpected ack=true\nchanged: fix incorrect updates occuring whenever act is written\nchanged: fix invert flag not working at all\nchanged: remove error display whenever adapter is hitting the limits\nchanged: fix q flag handling\nchanged: fix unexpected bahavior of sup parameter\nchanged: rename run state to hold",
         "de": "neu: Eine optionale Ordnerstruktur für Zustände wurde implementiert.\ngeändert: Timer wird bei Neustart nach Pausierung nun resetted.\ngeändert: Werte für act und set werden nun gespeichert und beim Starten des Adapters verwendet\ngeändert: Zustandsänderungen mit ack=true werden gelogged\ngeändert: Falsche Updates beim Schreiben des act Zustands werden nun verhindert\ngeändert: Funktionsfehler des Invert-Flags wurden behoben\ngeändert: Die Fehleranzeige beim Erreichen der Limits wurde entfernt.\ngeändert: q-Flag-Handling wurde korrigiert\ngeändert: Unerwartetes Verhalten des sup-Parameters wurde behoben\ngeändert: Der Eingabe-Zustand 'run' wurde auf 'hold' umbenannt.",
