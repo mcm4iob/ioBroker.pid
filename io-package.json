@@ -1,175 +1,182 @@
 {
-  "common": {
-    "name": "pid",
-    "version": "0.0.4",
-    "news": {
-      "0.0.4": {
-        "en": "changed: State last_upd_str has been removed\nchanged: Some roles have been updated\nchanged: Translations have been updated",
-        "de": "geändert: State last_upd_str wurde entfernt\ngeändert: Einige Rollen wurden aktualisiert\ngeändert: Übersetzungen wurden aktualisiert",
-        "ru": "изменено: Штат last_upd_str был удален\nизменено: Некоторые роли были обновлены\nизменено: Переводы были обновлены",
-        "pt": "mudou: Estado last_upd_str foi removido\nmudou: Alguns papéis foram atualizados\nmudou: As traduções foram atualizadas",
-        "nl": "_ De laatste staat is verwijderd\n_ Sommige rollen zijn geüpload\n_ Vertaling:",
-        "fr": "changé: State last_upd_str a été supprimé\nchangé: Certains rôles ont été mis à jour\nchangé: Les traductions ont été mises à jour",
-        "it": "cambiato: State last_upd_str è stato rimosso\ncambiato: Alcuni ruoli sono stati aggiornati\ncambiato: Le traduzioni sono state aggiornate",
-        "es": "cambiado: State last_upd_str has been removed\ncambiado: Se han actualizado algunas funciones\ncambiado: Se han actualizado las traducciones",
-        "pl": "zmieniono: State ostatni_upd_str zostało usunięte\nzmieniono: Niektóre role zostały zaktualizowane\nzmieniono: Tłumaczenia zostały zaktualizowane",
-        "uk": "змінено: Видалено стан останнього_upd_str\nзмінено: Деякі ролі були оновлено\nзмінено: Оновлено переклади",
-        "zh-cn": "修改: 去年国家被撤职。\n修改: 已经更新了一些作用。\n修改: 翻译工作已经更新。"
-      },
-      "0.0.3-alpha.1": {
-        "en": "changed: Setting rst state does no longer trigger a recalculation\nchanged: State diff now displays error value even if sup is active\nchanged: Calculation of I-part has been changed, changing Tn effects future calculations only now",
-        "de": "geändert: Einstellung rst Zustand löst keine Neuberechnung mehr aus\ngeändert: State diff zeigt nun den Fehlerwert, auch wenn sup aktiv ist\ngeändert: Die Berechnung des I-Teils wurde geändert; Änderungen a, Paramater Tn wirken nur mehr auf zuküftige Anteile",
-        "ru": "изменено: Установка состояния RST больше не вызывает пересчета\nизменено: State diff теперь отображает значение ошибки, даже если sup активен\nизменено: Расчет I-part был изменен, изменен Тн эффекты будущие расчеты только сейчас",
-        "pt": "mudou: Definir estado rst não desencadeia mais um recalculação\nmudou: Estado diff agora exibe valor de erro mesmo se sup estiver ativo\nmudou: Cálculo de I-part foi alterado, mudando Tn efeitos futuros cálculos só agora",
-        "nl": "_ Vertaling:\n_ Staatsdiff vertoont nu de waarde van de fout, zelfs als sup actief is\n_ De berekening van I-part is veranderd. Vertaling:",
-        "fr": "changé: Réglage de l'état de rst ne déclenche plus un nouveau calcul\nchangé: State diff affiche désormais la valeur d'erreur même si sup est actif\nchangé: Le calcul de la partie I a été modifié, changeant Tn effets futurs calculs seulement maintenant",
-        "it": "cambiato: Impostare lo stato rst non attiva più un ricalcolo\ncambiato: State diff ora visualizza il valore di errore anche se il sup è attivo\ncambiato: Il calcolo della I-part è stato cambiato, cambiando Tn effetti calcoli futuri solo ora",
-        "es": "cambiado: Configurar el estado rst ya no activa una recalculación\ncambiado: State diff ahora muestra valor de error incluso si sup es activo\ncambiado: Cálculo de la parte I ha sido cambiado, cambiando Efectos Tn cálculos futuros sólo ahora",
-        "pl": "zmieniono: Stan spustowy nie jest już w stanie wywołać rekultywację\nzmieniono: Stan dyfunduje wartość błędu, nawet jeśli sup jest aktywny\nzmieniono: Zmieniono kalendarz I części, zmieniając zmianę. Efektywność przyszłych obliczeń tylko obecnie",
-        "uk": "змінено: Налаштування рст-стану більше не викликає перерахунок\nзмінено: Стан дифу тепер відображає значення помилки навіть якщо sup активний\nзмінено: Зміна розрахункових показників, зміни Цільові ефекти майбутніх обчислень тільки зараз",
-        "zh-cn": "修改: 设置国不再引起重新定性\n修改: 国家现在的错误表现值甚至是积极的\n修改: 对第一部分的计算已经改变,变化 未来效应计算现在仅为现值"
-      },
-      "0.0.3-alpha.0": {
-        "en": "new: optionally use folder structure for states\nchanged: reset timer at restart after pausing calculation\nchanged: use values stored for act and set when starting adapter\nchanged: log state changes with unexpected ack=true\nchanged: fix incorrect updates occuring whenever act is written\nchanged: fix invert flag not working at all\nchanged: remove error display whenever adapter is hitting the limits\nchanged: fix q flag handling\nchanged: fix unexpected bahavior of sup parameter\nchanged: rename run state to hold",
-        "de": "neu: Eine optionale Ordnerstruktur für Zustände wurde implementiert.\ngeändert: Timer wird bei Neustart nach Pausierung nun resetted.\ngeändert: Werte für act und set werden nun gespeichert und beim Starten des Adapters verwendet\ngeändert: Zustandsänderungen mit ack=true werden gelogged\ngeändert: Falsche Updates beim Schreiben des act Zustands werden nun verhindert\ngeändert: Funktionsfehler des Invert-Flags wurden behoben\ngeändert: Die Fehleranzeige beim Erreichen der Limits wurde entfernt.\ngeändert: q-Flag-Handling wurde korrigiert\ngeändert: Unerwartetes Verhalten des sup-Parameters wurde behoben\ngeändert: Der Eingabe-Zustand 'run' wurde auf 'hold' umbenannt.",
-        "ru": "новое: опционально используйте структуру папки для штатов\nизменено: переустановить таймер на перезагрузке после паузирования расчета\nизменено: используйте значения, хранящиеся для ack и установите при запуске адаптера\nизменено: состояние лога меняется с неожиданным ack=true\nизменено: исправить неправильные обновления, происходящие когда акт написан\nизменено: исправить инверт флаг не работает на всех\nизменен: удалить дисплей ошибки, когда адаптер ударит границы\nизменено: исправить q флаг обработки\nизменено: исправить неожиданный баавиор параметра sup\nизмененный: переименование запустить состояние держать",
-        "pt": "novo: opcionalmente use a estrutura da pasta para estados\nalterado: redefinir o temporizador no reiniciar após pausa cálculo\nalterado: use valores armazenados para ack e definido ao iniciar o adaptador\nalterado: log state changes with inesperada ack=true\nalterado: corrigir atualizações incorretas que ocorrem sempre que o ato é escrito\nalterado: corrigir a bandeira invert não funciona em tudo\nalterado: remover a exibição de erro sempre que o adaptador estiver batendo nos limites\nalterado: corrigir o manuseio da bandeira q\nalterado: corrigir o comportamento inesperado do parâmetro sup\nalterado: renomear estado de execução para segurar",
-        "nl": "vertaling:\nverandering: reset timer at restart na het berekenen\nverandering: gebruik waarden opgeslagen voor ack en set als je aanmeldt\nvertaling:\nverandering: reparatie updates komen wanneer er iets geschreven wordt\nverandering:\nverwijder de fout wanneer adapter de grenzen raakt\nverandering:\nvertaling:\nvertaling:",
-        "fr": "nouveau: optionnellement utiliser la structure du dossier pour les états\nchangé: réinitialiser le minuteur au redémarrage après le calcul de pausage\nchangé: utiliser les valeurs stockées pour ack et set lors du démarrage de l'adaptateur\nchangement: changement d'état de journal avec ack=true inattendu\nchangement: corriger les mises à jour incorrectes survenant chaque fois que l'acte est écrit\nchangé: fixer le drapeau invert ne fonctionne pas du tout\nchangement: supprimer l'affichage d'erreur lorsque l'adaptateur frappe les limites\nchangé: la manipulation du drapeau q\nchangé: fixer bahavior inattendu du paramètre sup\nchangé: renommer l'état de course pour tenir",
-        "it": "nuovo: utilizza facoltativamente la struttura della cartella per gli stati\ncambiato: reset timer al riavvio dopo il calcolo pausing\nmodificato: utilizzare i valori memorizzati per ack e impostare quando si avvia l'adattatore\ncambiato: log cambi di stato con ack=true inaspettato\ncambiato: correggere gli aggiornamenti errati che si verificano quando l'atto è scritto\ncambiato: fissare la bandiera invertito non funziona affatto\nmodificato: rimuovere il display di errore ogni volta che l'adattatore colpisce i limiti\ncambiato: fix q flag handling\ncambiato: fissare bahavior inaspettato del parametro sup\ncambiato: rinominare lo stato di esecuzione per tenere",
-        "es": "nuevo: uso opcional de la estructura de carpetas para los estados\ncambiado: reiniciar el temporizador después de pausing cálculo\ncambiado: utilizar los valores almacenados para ack y establecer al iniciar el adaptador\ncambiado: cambios de estado de registro con imprevisto\ncambiado: corregir las actualizaciones incorrectas ocurren cuando el acto está escrito\ncambiado: fijar la bandera invert no funciona en absoluto\ncambiado: eliminar la pantalla de error cuando el adaptador está golpeando los límites\ncambiado: fijar el manejo de bandera q\ncambiado: fijar el bahavior inesperado del parámetro sup\ncambiado: renombre estado de ejecución para mantener",
-        "pl": "nowy: opcjonalnie struktura folderowa dla państw członkowskich\nzmienione: reset timer na restart po obliczeniu paus\nzmienione: wartości przechowywane w akucie i ustawione podczas startu adapter\nzmienione: stany logiczne zmieniają się z nieoczekiwanie nieoczekiwanie nieoczekiwane\nzmieniono: naprawa nieprawidłowa uaktualnienia zachodzi, gdy pisana jest aktualizacja\nzmieniono flagę instrukcyjną, nie działającą w ogóle\nzmienione: wyświetlanie błędów, gdy adapter trafia do limitów\nzmieniono: naprawa flagi\nzmieniła się: naprawa nieoczekiwana bahawior of sup parametr\nzmienione: rename run state",
-        "uk": "нова: необов'язково використовуйте структуру папки для станів\nзмінено: таймер скидання в решті після підрахунку паузи\nзмінено: використання значень, що зберігаються при стійці та встановленні при запуску адаптера\nзмінено: зміни стану журналу з несподіваним ack=true\nзмінено: виправлено неправильні оновлення, що відбуваються, коли будь-який акт письмово\nзмінено: виправити зворотний прапор не працює на всіх\nзмінено: видалити відображення помилок, коли будь-який перехідник потрапив до лімітів\nзмінено: зафіксувати параметр q\nзмінено: виправлено несподіваний багавр параметра sup\nзмінено: стан перейменування",
-        "zh-cn": "新的:为州采用灵活方式\n修改:重新开始时间计算后重新开始时间\n修改:使用储存的包装价值,并在开始适应时确定\n变化:逻辑状况变化和意外包装\n修改:在书面行为时发生错误的更新\n变化:避免所有未工作旗\n变化:一旦适应者受到打击,消除错误的表现\n变化:九q 旗帜处理\n变化:离去的参数\n修改:重新命名的国家"
-      },
-      "0.0.2-alpha.2": {
-        "en": "changed: values of 'kp', 'xp' and 'sup' are now verified if set using states\nchanged: values of 'min' and 'max' are now verified if set using states\nchanged: activation of 'man' updates output 'y' with current value of 'man_inp' now\nchanged: 'min' value is now conserved when restarting the instance\nchanged: conversion between and xp has been fixed at several places\nchanged: 'kp' or 'xp' are writepotected now depending on 'useXp' parameter",
-        "de": "geändert: die Werte von kp, xp und sup werden nun auch überprüft falls diese mittels Zuständen verändert werden\ngeändert: Werte von min und max werden nun auch überprüftfalls diese mittels Zuständen verändert werden\ngeändert: Aktivierung von man atzualisiert nun y mit aktuellem Wert von man_inp\ngeändert: min Wert wird nun beim Neustart der Instanz nicht neu initialisiert\ngeändert: Umrechnung zwischen kp und xp wurde an mehreren Stellen korrigiert\ngeändert: kp oder xp werden jetzt gemäß Modeauswahl schreibgeschützt",
-        "ru": "изменено: значения kp, xp и sup теперь проверены, если установить использование штатов\nизменено: значения мин и макс теперь проверены если установите используя государства\nизменено: активация мужского обновления вывода y с текущей стоимостью man_inp сейчас\nизменено: min value is now conserved при перезагрузке экземпляра\nизменено: преобразование между и xp было зафиксировано в нескольких местах\nизменено: kp или xp писатьпотеку теперь в зависимости от использования Xp параметр",
-        "pt": "alterado: valores de kp, xp e sup são agora verificados se definidos usando estados\nalterado: valores de min e max são agora verificados se definidos usando estados\nalterado: ativação de atualizações do homem saída y com valor atual de man_inp agora\nmudou: o valor mínimo agora é conservado quando reiniciar a instância\nmudou: a conversão entre e xp foi fixada em vários lugares\nalterado: kp ou xp são writepotected agora dependendo do uso Parâmetro Xp",
-        "nl": "verandering: waarden van kp, xp en sup zijn nu geverifieerd als ze staten gebruiken\nverandering: waarden van min en max zijn nu geverifieerd als ze staten gebruiken\nverandering: activatie van man updates met huidige waarde van de mensheid\nverandering:\nverandering: conversie tussen en xp is gerepareerd op verschillende plaatsen\nklap of XP worden nu geschreven, afhankelijk van gebruik Xp parameter",
-        "fr": "change: les valeurs de kp, xp et sup sont maintenant vérifiées si l'on utilise des états\nchange: les valeurs de min et max sont maintenant vérifiées si l'on utilise des états\nchangé: activation de l'homme mise à jour la sortie y avec la valeur courante de man_inp maintenant\nchangé: la valeur min est maintenant conservée lors du redémarrage de l'instance\nchangé: la conversion entre et xp a été fixée à plusieurs endroits\nchangé: kp ou xp sont répertoriés maintenant en fonction de l'utilisation Xp",
-        "it": "cambiato: i valori di kp, xp e sup sono ora verificati se impostati utilizzando stati\ncambiato: i valori di min e max sono ora verificati se impostati utilizzando stati\ncambiato: attivazione degli aggiornamenti dell'uomo output y con il valore attuale di man_inp ora\ncambiato: il valore minimo è ora conservato quando si riavvia l'istanza\ncambiato: la conversione tra e xp è stata fissata in diversi luoghi\ncambiato: kp o xp sono scritturati ora a seconda dell'uso Parametro Xp",
-        "es": "cambiado: los valores de kp, xp y sup ahora se verifican si se establece utilizando estados\ncambiado: los valores de min y max ahora se verifican si se establece utilizando estados\ncambiado: activación de las actualizaciones del hombre salida y con el valor actual de man_inp ahora\ncambiado: el valor min se conserva ahora al reiniciar la instancia\ncambiado: la conversión entre xp se ha fijado en varios lugares\ncambiado: kp o xp se escriben ahora dependiendo del uso Parámetro Xp",
-        "pl": "zmienione: wartości kp, xp i sup są zweryfikowane, jeśli ustawiane są przy użyciu stanów\nzmiany: wartości min i max są zweryfikowane, jeśli zostaną ustalone przy użyciu stanów\nzmieniło się: aktywacja aktualizacji man_inp wyjściowych y {\\displaystyle y} z bieżącą wartością man_inp\nzmieniona jest zmiana: wartość min jest obecnie zachowana, gdy odwraca się instancja\nzmieniono zmianę: zmiana pomiędzy xp i xp została ustalona w kilku miejscach\nzmienione: kp lub xp są obecnie używane w zależności od użycia. parametr Xp",
-        "uk": "змінено: значення kp, xp і sup тепер перевірено, якщо встановити за допомогою штатів\nзмінено: значення мінімуму і макс тепер перевірено, якщо встановити за допомогою штатів\nзмінено: активація чоловічих оновлень виведення y з поточною вартістю man_inp тепер\nзмінено: після перезавантаження екземпляра\nзмінено: перетворення між і кс було виправлено на декількох місцях\nзмінено: kp або xp тепер в залежності від використання Xp параметр",
-        "zh-cn": "修改:如果使用国建立,那么现在就核实 kp、xp和配件的价值。\n修改:如果使用各州,那么,那么对微型和玉米的数值现在得到核实。\n修改:开始更新产出和目前男子价值的男子。\n修改:在重新启动这一例子时,价值现在得到保留。\n变化:若干地方的转换和变量已经确定。\n变化:现在根据使用情况写成的粉碎 参数"
-      },
-      "0.0.2-alpha.1": {
-        "en": "changed: some small fixes",
-        "de": "geändert: einige kleine Fixes",
-        "ru": "изменено: некоторые небольшие исправления",
-        "pt": "alterado: algumas pequenas correções",
-        "nl": "verandering:",
-        "fr": "changé: quelques petites corrections",
-        "it": "cambiato: alcune piccole correzioni",
-        "es": "cambiado: algunos pequeños arreglos",
-        "pl": "zmienione: niektóre drobne zmiany",
-        "uk": "змінено: деякі маленькі кріплення",
-        "zh-cn": "变化:一些小型装置"
-      },
-      "0.0.2-alpha.0": {
-        "en": "THIS IS AN ALPHA RELEASE ONLY\nmajor changes after discussion in forum\nnew initial release",
-        "de": "ALPHA VERSION - nur für Testzwecke\nNeuveröffentlichung nach Diskussionen im Forum",
-        "ru": "ЭТО ТОЛЬКО АЛФА-РЕЛИЗ\nосновные изменения после обсуждения на форуме\nновый начальный выпуск",
-        "pt": "ISTO É UM ALPHA RELATÓRIO SOMENTE\ngrandes mudanças após a discussão no fórum\nnova versão inicial",
-        "nl": "DIT IS EEN ALPHA-RELEASE\ngrote veranderingen na discussie in forum\nnieuwe start",
-        "fr": "C'EST UNE SEULE FOIS\nchangements majeurs après discussion sur le forum\nnouvelle version initiale",
-        "it": "QUESTO È UN ALPHA RELEASE SOLO\ncambiamenti importanti dopo la discussione nel forum\nnuovo rilascio iniziale",
-        "es": "ESTO ES UNA RELACIÓN ALPHA SOLAMENTE\ncambios importantes después del debate en el foro\nnueva versión inicial",
-        "pl": "ALPHA RELEASE ONLY (ANG.)\ngłówne zmiany po dyskusji w forum\nnowe wydanie",
-        "uk": "ЦЕ ЗНАЧЕННЯ ТОЧОГО ПРАВА\nосновні зміни після обговорення\nновий початковий реліз",
-        "zh-cn": "THIS AN ALPHARELEASE ONLY\n论坛讨论之后的重大变化\n新的初步释放"
-      }
+    "common": {
+        "name": "pid",
+        "version": "0.0.5",
+        "news": {
+            "0.0.5": {
+                "en": "new: npm/npmjs support has been added",
+                "de": "neu: npm/npmjs Unterstützung wurde hinzugefügt",
+                "ru": "новый: поддержка npm/npmjs была добавлена",
+                "pt": "novo: suporte npm/npmjs foi adicionado",
+                "nl": "npmj's steun is toegevoegd",
+                "fr": "nouveau: le support npm/npmjs a été ajouté",
+                "it": "nuovo: è stato aggiunto il supporto npm/npmjs",
+                "es": "nuevo: soporte npm/npmjs se ha añadido",
+                "pl": "wsparcie na przykład/npmj",
+                "uk": "додано підтримку npm/npmjs",
+                "zh-cn": "新的:增拨了ppm/npmj的支助。"
+            },
+            "0.0.4": {
+                "en": "changed: State last_upd_str has been removed\nchanged: Some roles have been updated\nchanged: Translations have been updated",
+                "de": "geändert: State last_upd_str wurde entfernt\ngeändert: Einige Rollen wurden aktualisiert\ngeändert: Übersetzungen wurden aktualisiert",
+                "ru": "изменено: Штат last_upd_str был удален\nизменено: Некоторые роли были обновлены\nизменено: Переводы были обновлены",
+                "pt": "mudou: Estado last_upd_str foi removido\nmudou: Alguns papéis foram atualizados\nmudou: As traduções foram atualizadas",
+                "nl": "_ De laatste staat is verwijderd\n_ Sommige rollen zijn geüpload\n_ Vertaling:",
+                "fr": "changé: State last_upd_str a été supprimé\nchangé: Certains rôles ont été mis à jour\nchangé: Les traductions ont été mises à jour",
+                "it": "cambiato: State last_upd_str è stato rimosso\ncambiato: Alcuni ruoli sono stati aggiornati\ncambiato: Le traduzioni sono state aggiornate",
+                "es": "cambiado: State last_upd_str has been removed\ncambiado: Se han actualizado algunas funciones\ncambiado: Se han actualizado las traducciones",
+                "pl": "zmieniono: State ostatni_upd_str zostało usunięte\nzmieniono: Niektóre role zostały zaktualizowane\nzmieniono: Tłumaczenia zostały zaktualizowane",
+                "uk": "змінено: Видалено стан останнього_upd_str\nзмінено: Деякі ролі були оновлено\nзмінено: Оновлено переклади",
+                "zh-cn": "修改: 去年国家被撤职。\n修改: 已经更新了一些作用。\n修改: 翻译工作已经更新。"
+            },
+            "0.0.3-alpha.1": {
+                "en": "changed: Setting rst state does no longer trigger a recalculation\nchanged: State diff now displays error value even if sup is active\nchanged: Calculation of I-part has been changed, changing Tn effects future calculations only now",
+                "de": "geändert: Einstellung rst Zustand löst keine Neuberechnung mehr aus\ngeändert: State diff zeigt nun den Fehlerwert, auch wenn sup aktiv ist\ngeändert: Die Berechnung des I-Teils wurde geändert; Änderungen a, Paramater Tn wirken nur mehr auf zuküftige Anteile",
+                "ru": "изменено: Установка состояния RST больше не вызывает пересчета\nизменено: State diff теперь отображает значение ошибки, даже если sup активен\nизменено: Расчет I-part был изменен, изменен Тн эффекты будущие расчеты только сейчас",
+                "pt": "mudou: Definir estado rst não desencadeia mais um recalculação\nmudou: Estado diff agora exibe valor de erro mesmo se sup estiver ativo\nmudou: Cálculo de I-part foi alterado, mudando Tn efeitos futuros cálculos só agora",
+                "nl": "_ Vertaling:\n_ Staatsdiff vertoont nu de waarde van de fout, zelfs als sup actief is\n_ De berekening van I-part is veranderd. Vertaling:",
+                "fr": "changé: Réglage de l'état de rst ne déclenche plus un nouveau calcul\nchangé: State diff affiche désormais la valeur d'erreur même si sup est actif\nchangé: Le calcul de la partie I a été modifié, changeant Tn effets futurs calculs seulement maintenant",
+                "it": "cambiato: Impostare lo stato rst non attiva più un ricalcolo\ncambiato: State diff ora visualizza il valore di errore anche se il sup è attivo\ncambiato: Il calcolo della I-part è stato cambiato, cambiando Tn effetti calcoli futuri solo ora",
+                "es": "cambiado: Configurar el estado rst ya no activa una recalculación\ncambiado: State diff ahora muestra valor de error incluso si sup es activo\ncambiado: Cálculo de la parte I ha sido cambiado, cambiando Efectos Tn cálculos futuros sólo ahora",
+                "pl": "zmieniono: Stan spustowy nie jest już w stanie wywołać rekultywację\nzmieniono: Stan dyfunduje wartość błędu, nawet jeśli sup jest aktywny\nzmieniono: Zmieniono kalendarz I części, zmieniając zmianę. Efektywność przyszłych obliczeń tylko obecnie",
+                "uk": "змінено: Налаштування рст-стану більше не викликає перерахунок\nзмінено: Стан дифу тепер відображає значення помилки навіть якщо sup активний\nзмінено: Зміна розрахункових показників, зміни Цільові ефекти майбутніх обчислень тільки зараз",
+                "zh-cn": "修改: 设置国不再引起重新定性\n修改: 国家现在的错误表现值甚至是积极的\n修改: 对第一部分的计算已经改变,变化 未来效应计算现在仅为现值"
+            },
+            "0.0.3-alpha.0": {
+                "en": "new: optionally use folder structure for states\nchanged: reset timer at restart after pausing calculation\nchanged: use values stored for act and set when starting adapter\nchanged: log state changes with unexpected ack=true\nchanged: fix incorrect updates occuring whenever act is written\nchanged: fix invert flag not working at all\nchanged: remove error display whenever adapter is hitting the limits\nchanged: fix q flag handling\nchanged: fix unexpected bahavior of sup parameter\nchanged: rename run state to hold",
+                "de": "neu: Eine optionale Ordnerstruktur für Zustände wurde implementiert.\ngeändert: Timer wird bei Neustart nach Pausierung nun resetted.\ngeändert: Werte für act und set werden nun gespeichert und beim Starten des Adapters verwendet\ngeändert: Zustandsänderungen mit ack=true werden gelogged\ngeändert: Falsche Updates beim Schreiben des act Zustands werden nun verhindert\ngeändert: Funktionsfehler des Invert-Flags wurden behoben\ngeändert: Die Fehleranzeige beim Erreichen der Limits wurde entfernt.\ngeändert: q-Flag-Handling wurde korrigiert\ngeändert: Unerwartetes Verhalten des sup-Parameters wurde behoben\ngeändert: Der Eingabe-Zustand 'run' wurde auf 'hold' umbenannt.",
+                "ru": "новое: опционально используйте структуру папки для штатов\nизменено: переустановить таймер на перезагрузке после паузирования расчета\nизменено: используйте значения, хранящиеся для ack и установите при запуске адаптера\nизменено: состояние лога меняется с неожиданным ack=true\nизменено: исправить неправильные обновления, происходящие когда акт написан\nизменено: исправить инверт флаг не работает на всех\nизменен: удалить дисплей ошибки, когда адаптер ударит границы\nизменено: исправить q флаг обработки\nизменено: исправить неожиданный баавиор параметра sup\nизмененный: переименование запустить состояние держать",
+                "pt": "novo: opcionalmente use a estrutura da pasta para estados\nalterado: redefinir o temporizador no reiniciar após pausa cálculo\nalterado: use valores armazenados para ack e definido ao iniciar o adaptador\nalterado: log state changes with inesperada ack=true\nalterado: corrigir atualizações incorretas que ocorrem sempre que o ato é escrito\nalterado: corrigir a bandeira invert não funciona em tudo\nalterado: remover a exibição de erro sempre que o adaptador estiver batendo nos limites\nalterado: corrigir o manuseio da bandeira q\nalterado: corrigir o comportamento inesperado do parâmetro sup\nalterado: renomear estado de execução para segurar",
+                "nl": "vertaling:\nverandering: reset timer at restart na het berekenen\nverandering: gebruik waarden opgeslagen voor ack en set als je aanmeldt\nvertaling:\nverandering: reparatie updates komen wanneer er iets geschreven wordt\nverandering:\nverwijder de fout wanneer adapter de grenzen raakt\nverandering:\nvertaling:\nvertaling:",
+                "fr": "nouveau: optionnellement utiliser la structure du dossier pour les états\nchangé: réinitialiser le minuteur au redémarrage après le calcul de pausage\nchangé: utiliser les valeurs stockées pour ack et set lors du démarrage de l'adaptateur\nchangement: changement d'état de journal avec ack=true inattendu\nchangement: corriger les mises à jour incorrectes survenant chaque fois que l'acte est écrit\nchangé: fixer le drapeau invert ne fonctionne pas du tout\nchangement: supprimer l'affichage d'erreur lorsque l'adaptateur frappe les limites\nchangé: la manipulation du drapeau q\nchangé: fixer bahavior inattendu du paramètre sup\nchangé: renommer l'état de course pour tenir",
+                "it": "nuovo: utilizza facoltativamente la struttura della cartella per gli stati\ncambiato: reset timer al riavvio dopo il calcolo pausing\nmodificato: utilizzare i valori memorizzati per ack e impostare quando si avvia l'adattatore\ncambiato: log cambi di stato con ack=true inaspettato\ncambiato: correggere gli aggiornamenti errati che si verificano quando l'atto è scritto\ncambiato: fissare la bandiera invertito non funziona affatto\nmodificato: rimuovere il display di errore ogni volta che l'adattatore colpisce i limiti\ncambiato: fix q flag handling\ncambiato: fissare bahavior inaspettato del parametro sup\ncambiato: rinominare lo stato di esecuzione per tenere",
+                "es": "nuevo: uso opcional de la estructura de carpetas para los estados\ncambiado: reiniciar el temporizador después de pausing cálculo\ncambiado: utilizar los valores almacenados para ack y establecer al iniciar el adaptador\ncambiado: cambios de estado de registro con imprevisto\ncambiado: corregir las actualizaciones incorrectas ocurren cuando el acto está escrito\ncambiado: fijar la bandera invert no funciona en absoluto\ncambiado: eliminar la pantalla de error cuando el adaptador está golpeando los límites\ncambiado: fijar el manejo de bandera q\ncambiado: fijar el bahavior inesperado del parámetro sup\ncambiado: renombre estado de ejecución para mantener",
+                "pl": "nowy: opcjonalnie struktura folderowa dla państw członkowskich\nzmienione: reset timer na restart po obliczeniu paus\nzmienione: wartości przechowywane w akucie i ustawione podczas startu adapter\nzmienione: stany logiczne zmieniają się z nieoczekiwanie nieoczekiwanie nieoczekiwane\nzmieniono: naprawa nieprawidłowa uaktualnienia zachodzi, gdy pisana jest aktualizacja\nzmieniono flagę instrukcyjną, nie działającą w ogóle\nzmienione: wyświetlanie błędów, gdy adapter trafia do limitów\nzmieniono: naprawa flagi\nzmieniła się: naprawa nieoczekiwana bahawior of sup parametr\nzmienione: rename run state",
+                "uk": "нова: необов'язково використовуйте структуру папки для станів\nзмінено: таймер скидання в решті після підрахунку паузи\nзмінено: використання значень, що зберігаються при стійці та встановленні при запуску адаптера\nзмінено: зміни стану журналу з несподіваним ack=true\nзмінено: виправлено неправильні оновлення, що відбуваються, коли будь-який акт письмово\nзмінено: виправити зворотний прапор не працює на всіх\nзмінено: видалити відображення помилок, коли будь-який перехідник потрапив до лімітів\nзмінено: зафіксувати параметр q\nзмінено: виправлено несподіваний багавр параметра sup\nзмінено: стан перейменування",
+                "zh-cn": "新的:为州采用灵活方式\n修改:重新开始时间计算后重新开始时间\n修改:使用储存的包装价值,并在开始适应时确定\n变化:逻辑状况变化和意外包装\n修改:在书面行为时发生错误的更新\n变化:避免所有未工作旗\n变化:一旦适应者受到打击,消除错误的表现\n变化:九q 旗帜处理\n变化:离去的参数\n修改:重新命名的国家"
+            },
+            "0.0.2-alpha.2": {
+                "en": "changed: values of 'kp', 'xp' and 'sup' are now verified if set using states\nchanged: values of 'min' and 'max' are now verified if set using states\nchanged: activation of 'man' updates output 'y' with current value of 'man_inp' now\nchanged: 'min' value is now conserved when restarting the instance\nchanged: conversion between and xp has been fixed at several places\nchanged: 'kp' or 'xp' are writepotected now depending on 'useXp' parameter",
+                "de": "geändert: die Werte von kp, xp und sup werden nun auch überprüft falls diese mittels Zuständen verändert werden\ngeändert: Werte von min und max werden nun auch überprüftfalls diese mittels Zuständen verändert werden\ngeändert: Aktivierung von man atzualisiert nun y mit aktuellem Wert von man_inp\ngeändert: min Wert wird nun beim Neustart der Instanz nicht neu initialisiert\ngeändert: Umrechnung zwischen kp und xp wurde an mehreren Stellen korrigiert\ngeändert: kp oder xp werden jetzt gemäß Modeauswahl schreibgeschützt",
+                "ru": "изменено: значения kp, xp и sup теперь проверены, если установить использование штатов\nизменено: значения мин и макс теперь проверены если установите используя государства\nизменено: активация мужского обновления вывода y с текущей стоимостью man_inp сейчас\nизменено: min value is now conserved при перезагрузке экземпляра\nизменено: преобразование между и xp было зафиксировано в нескольких местах\nизменено: kp или xp писатьпотеку теперь в зависимости от использования Xp параметр",
+                "pt": "alterado: valores de kp, xp e sup são agora verificados se definidos usando estados\nalterado: valores de min e max são agora verificados se definidos usando estados\nalterado: ativação de atualizações do homem saída y com valor atual de man_inp agora\nmudou: o valor mínimo agora é conservado quando reiniciar a instância\nmudou: a conversão entre e xp foi fixada em vários lugares\nalterado: kp ou xp são writepotected agora dependendo do uso Parâmetro Xp",
+                "nl": "verandering: waarden van kp, xp en sup zijn nu geverifieerd als ze staten gebruiken\nverandering: waarden van min en max zijn nu geverifieerd als ze staten gebruiken\nverandering: activatie van man updates met huidige waarde van de mensheid\nverandering:\nverandering: conversie tussen en xp is gerepareerd op verschillende plaatsen\nklap of XP worden nu geschreven, afhankelijk van gebruik Xp parameter",
+                "fr": "change: les valeurs de kp, xp et sup sont maintenant vérifiées si l'on utilise des états\nchange: les valeurs de min et max sont maintenant vérifiées si l'on utilise des états\nchangé: activation de l'homme mise à jour la sortie y avec la valeur courante de man_inp maintenant\nchangé: la valeur min est maintenant conservée lors du redémarrage de l'instance\nchangé: la conversion entre et xp a été fixée à plusieurs endroits\nchangé: kp ou xp sont répertoriés maintenant en fonction de l'utilisation Xp",
+                "it": "cambiato: i valori di kp, xp e sup sono ora verificati se impostati utilizzando stati\ncambiato: i valori di min e max sono ora verificati se impostati utilizzando stati\ncambiato: attivazione degli aggiornamenti dell'uomo output y con il valore attuale di man_inp ora\ncambiato: il valore minimo è ora conservato quando si riavvia l'istanza\ncambiato: la conversione tra e xp è stata fissata in diversi luoghi\ncambiato: kp o xp sono scritturati ora a seconda dell'uso Parametro Xp",
+                "es": "cambiado: los valores de kp, xp y sup ahora se verifican si se establece utilizando estados\ncambiado: los valores de min y max ahora se verifican si se establece utilizando estados\ncambiado: activación de las actualizaciones del hombre salida y con el valor actual de man_inp ahora\ncambiado: el valor min se conserva ahora al reiniciar la instancia\ncambiado: la conversión entre xp se ha fijado en varios lugares\ncambiado: kp o xp se escriben ahora dependiendo del uso Parámetro Xp",
+                "pl": "zmienione: wartości kp, xp i sup są zweryfikowane, jeśli ustawiane są przy użyciu stanów\nzmiany: wartości min i max są zweryfikowane, jeśli zostaną ustalone przy użyciu stanów\nzmieniło się: aktywacja aktualizacji man_inp wyjściowych y {\\displaystyle y} z bieżącą wartością man_inp\nzmieniona jest zmiana: wartość min jest obecnie zachowana, gdy odwraca się instancja\nzmieniono zmianę: zmiana pomiędzy xp i xp została ustalona w kilku miejscach\nzmienione: kp lub xp są obecnie używane w zależności od użycia. parametr Xp",
+                "uk": "змінено: значення kp, xp і sup тепер перевірено, якщо встановити за допомогою штатів\nзмінено: значення мінімуму і макс тепер перевірено, якщо встановити за допомогою штатів\nзмінено: активація чоловічих оновлень виведення y з поточною вартістю man_inp тепер\nзмінено: після перезавантаження екземпляра\nзмінено: перетворення між і кс було виправлено на декількох місцях\nзмінено: kp або xp тепер в залежності від використання Xp параметр",
+                "zh-cn": "修改:如果使用国建立,那么现在就核实 kp、xp和配件的价值。\n修改:如果使用各州,那么,那么对微型和玉米的数值现在得到核实。\n修改:开始更新产出和目前男子价值的男子。\n修改:在重新启动这一例子时,价值现在得到保留。\n变化:若干地方的转换和变量已经确定。\n变化:现在根据使用情况写成的粉碎 参数"
+            },
+            "0.0.2-alpha.1": {
+                "en": "changed: some small fixes",
+                "de": "geändert: einige kleine Fixes",
+                "ru": "изменено: некоторые небольшие исправления",
+                "pt": "alterado: algumas pequenas correções",
+                "nl": "verandering:",
+                "fr": "changé: quelques petites corrections",
+                "it": "cambiato: alcune piccole correzioni",
+                "es": "cambiado: algunos pequeños arreglos",
+                "pl": "zmienione: niektóre drobne zmiany",
+                "uk": "змінено: деякі маленькі кріплення",
+                "zh-cn": "变化:一些小型装置"
+            },
+            "0.0.2-alpha.0": {
+                "en": "THIS IS AN ALPHA RELEASE ONLY\nmajor changes after discussion in forum\nnew initial release",
+                "de": "ALPHA VERSION - nur für Testzwecke\nNeuveröffentlichung nach Diskussionen im Forum",
+                "ru": "ЭТО ТОЛЬКО АЛФА-РЕЛИЗ\nосновные изменения после обсуждения на форуме\nновый начальный выпуск",
+                "pt": "ISTO É UM ALPHA RELATÓRIO SOMENTE\ngrandes mudanças após a discussão no fórum\nnova versão inicial",
+                "nl": "DIT IS EEN ALPHA-RELEASE\ngrote veranderingen na discussie in forum\nnieuwe start",
+                "fr": "C'EST UNE SEULE FOIS\nchangements majeurs après discussion sur le forum\nnouvelle version initiale",
+                "it": "QUESTO È UN ALPHA RELEASE SOLO\ncambiamenti importanti dopo la discussione nel forum\nnuovo rilascio iniziale",
+                "es": "ESTO ES UNA RELACIÓN ALPHA SOLAMENTE\ncambios importantes después del debate en el foro\nnueva versión inicial",
+                "pl": "ALPHA RELEASE ONLY (ANG.)\ngłówne zmiany po dyskusji w forum\nnowe wydanie",
+                "uk": "ЦЕ ЗНАЧЕННЯ ТОЧОГО ПРАВА\nосновні зміни після обговорення\nновий початковий реліз",
+                "zh-cn": "THIS AN ALPHARELEASE ONLY\n论坛讨论之后的重大变化\n新的初步释放"
+            }
+        },
+        "title": "PID controller",
+        "titleLang": {
+            "en": "PID controller",
+            "de": "PID-Regler",
+            "ru": "ПИД-регулятор",
+            "pt": "controlador PID",
+            "nl": "PID-regelaar",
+            "fr": "Contrôleur PID",
+            "it": "Controllore PID",
+            "es": "controlador PID",
+            "pl": "regulator PID",
+            "zh-cn": "PID控制器",
+            "uk": "ПІД контролер"
+        },
+        "desc": {
+            "en": "Configurable PID Controller",
+            "de": "Konfigurierbarer PID-Regler",
+            "ru": "Конфигурируемый ПИД-регулятор",
+            "pt": "Controlador PID configurável",
+            "nl": "Configureerbare PID-regelaar",
+            "fr": "Contrôleur PID configurable",
+            "it": "Regolatore PID configurabile",
+            "es": "Controlador PID configurable",
+            "pl": "Konfigurowalny kontroler PID",
+            "zh-cn": "可配置的 PID 控制器",
+            "uk": "Настроюваний ПІД-регулятор"
+        },
+        "authors": ["mcm1957 <mcm57@gmx.at>"],
+        "keywords": ["pid", "controller", "pid-controller"],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "pid.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.pid/master/admin/pid.png",
+        "readme": "https://github.com/iobroker-community-adapters/ioBroker.pid/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "general",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "push",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=4.0.24"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.1.13"
+            }
+        ]
     },
-    "title": "PID controller",
-    "titleLang": {
-      "en": "PID controller",
-      "de": "PID-Regler",
-      "ru": "ПИД-регулятор",
-      "pt": "controlador PID",
-      "nl": "PID-regelaar",
-      "fr": "Contrôleur PID",
-      "it": "Controllore PID",
-      "es": "controlador PID",
-      "pl": "regulator PID",
-      "zh-cn": "PID控制器",
-      "uk": "ПІД контролер"
+    "native": {
+        "ctrlMode": 0,
+        "ctrlActDiff": false
     },
-    "desc": {
-      "en": "Configurable PID Controller",
-      "de": "Konfigurierbarer PID-Regler",
-      "ru": "Конфигурируемый ПИД-регулятор",
-      "pt": "Controlador PID configurável",
-      "nl": "Configureerbare PID-regelaar",
-      "fr": "Contrôleur PID configurable",
-      "it": "Regolatore PID configurabile",
-      "es": "Controlador PID configurable",
-      "pl": "Konfigurowalny kontroler PID",
-      "zh-cn": "可配置的 PID 控制器",
-      "uk": "Настроюваний ПІД-регулятор"
-    },
-    "authors": [
-      "mcm1957 <mcm57@gmx.at>"
-    ],
-    "keywords": [
-      "pid",
-      "controller",
-      "pid-controller"
-    ],
-    "license": "MIT",
-    "platform": "Javascript/Node.js",
-    "main": "main.js",
-    "icon": "pid.png",
-    "enabled": true,
-    "extIcon": "https://raw.githubusercontent.com/iobroker-community-adapters/ioBroker.pid/master/admin/pid.png",
-    "readme": "https://github.com/iobroker-community-adapters/ioBroker.pid/blob/master/README.md",
-    "loglevel": "info",
-    "mode": "daemon",
-    "type": "general",
-    "compact": true,
-    "connectionType": "local",
-    "dataSource": "push",
-    "adminUI": {
-      "config": "json"
-    },
-    "dependencies": [
-      {
-        "js-controller": ">=4.0.24"
-      }
-    ],
-    "globalDependencies": [
-      {
-        "admin": ">=5.1.13"
-      }
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
     ]
-  },
-  "native": {
-    "ctrlMode": 0,
-    "ctrlActDiff": false
-  },
-  "objects": [],
-  "instanceObjects": [
-    {
-      "_id": "info",
-      "type": "channel",
-      "common": {
-        "name": "Information"
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.connection",
-      "type": "state",
-      "common": {
-        "role": "indicator.connected",
-        "name": "Device or service connected",
-        "type": "boolean",
-        "read": true,
-        "write": false,
-        "def": false
-      },
-      "native": {}
-    }
-  ]
 }
