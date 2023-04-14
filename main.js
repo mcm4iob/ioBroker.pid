@@ -607,7 +607,6 @@ class Pid extends utils.Adapter {
         if (this.config.optLogCalc) this.log.info(`[${ctrlIdTxt}] update() - ${JSON.stringify(ret)}`);
 
         if (!controller.man) {
-            const nowStr = new Date(ret.ts).toLocaleString();
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_delta'), { val: ret.dt, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd'), { val: ret.ts, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: ret.y, ack: true, q: 0x00 });
