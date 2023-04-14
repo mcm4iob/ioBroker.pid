@@ -78,11 +78,9 @@ const STATES_CFG = {
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
     i_sumerr:     { folder: 'xtra', type: 'number',  name: 'int sum error',       desc: 'descISumErr',  role: 'value',
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
-    last_delta:   { folder: 'xtra', type: 'number',  name: 'last delta time',   desc: 'descLastDelta',   role: 'value',
+    last_delta:   { folder: 'xtra', type: 'number',  name: 'last delta time',   desc: 'descLastDelta',  role: 'value',
                     unit:   'ms',   acc:  'RO',      init: null,  warnAck: false },
-    last_upd:     { folder: 'xtra', type: 'number',  name: 'last update ts',    desc: 'descLastUpd',     role: 'value',
-                    unit:   '',     acc:  'RO',      init: null,  warnAck: false },
-    last_upd_str: { folder: 'xtra', type: 'string',  name: 'last update',       desc: 'descLastUpdStr',  role: 'value',
+    last_upd:     { folder: 'xtra', type: 'number',  name: 'last update ts',    desc: 'descLastUpd',    role: 'date',
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
     run:          { folder: 'xtra', type: 'boolean', name: 'controller running',  desc: 'descRun',      role: 'indicator.working',
                     unit:   '',     acc:  'RO',      init: null,  warnAck: false },
@@ -147,7 +145,6 @@ class Pid extends utils.Adapter {
             i_sumerr:       null,
             last_delta:     null,
             last_upd:       null,
-            last_upd_str:   null,
             run:            this.chgRun.bind(this),
         };
 
@@ -613,7 +610,6 @@ class Pid extends utils.Adapter {
             const nowStr = new Date(ret.ts).toLocaleString();
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_delta'), { val: ret.dt, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd'), { val: ret.ts, ack: true, q: 0x00 });
-            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd_str'), { val: nowStr, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: ret.y, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'diff'), { val: ret.diff, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'lim'), { val: ret.lim, ack: true, q: 0x00 });
@@ -822,11 +818,9 @@ class Pid extends utils.Adapter {
         if (controller.man) {
             const ctrlIdTxt = controller.ctrlIdTxt;
             const ts = Date.now();
-            const nowStr = new Date(ts).toLocaleString();
             const manInp = await this.getStateAsync(this.getExtId(ctrlIdTxt, 'man_inp'));
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_delta'), { val: null, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd'), { val: ts, ack: true, q: 0x00 });
-            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd_str'), { val: nowStr, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: manInp?.val, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'diff'), { val: null, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'lim'), { val: null, ack: true, q: 0x00 });
@@ -848,10 +842,8 @@ class Pid extends utils.Adapter {
 
         if (controller.man) {
             const ts = Date.now();
-            const nowStr = new Date(ts).toLocaleString();
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_delta'), { val: null, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd'), { val: ts, ack: true, q: 0x00 });
-            await this.setStateAsync(this.getExtId(ctrlIdTxt, 'last_upd_str'), { val: nowStr, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'y'), { val: pVal, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'diff'), { val: null, ack: true, q: 0x00 });
             await this.setStateAsync(this.getExtId(ctrlIdTxt, 'lim'), { val: null, ack: true, q: 0x00 });
