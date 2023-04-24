@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "pid",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "news": {
+            "0.0.7": {
+                "en": "changed: Cycle time is now required to be at least 100ms\nchanged: Recalculations are now controlled by cycle timer only, no extra updates are performed (#62)\nchanged: Several dependencies have been updated",
+                "de": "geändert: Die Zykluszeit muss nun mindestens 100ms betragen\ngeändert: Neuberechnungen werden nur mehr durch den Taktgeber gesteuert, es werden keine zusätzlichen Updates durchgeführt (#62)\ngeändert: Abhängigkeiten wurden aktualisiert",
+                "ru": "изменено: Время цикла теперь необходимо быть по крайней мере 100ms\nизменено: Recalculations теперь контролируется только таймером цикла, никаких дополнительных обновлений не производится (#62)\nизменено: Обновлены несколько зависимостей",
+                "pt": "mudou: O tempo do ciclo é agora necessário para ser pelo menos 100ms\nmudou: As recalculações são agora controladas apenas pelo temporizador do ciclo, não são realizadas atualizações extras (#62)\nmudou: Várias dependências foram atualizadas",
+                "nl": "_ Cycle tijd is nu nodig om minstens 100m te zijn\n_ De recalculaties worden nu gecontroleerd door cyclus timer alleen, er worden geen extra updates uitgevoerd\n_ Verschillende afhankelijkheid is geüpload",
+                "fr": "changé: Le temps de cycle est maintenant requis pour être au moins 100ms\nchangé: Les nouveaux calculs sont désormais contrôlés uniquement par le minuteur de cycle, aucune mise à jour supplémentaire n'est effectuée (#62)\nchangé: Plusieurs dépendances ont été mises à jour",
+                "it": "cambiato: Tempo di ciclo è ora necessario per essere almeno 100ms\ncambiato: I calcoli sono ora controllati solo dal timer del ciclo, non vengono effettuati aggiornamenti aggiuntivi (#62)\ncambiato: Sono state aggiornate diverse dipendenze",
+                "es": "cambiado: El tiempo del ciclo ahora es necesario para ser al menos 100ms\ncambiado: Las recalculaciones ahora son controladas por el temporizador del ciclo solamente, no se realizan actualizaciones adicionales (#62)\ncambiado: Se han actualizado varias dependencias",
+                "pl": "zmieniono: Czas kolczasty jest obecnie potrzebny na co najmniej 100 m\nzmieniono: Rekultywacje są kontrolowane tylko przez czasoprzestrzeni, nie są wykonywane żadne dodatkowe aktualizacje (#62)\nzmieniono: Kilka zależności zostało aktualizowanych",
+                "uk": "змінено: Час циклу тепер потрібно принаймні 100ms\nзмінено: Регулятори тепер контролюються лише циклом, не виконуються додаткові оновлення (#62)\nзмінено: Було оновлено кілька залежностей",
+                "zh-cn": "修改: 现在需要时间至少100%\n修改: 重新计算目前仅由周期时间控制,没有进行外部更新(第62号)。\n修改: 已更新了几个依赖性"
+            },
             "0.0.6": {
                 "en": "solved: Calculation of sumerr in case of hitting max/min Limits has been corrected",
                 "de": "gelöst: Berechnung des Summierers beim Erreichen des max/min Limits wurde korrigiert",
@@ -80,32 +93,6 @@
                 "pl": "zmienione: wartości kp, xp i sup są zweryfikowane, jeśli ustawiane są przy użyciu stanów\nzmiany: wartości min i max są zweryfikowane, jeśli zostaną ustalone przy użyciu stanów\nzmieniło się: aktywacja aktualizacji man_inp wyjściowych y {\\displaystyle y} z bieżącą wartością man_inp\nzmieniona jest zmiana: wartość min jest obecnie zachowana, gdy odwraca się instancja\nzmieniono zmianę: zmiana pomiędzy xp i xp została ustalona w kilku miejscach\nzmienione: kp lub xp są obecnie używane w zależności od użycia. parametr Xp",
                 "uk": "змінено: значення kp, xp і sup тепер перевірено, якщо встановити за допомогою штатів\nзмінено: значення мінімуму і макс тепер перевірено, якщо встановити за допомогою штатів\nзмінено: активація чоловічих оновлень виведення y з поточною вартістю man_inp тепер\nзмінено: після перезавантаження екземпляра\nзмінено: перетворення між і кс було виправлено на декількох місцях\nзмінено: kp або xp тепер в залежності від використання Xp параметр",
                 "zh-cn": "修改:如果使用国建立,那么现在就核实 kp、xp和配件的价值。\n修改:如果使用各州,那么,那么对微型和玉米的数值现在得到核实。\n修改:开始更新产出和目前男子价值的男子。\n修改:在重新启动这一例子时,价值现在得到保留。\n变化:若干地方的转换和变量已经确定。\n变化:现在根据使用情况写成的粉碎 参数"
-            },
-            "0.0.2-alpha.1": {
-                "en": "changed: some small fixes",
-                "de": "geändert: einige kleine Fixes",
-                "ru": "изменено: некоторые небольшие исправления",
-                "pt": "alterado: algumas pequenas correções",
-                "nl": "verandering:",
-                "fr": "changé: quelques petites corrections",
-                "it": "cambiato: alcune piccole correzioni",
-                "es": "cambiado: algunos pequeños arreglos",
-                "pl": "zmienione: niektóre drobne zmiany",
-                "uk": "змінено: деякі маленькі кріплення",
-                "zh-cn": "变化:一些小型装置"
-            },
-            "0.0.2-alpha.0": {
-                "en": "THIS IS AN ALPHA RELEASE ONLY\nmajor changes after discussion in forum\nnew initial release",
-                "de": "ALPHA VERSION - nur für Testzwecke\nNeuveröffentlichung nach Diskussionen im Forum",
-                "ru": "ЭТО ТОЛЬКО АЛФА-РЕЛИЗ\nосновные изменения после обсуждения на форуме\nновый начальный выпуск",
-                "pt": "ISTO É UM ALPHA RELATÓRIO SOMENTE\ngrandes mudanças após a discussão no fórum\nnova versão inicial",
-                "nl": "DIT IS EEN ALPHA-RELEASE\ngrote veranderingen na discussie in forum\nnieuwe start",
-                "fr": "C'EST UNE SEULE FOIS\nchangements majeurs après discussion sur le forum\nnouvelle version initiale",
-                "it": "QUESTO È UN ALPHA RELEASE SOLO\ncambiamenti importanti dopo la discussione nel forum\nnuovo rilascio iniziale",
-                "es": "ESTO ES UNA RELACIÓN ALPHA SOLAMENTE\ncambios importantes después del debate en el foro\nnueva versión inicial",
-                "pl": "ALPHA RELEASE ONLY (ANG.)\ngłówne zmiany po dyskusji w forum\nnowe wydanie",
-                "uk": "ЦЕ ЗНАЧЕННЯ ТОЧОГО ПРАВА\nосновні зміни після обговорення\nновий початковий реліз",
-                "zh-cn": "THIS AN ALPHARELEASE ONLY\n论坛讨论之后的重大变化\n新的初步释放"
             }
         },
         "title": "PID controller",

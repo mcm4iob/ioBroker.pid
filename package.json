@@ -1,6 +1,6 @@
 {
   "name": "iobroker.pid",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Configurable PID Controller",
   "author": {
     "name": "mcm1957",

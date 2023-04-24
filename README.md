@@ -63,8 +63,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.0.7 (2023-04-24)
 
 -   (mcm1957) changed: Cycle time is now required to be at least 100ms
 -   (mcm1957) changed: Recalculations are now controlled by cycle timer only, no extra updates are performed (#62)
