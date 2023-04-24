@@ -230,7 +230,7 @@ class Pid extends utils.Adapter {
                 const kp = useXp ? (max - min) / KpXp : KpXp;
 
                 let ctrlCycle = controller.ctrlCycle;
-                if (ctrlCycle !== 0 && ctrlCycle < 100) {
+                if (ctrlCycle < 100) {
                     ctrlCycle = 100;
                     this.log.warn(`[${ctrlIdTxt}] - invalid cycle time, set to 100ms`);
                 }
@@ -657,7 +657,7 @@ class Pid extends utils.Adapter {
         const controller = this.controllers[pCtrlId];
         await controller.pidCtrl.setAct(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
-        if (controller.running && !controller.cycle) await this.doUpdate(pCtrlId);
+        //if (controller.running && !controller.cycle) await this.doUpdate(pCtrlId);
     }
 
     async chgMin(pId, pCtrlId, pVal) {
@@ -677,7 +677,7 @@ class Pid extends utils.Adapter {
         await controller.pidCtrl.setMin(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         await this.updParamStates(pCtrlId);
-        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
+        //if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
     async chgMax(pId, pCtrlId, pVal) {
@@ -697,7 +697,7 @@ class Pid extends utils.Adapter {
         await controller.pidCtrl.setMax(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         await this.updParamStates(pCtrlId);
-        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
+        //if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
     async chgOff(pId, pCtrlId, pVal) {
@@ -707,7 +707,7 @@ class Pid extends utils.Adapter {
 
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         await this.updParamStates(pCtrlId);
-        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
+        //if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
     async chgSet(pId, pCtrlId, pVal) {
@@ -716,7 +716,7 @@ class Pid extends utils.Adapter {
         const controller = this.controllers[pCtrlId];
         await controller.pidCtrl.setSet(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
-        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
+        //if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
     async chgSup(pId, pCtrlId, pVal) {
@@ -752,7 +752,7 @@ class Pid extends utils.Adapter {
         await controller.pidCtrl.setKp(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         await this.updParamStates(pCtrlId);
-        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
+        //if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
     async chgXp(pId, pCtrlId, pVal) {
@@ -772,7 +772,7 @@ class Pid extends utils.Adapter {
         await controller.pidCtrl.setXp(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         await this.updParamStates(pCtrlId);
-        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
+        //if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
     async chgTn(pId, pCtrlId, pVal) {
@@ -782,7 +782,7 @@ class Pid extends utils.Adapter {
         await controller.pidCtrl.setTn(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         await this.updParamStates(pCtrlId);
-        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
+        //if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
     async chgTv(pId, pCtrlId, pVal) {
@@ -792,7 +792,7 @@ class Pid extends utils.Adapter {
         await controller.pidCtrl.setTv(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
         await this.updParamStates(pCtrlId);
-        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
+        //if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
     async chgHold(pId, pCtrlId, pVal) {
@@ -859,7 +859,7 @@ class Pid extends utils.Adapter {
         await this.setStateAsync(pId, { val: false, ack: true, q: 0x00 });
         const controller = this.controllers[pCtrlId];
         if (pVal) await controller.pidCtrl.reset();
-        if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
+        //if (controller.running && !controller.ctrlCycle) await this.doUpdate(pCtrlId);
     }
 
     async chgRun(pId, pCtrlId, pVal) {
