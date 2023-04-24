@@ -55,6 +55,7 @@ Providing this adapter would not have been possible without the great work of @P
 Please use GitHub issues for this.
 
 Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column Log level). Then please get the logfile from disk (subdirectory "log" in ioBroker installation directory and not from Admin because Admin cuts the lines). If you do not like providing it in GitHub issue you can also send it to me via email (mcm57@gmx.at). Please add a reference to the relevant GitHub issue AND also describe what I see in the log at which time.
+"title": "lblCtrlInvert",
 
 ## Changelog
 
@@ -62,6 +63,13 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+
+-   (mcm1957) [changed] Cycle time is now required to be at least 100ms
+-   (mcm1957) [changed] Recalculations are now controlled by cycle timer only, no extra updates are performed (#62)
+-   (mcm1957) [changed] Several dependencies have been updated
+
 ### 0.0.6 (2023-04-14)
 
 -   (mcm1957) solved: Calculation of sumerr in case of hitting max/min Limits has been corrected
