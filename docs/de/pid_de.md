@@ -45,9 +45,9 @@ Diese Tabelle ermöglicht die Konfiguration einer Liste von Reglern
 | Autostart | boolesch | Wenn markiert, wird der Regler immer dann gestartet, wenn der Adapter gestartet wird | Der Regler kann in jedem Fall im `Hold`-Zustand gestoppt und gestartet werden |
 | Use States for Config | boolesch | wenn markiert, werden die Parameter durch Zustände gesteuert | Dieses Flag deaktiviert die Parameterfelder, wenn es ausgewählt ist |
 | Regler-Id | Text | Regler-Id zur Identifizierung eines Reglers | Diese ID muss für alle Regler eindeutig sein, kann aber vom Benutzer ausgewählt werden |
-| Kp oder Xp | Zahl | Proportionaler Term des Reglers | Angabe eines Dezimalteils ist möglich |
-| Tn | Zahl | integraler Begriff des Reglers | Angabe eines Dezimalteils möglich |
-| Tv | Zahl | deriativer Begriff des Reglers | Angabe eines Dezimalteils möglich |
+| Kp oder Xp | Zahl | proportionaler Term des Reglers | Angabe eines Dezimalteils ist möglich |
+| Tn | Zahl | integraler Anteil des Reglers / Nachstellzeit (in s) | Angabe eines Dezimalteils möglich |
+| Tv | Zahl | deriativer Anteil des Reglers / Vorhaltezeit (in s)| Angabe eines Dezimalteils möglich |
 | Min Out | Zahl | minimaler Ausgangswert |
 | Max Out | Zahl | maximaler Ausgangswert |
 | Offset | Zahl | Offset addiert zum Ausgangswert |
