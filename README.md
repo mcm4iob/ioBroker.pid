@@ -42,9 +42,8 @@ All relevant values including internal data are availbale as states for diagnose
 
 ## Documentation
 
-[english documentation](docs/en/pid.md) is available [here](docs/en/pid.md) <br>
-
-<!-- [german documentation](docs/de/pid.md) is available [here](docs/de/pid.md) -->
+[english documentation](docs/en/pid_en.md)<br>
+[deutsche Dokumentation](docs/de/pid_de.md)
 
 ## Credits
 
