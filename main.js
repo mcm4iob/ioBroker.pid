@@ -385,6 +385,17 @@ class Pid extends utils.Adapter {
             }
 
             if (typeof this.STATECHG_CFG[key] !== 'function') return;
+
+            // ensure valid data
+            const controller = this.controllers[ctrlId];
+            if (!controller) {
+                this.log.debug (`this.controllers[${ctrlId}] is undefined`);
+                return;
+            }
+            if (!controller.pidCtrl) {
+                this.log.debug (`this.controllers[${ctrlId}].pidCtrl is undefined`);
+                return;
+            }
             this.STATECHG_CFG[key](pId, ctrlId, pState.val);
         } else {
             // foreign states
