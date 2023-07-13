@@ -62,7 +62,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.0.8 (2023-07-13)
 
 -   (mcm1957) changed: Overall stability during state updates has been increased
 -   (mcm1957) changed: Dependencies have been updated
