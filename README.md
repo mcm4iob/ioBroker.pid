@@ -64,8 +64,8 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 -->
 ### **WORK IN PROGRESS**
 
--   (mcm1957) changed: Overall stability during state updated has been invsreased
--   (mcm1957) changed: dependencies have been updated
+-   (mcm1957) changed: Overall stability during state updates has been increased
+-   (mcm1957) changed: Dependencies have been updated
 
 ### 0.0.7 (2023-04-24)
 
