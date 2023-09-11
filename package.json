@@ -18,7 +18,7 @@
     "url": "https://github.com/iobroker-community-adapters/ioBroker.pid.git"
   },
   "engines": {
-    "node": ">= 14"
+    "node": ">= 16"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.6.8",
