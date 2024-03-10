@@ -92,7 +92,7 @@
                     "md": 10,
                     "lg": 10,
                     "text": "errValCtrlId",
-                    "hidden": "const x={};for (const c of data.controllers) {if ((!c.ctrlId.match(/^[A-Za-z0-9]([A-Za-z0-9-_])*$/)) || (x[c.ctrlId]==='x') ) return false; x[c.ctrlId]='x';}; return true;",
+                    "hidden": "const x={};if (!data.controllers) return true; for (const c of data.controllers) {if ((!c.ctrlId.match(/^[A-Za-z0-9]([A-Za-z0-9-_])*$/)) || (x[c.ctrlId]==='x') ) return false; x[c.ctrlId]='x';}; return true;",
                     "style": {
                         "fontSize": 16,
                         "color": "red"
