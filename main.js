@@ -22,7 +22,7 @@ const PidCtrl = require('./lib/pid.js');
 /* prettier-ignore */
 const STATES_CFG = {
     /* parameters */
-    cycle:        { folder: 'cfg',  type: 'number',  name: 'cycle time',          desc: 'descCycle',   role: 'value',
+    cycle:        { folder: 'cfg',  type: 'number',  name: 'cycle time',          desc: 'descCycle',   role: 'time.interval',
                     unit: 'ms',     acc: 'RO',       init: null,  warnAck: false },
     useXp:        { folder: 'cfg',  type: 'boolean', name: 'use Xp mode',         desc: 'descUseXp',   role: 'value',
                     unit: '',       acc: 'RO',       init: false, warnAck: false },
@@ -40,9 +40,9 @@ const STATES_CFG = {
                     unit:   's',    acc:  'RW',      init: 0,     warnAck: true },
     tv:           { folder: 'para', type: 'number',  name: 'derivative time',     desc: 'descKd',       role: 'level',
                     unit:   's',    acc:  'RW',      init: 0,     warnAck: true },
-    min:          { folder: 'para', type: 'number',  name: 'minimum value',       desc: 'descMin',      role: 'level',
+    min:          { folder: 'para', type: 'number',  name: 'minimum value',       desc: 'descMin',      role: 'level.min',
                     unit:   '',     acc:  'RW',      init: 0,     warnAck: true },
-    max:          { folder: 'para', type: 'number',  name: 'maximum value',       desc: 'descMax',      role: 'level',
+    max:          { folder: 'para', type: 'number',  name: 'maximum value',       desc: 'descMax',      role: 'level.max',
                     unit:   '',     acc:  'RW',      init: 100,   warnAck: true },
     off:          { folder: 'para', type: 'number',  name: 'offset value',        desc: 'descOff',      role: 'level',
                     unit:   '',     acc:  'RW',      init: 0,     warnAck: true },
