@@ -148,12 +148,12 @@
     },
     "dependencies": [
       {
-        "js-controller": ">=4.0.24"
+        "js-controller": ">=5.0.0"
       }
     ],
     "globalDependencies": [
       {
-        "admin": ">=5.1.13"
+        "admin": ">=6.0.0"
       }
     ]
   },
