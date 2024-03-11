@@ -64,6 +64,8 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 -->
 ### **WORK IN PROGRESS**
 
+-   (mcm1957) BREAKING: Adapter requires node.js 18 or newer now
+-   (mcm1957) BREAKING: Adapter requires js-controller 5.x.x and admin 6.x.x or newer now
 -   (mcm1957) Parameter offset was non functional. This has been fixed. [#105]
 -   (mcm1957) Incorrect error message whenever no controllers have been defied has been removed. [#68]
 -   (mcm1957) State roles have been reviewed and adapted. [#88]
