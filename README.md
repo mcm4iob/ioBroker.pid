@@ -62,7 +62,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.0.0-alpha.0 (2024-03-11)
 
 -   (mcm1957) BREAKING: Adapter requires node.js 18 or newer now
 -   (mcm1957) BREAKING: Adapter requires js-controller 5.x.x and admin 6.x.x or newer now
