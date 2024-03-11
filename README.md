@@ -62,6 +62,13 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+-   (mcm1957) Parameter offset was non functional. This has been fixed. [#105]
+-   (mcm1957) Incorrect error message whenever no controllers have been defied has been removed. [#68]
+-   (mcm1957) State roles have been reviewed and adapted. [#88]
+-   (mcm1957) Dependencies have been updated.
+
 ### 0.0.8 (2023-07-13)
 
 -   (mcm1957) changed: Overall stability during state updates has been increased
