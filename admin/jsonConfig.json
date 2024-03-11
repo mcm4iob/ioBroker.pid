@@ -246,6 +246,7 @@
                             "width": "5% ",
                             "title": "lblCtrlInvert",
                             "tooltip": "ttCtrInvert",
+                            "hidden": "data.ctrlUseStateCfg",
                             "filter": false,
                             "sort": false,
                             "default": false

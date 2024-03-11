@@ -29,7 +29,7 @@ const STATES_CFG = {
     dao:          { folder: 'cfg',  type: 'boolean', name: 'derivative act only', desc: 'descDao',     role: 'value',
                     unit: '',       acc: 'RO',       init: false, warnAck: false },
     inv:          { folder: 'cfg',  type: 'boolean', name: 'invert output',       desc: 'descInv',     role: 'value',
-                    unit: '',       acc: 'RO',       init: false, warnAck: false },
+                    unit: '',       acc: 'RW',       init: false, warnAck: true },
 
     /* changeable params */
     xp:           { folder: 'para', type: 'number',  name: 'prop factor',         desc: 'descXp',       role: 'level',
@@ -116,7 +116,7 @@ class Pid extends utils.Adapter {
             kp:         this.chgKp.bind(this),
             useXp:      null,
             dao:        null,
-            inv:        null,
+            inv:        this.chgInv.bind(this),
             tn:         this.chgTn.bind(this),
             tv:         this.chgTv.bind(this),
             min:        this.chgMin.bind(this),
@@ -192,6 +192,7 @@ class Pid extends utils.Adapter {
                 let _tv;
                 let _off;
                 let _sup;
+                let _inv;
                 const useXp = this.config.ctrlMode === 1;
                 if (controller.ctrlUseStateCfg) {
                     _KpXp = useXp
@@ -203,6 +204,7 @@ class Pid extends utils.Adapter {
                     _tv = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'tv')))?.val;
                     _off = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'off')))?.val;
                     _sup = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'sup')))?.val;
+                    _inv = (await this.getStateAsync(this.getExtId(ctrlIdTxt, 'inv')))?.val;
                 } else {
                     _KpXp = controller.ctrlKpXp;
                     _tn = controller.ctrlTn;
@@ -211,6 +213,7 @@ class Pid extends utils.Adapter {
                     _tv = controller.ctrlTv;
                     _off = controller.ctrlOff;
                     _sup = controller.ctrlSup;
+                    _inv = controller.ctrlInvert;
                 }
 
                 const KpXp = this.getNumParam(ctrlIdTxt, 'kpxp', _KpXp, 1);
@@ -220,6 +223,7 @@ class Pid extends utils.Adapter {
                 const tv = this.getNumParam(ctrlIdTxt, 'tv', _tv, 0);
                 const off = this.getNumParam(ctrlIdTxt, 'off', _off, 0);
                 const sup = this.getNumParam(ctrlIdTxt, 'sup', _sup, 0);
+                const inv = _inv;
 
                 if (min >= max) {
                     this.log.warn(`[C-${controller.ctrlId}] - ${min} >= ${min}, using min=0, max=100 instead`);
@@ -255,7 +259,7 @@ class Pid extends utils.Adapter {
                     sup: sup,
                     dao: this.config.ctrlActDiff || false,
                     useXp: useXp,
-                    inv: controller.ctrlInvert || false,
+                    inv: inv || false,
                 });
 
                 this.controllers[controller.ctrlId] = {
@@ -668,6 +672,16 @@ class Pid extends utils.Adapter {
         const controller = this.controllers[pCtrlId];
         await controller.pidCtrl.setAct(pVal);
         await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
+        //if (controller.running && !controller.cycle) await this.doUpdate(pCtrlId);
+    }
+
+    async chgInv(pId, pCtrlId, pVal) {
+        this.log.debug(`chgInv called (${pCtrlId}, ${pVal})`);
+
+        const controller = this.controllers[pCtrlId];
+        await controller.pidCtrl.setInv(pVal);
+        await this.setStateAsync(pId, { val: pVal, ack: true, q: 0x00 });
+        await this.updParamStates(pCtrlId);
         //if (controller.running && !controller.cycle) await this.doUpdate(pCtrlId);
     }
 
