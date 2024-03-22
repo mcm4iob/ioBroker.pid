@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "pid",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "news": {
+      "1.1.0": {
+        "en": "Adapter uses sentry to report errors now.",
+        "de": "Adapter verwendet nun sentry, um Fehler zu melden.",
+        "ru": "Адаптер использует отсылку, чтобы сообщать об ошибках.",
+        "pt": "Adaptador usa sentinela para relatar erros agora.",
+        "nl": "Adapter gebruikt wachtdienst om fouten nu te melden.",
+        "fr": "Adapter utilise sentiry pour signaler les erreurs maintenant.",
+        "it": "Adattatore utilizza la sentinella per segnalare gli errori.",
+        "es": "Adaptador utiliza centinela para reportar errores ahora.",
+        "pl": "Adapter używa sentry do zgłaszania błędów.",
+        "uk": "Перехідник використовує відправника, щоб повідомити помилки.",
+        "zh-cn": "适配器现在使用哨兵报告错误."
+      },
       "1.0.0": {
         "en": "BREAKING: Adapter requires node.js 18 or newer now\nBREAKING: Adapter requires js-controller 5.x.x and admin 6.x.x or newer now\nParameter offset was non functional. This has been fixed. [#105]\nIncorrect error message whenever no controllers have been defied has been removed. [#68]\nState roles have been reviewed and adapted. [#88]\nDependencies have been updated.",
         "de": "BREAKING: Adapter benötigt nun node.js 18 oder neuer\nBREAKING: Adapter erfordert jetzt js-controller 5.x.x und admin 6.x.x oder neuer\nOffset war nicht funktionsfähig. Das Problem wurde behoben. (#105)\nDie falsche Fehlermeldung, wenn keine Controller fehlerhaft sind, wurde entfernt. (#68)\nState-Roles wurden überprüft und angepasst. (#88)\nAbhängigkeiten wurden aktualisiert.",
@@ -80,19 +93,6 @@
         "pl": "zmieniono: State ostatni_upd_str zostało usunięte\nzmieniono: Niektóre role zostały zaktualizowane\nzmieniono: Tłumaczenia zostały zaktualizowane",
         "uk": "змінено: Видалено стан останнього_upd_str\nзмінено: Деякі ролі були оновлено\nзмінено: Оновлено переклади",
         "zh-cn": "修改: 去年国家被撤职。\n修改: 已经更新了一些作用。\n修改: 翻译工作已经更新。"
-      },
-      "0.0.3-alpha.1": {
-        "en": "changed: Setting rst state does no longer trigger a recalculation\nchanged: State diff now displays error value even if sup is active\nchanged: Calculation of I-part has been changed, changing Tn effects future calculations only now",
-        "de": "geändert: Einstellung rst Zustand löst keine Neuberechnung mehr aus\ngeändert: State diff zeigt nun den Fehlerwert, auch wenn sup aktiv ist\ngeändert: Die Berechnung des I-Teils wurde geändert; Änderungen a, Paramater Tn wirken nur mehr auf zuküftige Anteile",
-        "ru": "изменено: Установка состояния RST больше не вызывает пересчета\nизменено: State diff теперь отображает значение ошибки, даже если sup активен\nизменено: Расчет I-part был изменен, изменен Тн эффекты будущие расчеты только сейчас",
-        "pt": "mudou: Definir estado rst não desencadeia mais um recalculação\nmudou: Estado diff agora exibe valor de erro mesmo se sup estiver ativo\nmudou: Cálculo de I-part foi alterado, mudando Tn efeitos futuros cálculos só agora",
-        "nl": "_ Vertaling:\n_ Staatsdiff vertoont nu de waarde van de fout, zelfs als sup actief is\n_ De berekening van I-part is veranderd. Vertaling:",
-        "fr": "changé: Réglage de l'état de rst ne déclenche plus un nouveau calcul\nchangé: State diff affiche désormais la valeur d'erreur même si sup est actif\nchangé: Le calcul de la partie I a été modifié, changeant Tn effets futurs calculs seulement maintenant",
-        "it": "cambiato: Impostare lo stato rst non attiva più un ricalcolo\ncambiato: State diff ora visualizza il valore di errore anche se il sup è attivo\ncambiato: Il calcolo della I-part è stato cambiato, cambiando Tn effetti calcoli futuri solo ora",
-        "es": "cambiado: Configurar el estado rst ya no activa una recalculación\ncambiado: State diff ahora muestra valor de error incluso si sup es activo\ncambiado: Cálculo de la parte I ha sido cambiado, cambiando Efectos Tn cálculos futuros sólo ahora",
-        "pl": "zmieniono: Stan spustowy nie jest już w stanie wywołać rekultywację\nzmieniono: Stan dyfunduje wartość błędu, nawet jeśli sup jest aktywny\nzmieniono: Zmieniono kalendarz I części, zmieniając zmianę. Efektywność przyszłych obliczeń tylko obecnie",
-        "uk": "змінено: Налаштування рст-стану більше не викликає перерахунок\nзмінено: Стан дифу тепер відображає значення помилки навіть якщо sup активний\nзмінено: Зміна розрахункових показників, зміни Цільові ефекти майбутніх обчислень тільки зараз",
-        "zh-cn": "修改: 设置国不再引起重新定性\n修改: 国家现在的错误表现值甚至是积极的\n修改: 对第一部分的计算已经改变,变化 未来效应计算现在仅为现值"
       }
     },
     "title": "PID controller",
