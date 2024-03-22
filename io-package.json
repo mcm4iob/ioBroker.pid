@@ -1,9 +1,9 @@
 {
   "common": {
     "name": "pid",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "news": {
-      "1.1.1": {
+      "1.1.2": {
         "en": "Adapter uses sentry to report errors now.",
         "de": "Adapter verwendet nun sentry, um Fehler zu melden.",
         "ru": "Адаптер использует отсылку, чтобы сообщать об ошибках.",
