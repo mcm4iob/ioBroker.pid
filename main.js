@@ -160,7 +160,7 @@ class Pid extends utils.Adapter {
      */
     async onReady() {
         this.log.debug('onReady triggered');
-
+let ii=2/0;
         await this.setStateAsync('info.connection', { val: false, ack: true, q: 0x00 });
 
         /* set global config */
