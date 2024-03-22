@@ -1,9 +1,9 @@
 {
   "common": {
     "name": "pid",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "news": {
-      "1.1.0": {
+      "1.1.1": {
         "en": "Adapter uses sentry to report errors now.",
         "de": "Adapter verwendet nun sentry, um Fehler zu melden.",
         "ru": "Адаптер использует отсылку, чтобы сообщать об ошибках.",
@@ -80,19 +80,6 @@
         "pl": "wsparcie na przykład/npmj",
         "uk": "додано підтримку npm/npmjs",
         "zh-cn": "新的:增拨了ppm/npmj的支助。"
-      },
-      "0.0.4": {
-        "en": "changed: State last_upd_str has been removed\nchanged: Some roles have been updated\nchanged: Translations have been updated",
-        "de": "geändert: State last_upd_str wurde entfernt\ngeändert: Einige Rollen wurden aktualisiert\ngeändert: Übersetzungen wurden aktualisiert",
-        "ru": "изменено: Штат last_upd_str был удален\nизменено: Некоторые роли были обновлены\nизменено: Переводы были обновлены",
-        "pt": "mudou: Estado last_upd_str foi removido\nmudou: Alguns papéis foram atualizados\nmudou: As traduções foram atualizadas",
-        "nl": "_ De laatste staat is verwijderd\n_ Sommige rollen zijn geüpload\n_ Vertaling:",
-        "fr": "changé: State last_upd_str a été supprimé\nchangé: Certains rôles ont été mis à jour\nchangé: Les traductions ont été mises à jour",
-        "it": "cambiato: State last_upd_str è stato rimosso\ncambiato: Alcuni ruoli sono stati aggiornati\ncambiato: Le traduzioni sono state aggiornate",
-        "es": "cambiado: State last_upd_str has been removed\ncambiado: Se han actualizado algunas funciones\ncambiado: Se han actualizado las traducciones",
-        "pl": "zmieniono: State ostatni_upd_str zostało usunięte\nzmieniono: Niektóre role zostały zaktualizowane\nzmieniono: Tłumaczenia zostały zaktualizowane",
-        "uk": "змінено: Видалено стан останнього_upd_str\nзмінено: Деякі ролі були оновлено\nзмінено: Оновлено переклади",
-        "zh-cn": "修改: 去年国家被撤职。\n修改: 已经更新了一些作用。\n修改: 翻译工作已经更新。"
       }
     },
     "title": "PID controller",
