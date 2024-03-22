@@ -135,7 +135,7 @@
     },
     "plugins": {
       "sentry": {
-        "dsn": "https://621ac710b70445f8b170cbb783045988@sentry.iobroker.net/181"
+        "dsn": "https://4fa370e3a351ade457914ea9edf1f6d7@o4504185128484864.ingest.us.sentry.io/4506955163041792"
       }
     },
     "dependencies": [
