@@ -87,7 +87,10 @@ jobs:
                   sentry: true
                   sentry-token: ${{ secrets.SENTRY_AUTH_TOKEN }}
                   sentry-url: "https://sentry.io"
+                  sentry-org: "mcm4iob"
                   sentry-project: "iobroker-pid"
                   sentry-version-prefix: "iobroker.pid"
+                  sentry-github-integration: true
+                  
                   # If your sentry project is linked to a GitHub repository, you can enable the following option
                   sentry-github-integration: true
