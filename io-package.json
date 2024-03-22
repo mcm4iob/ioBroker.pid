@@ -146,6 +146,11 @@
     "adminUI": {
       "config": "json"
     },
+    "plugins": {
+      "sentry": {
+        "dsn": "https://621ac710b70445f8b170cbb783045988@sentry.iobroker.net/181"
+      }
+    },
     "dependencies": [
       {
         "js-controller": ">=5.0.0"
