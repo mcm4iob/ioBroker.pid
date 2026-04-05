@@ -9,6 +9,7 @@
   "homepage": "https://github.com/mcm4iob/ioBroker.pid",
   "license": "MIT",
   "keywords": [
+    "ioBroker",
     "pid",
     "controller",
     "pid-controller"
