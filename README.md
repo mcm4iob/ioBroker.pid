@@ -163,7 +163,7 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 
 MIT License
 
-Copyright (c) 2023-2024 mcm1957 <mcm57@gmx.at>
+Copyright (c) 2023-2026 mcm1957 <mcm57@gmx.at>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
