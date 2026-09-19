@@ -159,6 +159,8 @@ Best is to set the adapter to Debug log mode (Instances -> Expert mode -> Column
 -   (mcm1957) major changes after discussion in forum
 -   (mcm1957) new initial release
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 MIT License
